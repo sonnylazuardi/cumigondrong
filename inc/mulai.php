@@ -12,8 +12,8 @@ include __DIREKTORI_UTAMA . '/app/' . 'router.class.php';
 include __DIREKTORI_UTAMA . '/app/' . 'template.class.php';
 
 // autoload untuk model agar langsung bisa dipakai
-function __autoload($nama_c) {
-	$namaFile = strtolower($nama_c) . '.class.php';
+function __autoload($class_name) {
+	$namaFile = strtolower($class_name) . '.class.php';
 	$file = __DIREKTORI_UTAMA . '/m/' . $namaFile;
 
 	// Jika tidak ditemukan modelnya
@@ -21,12 +21,18 @@ function __autoload($nama_c) {
 		return false;
 	}
 
-	include ($file);
+	require_once ($file);
 }
 
 // membuat sebuah objek brankas baru
 $brankas = new Brankas;
 
-// membuat objek brankas db 
-$brankas->db = Db::getInstance();
+// config brankas
+$brankas->config = include(__DIREKTORI_UTAMA . '/inc/config.php');
 
+// membuat objek brankas db 
+$brankas->db = Db::getInstance($brankas);
+
+ActiveRecord::setDefaultDBConnection(Db::getInstance($brankas));
+
+session_start();

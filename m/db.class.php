@@ -7,10 +7,11 @@ class Db {
 
 	}
 
-	public static function getInstance() {
+	public static function getInstance($brankas) {
 		if (!self::$instance)
 		{
-			self::$instance = new PDO("mysql:host=localhost;dbname=test_db", 'root', '');;
+			$myDb = $brankas->config['db'];
+			self::$instance = new PDO($myDb['host'], $myDb['username'], $myDb['password']);
 			self::$instance-> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 		}
 		return self::$instance;
