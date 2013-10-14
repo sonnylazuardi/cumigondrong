@@ -10,4 +10,7 @@ abstract class dasarController {
 		header('Location: '.Template::getBaseUrl().'/'.$loc);
 		exit;
 	}
+	public function isAjaxRequest() {
+		return !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest';
+	}
 }
