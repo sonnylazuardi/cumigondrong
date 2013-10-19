@@ -26,18 +26,9 @@ class indexController extends dasarController {
 	public function register() {
 		$model = new Register();
 		if (isset($_POST['Register'])) {
-			$req = $_POST['Register'];
 			$account = new Account();
-			$account->username = $req['username'];
-			$account->password = $req['password'];
-			$account->nama = $req['nama'];
-			$account->email = $req['email'];
-			$account->alamat = $req['alamat'];
-			$account->provinsi = $req['provinsi'];
-			$account->kota = $req['kota'];
-			$account->kodepos = $req['kodepos'];
-			$account->telepon = $req['telepon'];
-
+			$account->populasi($_POST['Register'], array(
+				'username', 'password', 'nama', 'email', 'alamat', 'provinsi', 'kota', 'kodepos', 'telepon'));
 			$account->commit();
 			$this->redirect('index/login');
 		}

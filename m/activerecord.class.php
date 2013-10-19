@@ -303,14 +303,19 @@ class ActiveRecord {
         return $value;
     }
 
-    public function populasi($data) {
-        foreach ($this->_fields as $field=>$value) {
+    public function populasi($data, $fields) {
+        if (count($fields) > 0)  {
+            $myfields = $fields;
+        } else {
+            $myfields = $this->_fields;
+        }
+        foreach ($myfields as $field) {
             if (!empty($data[$field])) {
-                $this->_fields[$field]['value'] = $data[$field];
+                $this->setValue($field, $data[$field]);
             }
         }
     }
     private function __clone() {
         
     }
-} 
+}
