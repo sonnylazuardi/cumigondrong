@@ -23,4 +23,26 @@ class apiController extends dasarController {
 		session_destroy();
 		echo json_encode(array('success'=>true));	
 	}
+	public function usernameAvailable() {
+		$username = $_GET['username'];
+		$ada = Account::isUsernameUnik($username);
+		if ($ada) {
+			echo json_encode(array("status"=>true));
+		} else {
+			echo json_encode(array("status"=>false));
+		}
+	}
+	public function emailAvailable() {
+		$email = $_GET['email'];
+		if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+			echo json_encode(array("status"=>false));
+			exit;
+		}
+		$ada = Account::isEmailUnik($email);
+		if ($ada) {
+			echo json_encode(array("status"=>true));
+		} else {
+			echo json_encode(array("status"=>false));
+		}
+	}
 }

@@ -10,13 +10,11 @@
 function login() {
 	var xmlhttp;
 	var parameters = "Login[username]=" + encodeURI( document.getElementById("username").value ) + "&Login[password]=" + encodeURI( document.getElementById("password").value );
-
 	if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
 		xmlhttp=new XMLHttpRequest();
 	} else {// code for IE6, IE5
 		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 	}
-
 	xmlhttp.onreadystatechange=function() {
 		if (xmlhttp.readyState==4 && xmlhttp.status==200) {
 			var data = JSON.parse(xmlhttp.responseText);
@@ -28,7 +26,6 @@ function login() {
 			}
 		}
 	}
-
 	xmlhttp.open("POST","<?php echo Template::getBaseUrl() ?>/api/login",true);
 	xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 	xmlhttp.setRequestHeader("Content-length", parameters.length);

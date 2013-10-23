@@ -7,6 +7,7 @@ class ActiveRecord {
     protected $_keyField = null;
     protected $_dbConnection = null;
     protected $_tableName = null;
+    // private static $_models=array();
 
     public function __construct($tableName, $key=null, PDO $dbConnection=null){
         $this->_tableName = $tableName;
@@ -78,21 +79,21 @@ class ActiveRecord {
         return self::$_defaultDBConnection;
     }
     
-    public function commit(){
+    public function simpan(){
         if(!$this->_fields){
             $this->deskripsi();
         }
         
         if(!$this->_key){
-            $this->_key = $this->insert();
+            $this->_key = $this->tambah();
         }else{
-            $this->update();
+            $this->ubah();
         }
 
         $this->changeFields();
     }
     
-    protected function insert(){
+    protected function tambah(){
         if(!$this->_fields){
             $this->deskripsi();
         }
@@ -131,7 +132,7 @@ class ActiveRecord {
         }
     }
 
-    protected function update(){
+    protected function ubah(){
         if(!$this->_fields){
             $this->deskripsi();
         }
@@ -219,7 +220,70 @@ class ActiveRecord {
 
         return $this;
     }
-    
+
+    public function jumlahSemua($condition = null, $params = array()) {
+        if(!$this->_fields){
+            $this->deskripsi();
+        }
+        
+        $db = $this->getCheckedDBConnection();    
+        if ($condition !== null) {
+            $sql = "SELECT COUNT(id) FROM `{$this->_tableName}` WHERE {$condition}";
+        } else {
+            $sql = "SELECT COUNT(id) FROM `{$this->_tableName}`";
+        }
+        // echo $sql;
+        $stmt = $db->prepare($sql);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        if (count($params))
+            $stmt->execute($params);
+        else 
+            $stmt->execute();
+        $result = $stmt->fetch();
+        return $result['COUNT(id)'];   
+    }
+
+    public function cariSemua($condition = null, $params = array(), $offset = null, $count = null, $order = null) {
+        if(!$this->_fields){
+            $this->deskripsi();
+        }
+        
+        $db = $this->getCheckedDBConnection();    
+        if ($condition !== null) {
+            $sql = "SELECT * FROM `{$this->_tableName}` WHERE {$condition}";
+        } else {
+            $sql = "SELECT * FROM `{$this->_tableName}`";
+        }
+        if ($order !== null) {
+            $sql .= " ORDER BY {$order}";
+        }
+        if ($offset !== null && $count !== null) {
+            $sql .= " LIMIT {$offset}, {$count}";
+        }
+        // echo $sql;
+        $stmt = $db->prepare($sql);
+        $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        if (count($params))
+            $stmt->execute($params);
+        else 
+            $stmt->execute();
+        $result = $stmt->fetchAll();
+
+
+        if ($result == null) return null;
+
+        $items = array();
+        foreach ($result as $item) {
+            $model = new $this($item['id']);
+            foreach($item as $field=>$value){
+                $model->_fields[$field]['changed'] = false;
+                $model->_fields[$field]['value'] = $value;
+            }
+            $items[] = $model;
+        }
+        return $items;   
+    }
+
     protected function deskripsi(){
         if(!$this->_tableName){
             throw new Exception("Invalid table name");
@@ -253,6 +317,7 @@ class ActiveRecord {
             
             
             $field['changed'] = false;
+            $field['value'] = false;
             $type = explode('(', $row['Type'], 2);
 
             $field['fieldType'] = strtolower($type[0]);

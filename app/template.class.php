@@ -59,4 +59,13 @@ class Template {
 			return null;
 		}
 	}
+	public function paginasi($jumlah, $hal, $count) {
+		$jumHalaman = $jumlah / $count;
+		for ($i=1; $i <= $jumHalaman; $i++) { 
+			if ($i == $hal)
+				echo $i . ' ';
+			else 
+				echo '<a href="?halaman=' .$i . '">' . $i . '</a> ';
+		}
+	}
 }

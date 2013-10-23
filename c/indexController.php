@@ -1,5 +1,5 @@
 <?php  
-class indexController extends dasarController {
+class IndexController extends dasarController {
 	public function index() {
 		$template = $this->brankas->template;
 		$template->view = "index";
@@ -27,10 +27,13 @@ class indexController extends dasarController {
 		$model = new Register();
 		if (isset($_POST['Register'])) {
 			$account = new Account();
-			$account->populasi($_POST['Register'], array(
+			$model->populasi($_POST['Register']);
+			if ($model->validasi()) {
+				$account->populasi($_POST['Register'], array(
 				'username', 'password', 'nama', 'email', 'alamat', 'provinsi', 'kota', 'kodepos', 'telepon'));
-			$account->commit();
-			$this->redirect('index/login');
+				$account->simpan();
+				$this->redirect('index/login');	
+			}
 		}
 		$template = $this->brankas->template;
 		$template->view = "register";
