@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Inang: 127.0.0.1
--- Waktu pembuatan: 24 Okt 2013 pada 11.56
+-- Waktu pembuatan: 24 Okt 2013 pada 12.43
 -- Versi Server: 5.5.32
 -- Versi PHP: 5.4.19
 
@@ -42,15 +42,21 @@ CREATE TABLE IF NOT EXISTS `account` (
   `kodepos` varchar(128) NOT NULL,
   `telepon` varchar(128) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data untuk tabel `account`
 --
 
 INSERT INTO `account` (`id`, `username`, `password`, `nama`, `email`, `alamat`, `provinsi`, `kota`, `kodepos`, `telepon`) VALUES
-(2, 'sonny', 'sonny', 'sonny', 'sonnylazuardi@gmail.com', 'jl onta no 8', 'jawa barat', 'bandung', '90123', '08123123123'),
-(3, 'sonnylz', 'sonnylz123', 'sonny lazuardi', 'sonnylz@gmail.com', 'jalan onta no 8', 'jawa barat', 'bandung', '40123', '022933432');
+(2, 'sonny', 'sonny', 'sonny lazuardi', 'sonnylazuardi@gmail.com', 'jl onta no 8 antapani', 'jawa barat', 'bandung', '90123', '08123123123'),
+(3, 'sonnylz', 'sonnylz123', 'sonny lazuardi', 'sonnylz@gmail.com', 'jalan onta no 8', 'jawa barat', 'bandung', '40123', '022933432'),
+(4, 'sonny', 'sonny', 'sonny lazuardi hermawan', 'sonnylazuardi@gmail.com', 'jl onta no 8', 'jawa barat', 'bandung', '90123', '08123123123'),
+(5, 'sonny', 'sonny', 'sonny lazuardi', 'sonnylazuardi@gmail.com', 'jl onta no 8', 'jawa barat', 'bandung', '90123', '08123123123'),
+(6, 'sonny', 'sonny', 'sonny lazuardi', 'sonnylazuardi@gmail.com', 'jl onta no 8', 'jawa barat', 'bandung', '90123', '08123123123'),
+(7, 'sonny', 'sonny', 'sonny lazuardi', 'sonnylazuardi@gmail.com', 'jl onta no 8', 'jawa barat', 'bandung', '90123', '08123123123'),
+(8, 'sonny', 'sonny', 'sonny lazuardi', 'sonnylazuardi@gmail.com', 'jl onta no 8', 'jawa barat', 'bandung', '90123', '08123123123'),
+(9, 'sonny', 'sonny', 'sonny lazuardi', 'sonnylazuardi@gmail.com', 'jl onta no 8', 'jawa barat', 'bandung', '90123', '08123123123');
 
 -- --------------------------------------------------------
 
@@ -108,7 +114,8 @@ CREATE TABLE IF NOT EXISTS `kredit` (
   `card_number` varchar(128) NOT NULL,
   `name_of_card` varchar(128) NOT NULL,
   `expired_date` date NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `account_kredit` (`id_account`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -123,7 +130,8 @@ CREATE TABLE IF NOT EXISTS `order` (
   `id_account` int(11) NOT NULL,
   `id_kredit` int(11) NOT NULL,
   `total` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `kredit_order` (`id_kredit`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -139,8 +147,33 @@ CREATE TABLE IF NOT EXISTS `order_item` (
   `id_barang` int(11) NOT NULL,
   `jumlah` int(11) NOT NULL,
   `tambahan` varchar(140) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `order_item` (`id_order`),
+  KEY `barang_item` (`id_barang`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+--
+
+--
+-- Ketidakleluasaan untuk tabel `kredit`
+--
+ALTER TABLE `kredit`
+  ADD CONSTRAINT `account_kredit` FOREIGN KEY (`id_account`) REFERENCES `account` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `order`
+--
+ALTER TABLE `order`
+  ADD CONSTRAINT `kredit_order` FOREIGN KEY (`id_kredit`) REFERENCES `kredit` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `order_item`
+--
+ALTER TABLE `order_item`
+  ADD CONSTRAINT `barang_item` FOREIGN KEY (`id_barang`) REFERENCES `barang` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `order_item` FOREIGN KEY (`id_order`) REFERENCES `order` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 SET FOREIGN_KEY_CHECKS=1;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
