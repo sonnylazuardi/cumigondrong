@@ -34,7 +34,7 @@ class ActiveRecord {
         }
         
         if(isset($this->_fields[$field])){
-            if(!$this->_fields[$field]['value']){
+            if($this->_fields[$field]['value']===null){
                 $this->pilih();
             }
             
@@ -260,7 +260,7 @@ class ActiveRecord {
         if ($offset !== null && $count !== null) {
             $sql .= " LIMIT {$offset}, {$count}";
         }
-        // echo $sql;
+        //echo $sql;
         $stmt = $db->prepare($sql);
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         if (count($params))

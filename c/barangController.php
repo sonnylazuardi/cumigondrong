@@ -4,9 +4,7 @@ class BarangController extends dasarController {
 	public function index() {
 		$model = new Barang();
 		$array = $model->cariSemua();
-		foreach ($array as $item) {
-			echo $item->nama . "<br>";
-		}
+		$this->render('barang',$array);
 		// $jumlah = $model->jumlahSemua();
 		// $hal = isset($_GET['halaman'])?$_GET['halaman']:1;
 		// $count = 2;
@@ -25,5 +23,16 @@ class BarangController extends dasarController {
 		// $template->view = "barang";
 		// $template->model = $model;
 		// $template->show('layout');
+	}
+
+	public function view() {
+		$model = new Barang();
+		$data = null;
+		$data = $this->getParam();
+		if ($data!="view") $data = $model->cariKategori($data);
+		$template = $this->brankas->template;
+		$template->view = 'barang';
+		$template->model = $data;
+		$template->show('layout');
 	}
 }

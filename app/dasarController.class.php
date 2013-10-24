@@ -13,4 +13,12 @@ abstract class dasarController {
 	public function isAjaxRequest() {
 		return !empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest';
 	}
+	public function render($view,$_DATA) {
+		include __DIREKTORI_UTAMA."/v/".$view.".php";
+	}
+	public function getParam($n = 0) {
+		$data = $_SERVER['REQUEST_URI'];
+		$dataarr = explode("/", $data);
+		return $dataarr[count($dataarr)-$n-1];
+	}
 }

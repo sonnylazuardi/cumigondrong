@@ -1,0 +1,302 @@
+/***********************
+     R  E  S  E  T
+***********************/
+	*{
+		margin:0;
+		padding:0;
+		border:0;
+		outline:0;
+		vertical-align:baseline;
+	}
+	iframe{
+		overflow : hidden;
+	}
+	body{
+		background-image : url(../img/site/bg.jpg);
+	}
+	
+/***********************
+   B  I  G    B  O  X 
+***********************/
+	div.background{
+		position : static;
+		width : 100%;
+		height : 100%;
+		opacity : 0;
+	}
+	
+	div.conctr{
+		position : absolute;
+		width : 1200px;
+		height : 550px;
+		left : 50%;
+		top : 50%;
+		margin-left : -600px;
+		margin-top : -275px;
+	}
+	
+	div.head{
+		width : 100%;
+		height : 75px;
+		float : left;
+	}
+	
+	div#container {
+		width:1200px;
+		height:425px;
+		margin-top : 10px;
+		margin-bottom : 5px;
+		float : left;
+	}
+
+	div#content_frame {
+		width : 1200px;
+		height :440px;
+		overflow: scroll;
+	}
+	
+	
+/***********************
+      H   E   A   D 
+***********************/
+	div.logo{
+		width : 200px;
+		height : 100px;
+		background-image : url(../img/site/logo_s.png);
+		background-position : bottom right;
+		background-repeat : no-repeat;
+		float :left;
+	}
+	div.shopping{
+		height : 15px;
+		width : 1000px;
+		float : left;
+		margin-top:0px;
+	}
+		div.shopping img,div.shopping p{
+			float : right;
+		}
+	div.menu{
+		height : 50px;
+		width : 1000px;
+		margin-top : 5px;
+		float : left;
+
+	}
+		div.permenu{
+			height : 50px;
+			width : 20%;
+			float : left;
+			cursor:pointer;
+		}
+			div.menuborder{
+				height : 3px;
+				width : 100%;
+				background : #898989;
+				float : left;
+			}
+			div.menutxt{
+				height : 44px;
+				width : 100%;
+				float : left;
+			}
+			
+			div.permenu:hover div.menutxt{
+				background : #bca549;
+			}
+
+/***********************
+       LOADER
+***********************/
+img.loader{
+	position : absolute;
+	width : 450px;
+	height : 200px;
+	opacity : 0;
+	top : 50%;
+	left : 50%;
+	margin-left : -225px;
+	margin-top : -100px;
+}
+
+img.trans{
+	position : absolute;
+	width : 187px;
+	height : 76px;
+	opacity : 0;
+	top : 50%;
+	left : 50%;
+	margin-left : -93px;
+	margin-top : -38px;
+}
+div.prolog{
+	position : absolute;
+	width : 500px;
+	height : 200px;
+	opacity : 0;
+	top : 50%;
+	left : 50%;
+	margin-left : -250px;
+	margin-top : -100px;
+}
+
+/***********************
+       FOOTER
+***********************/
+#footer_txt {
+	width:1140px;
+	float:left
+}
+#footer_img {
+	float:left;
+	margin-top:4px;
+	margin-left:10px;
+}
+
+
+/***********************
+       FONT-FACE
+***********************/
+
+@font-face {
+				font-family: 'Papyrus';
+				src: url('../font/papyrus.eot');
+				src: url('../font/papyrus.eot?#iefix') format('embedded-opentype'),
+				url('../font/papyrus.woff') format('woff'),
+				url('../font/papyrus.ttf') format('truetype'),
+				url('../font/papyrus.svg#papyrus') format('svg');
+				font-weight: normal;
+				font-style: normal;
+		}
+
+@font-face {
+    font-family: 'code_lightregular';
+    src: url('../font/code_light-webfont.eot');
+    src: url('../font/code_light-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../font/code_light-webfont.woff') format('woff'),
+         url('../font/code_light-webfont.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+				font-family: 'Candara';
+				src: url('../font/candara.eot');
+				src: url('../font/candara.eot?#iefix') format('embedded-opentype'),
+						 url('../font/candara.woff') format('woff'),
+						 url('../font/candara.ttf') format('truetype'),
+						 url('../font/candara.svg#candara') format('svg');
+				font-weight: normal;
+				font-style: normal;
+		}
+
+/***********************
+  L I N K   R E S E T
+***********************/
+a:link,a:visited,a:hover,a:active {
+		text-decoration:none;
+	}
+
+h1{
+	font-family : Candara;
+	font-size: 20px;
+	line-height : 10px;
+	text-align : center;
+	font-weight: normal;
+	font-style: normal;
+	margin-top : 17px;
+	color : #000000;
+}
+	
+h1.menu { /*for menu text*/
+	font-family : code_lightregular;
+	font-size: 24px;
+	line-height : 10px;
+	text-align : center;
+	font-weight: normal;
+	font-style: normal;
+	margin-top : 17px;
+	color : #FFFFFF;
+}
+
+h2 { /*for copyright*/
+	font-family : Candara;
+	font-size: 12px;
+	line-height : 14px;
+	text-align : right;
+	font-weight: normal;
+	font-style: normal;
+	margin-top : 5px;
+	color : #898989;
+}
+
+h3 { /*for category title*/
+	font-family : Candara;
+	font-size: 33px;
+	line-height : 35px;
+	text-align : right;
+	font-weight: normal;
+	font-style: normal;
+	margin-top : 4px;
+	color : #898989;
+}
+
+	h3.small{
+		font-size: 20px;
+	}
+
+h4 { /*for product name title*/
+	font-family : Candara;
+	font-size: 20px;
+	line-height : 20px;
+	text-align : center;
+	font-weight: normal;
+	font-style: normal;
+	margin : 5px;
+	color : #DDDDDD;
+}
+
+h5 { /*for product page title*/
+	font-family : Candara;
+	font-size: 30px;
+	line-height : 20px;
+	text-align : left;
+	font-weight: normal;
+	font-style: normal;
+	float : left;
+	margin : 10px;
+	margin-top : 15px;
+	color : #DDDDDD;
+}
+
+h6 { /*for table header*/
+	font-family : Candara;
+	font-size: 13px;
+	line-height : 20px;
+	text-align : center;
+	font-weight: bold;
+	font-style: normal;
+	color : #bca549;
+}
+
+p {
+	font-family : Candara;
+	font-size: 15px;
+	line-height : 17px;
+	text-align : justify;
+	font-weight: normal;
+	font-style: normal;
+	color : #DDDDDD;
+}
+
+textarea {
+	font-family : Candara;
+	border : 1px solid #AAAAAA;
+	margin : 2px;
+	padding : 2px;
+	float : left;
+	font-size : 12px;
+	text-align : left;
+	background : white;
+	border : 1px solid #AAAAAA;
+}
