@@ -34,7 +34,7 @@ class ActiveRecord {
         }
         
         if(isset($this->_fields[$field])){
-            if(!$this->_fields[$field]['value']){
+            if($this->_fields[$field]['value']===null){
                 $this->pilih();
             }
             

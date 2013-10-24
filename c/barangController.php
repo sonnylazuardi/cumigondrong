@@ -3,10 +3,16 @@
 class BarangController extends dasarController {
 	public function index() {
 		$model = new Barang();
-		$array = $model->cariSemua();
+		$array = $model->cariKategori();
+		// echo "<pre>";
+		// print_r($array);
+		// echo "</pre>";
 		foreach ($array as $item) {
-			echo $item->nama . "<br>";
+			echo $item->nama . " ";
+			echo $item->stok . "<br>";
 		}
+
+		// $result = $model->cariSemua("id_kategori=:id_kategori", array(":id_kategori"=>$id_kategori));
 		// $jumlah = $model->jumlahSemua();
 		// $hal = isset($_GET['halaman'])?$_GET['halaman']:1;
 		// $count = 2;
