@@ -18,27 +18,27 @@ if (count($model->error) > 0) {
  <div id="errorSummary"></div>
 <form method="post">
 	<input type="text" name="Register[nama]" id="nama" placeholder="nama" value="<?php echo $model->nama ?>" onchange="cekNama()" required>
-	<span id="error-nama"></span><br>
+	<span id="error-nama"></span>
 	<input type="text" name="Register[email]" id="email" placeholder="email" value="<?php echo $model->email ?>" onchange="cekEmail()" required>
-	<span id="error-email"></span><br>
+	<span id="error-email"></span>
 	<input type="text" name="Register[username]" id="username" placeholder="Username" value="<?php echo $model->username ?>" onchange="cekUsername()"required>
-	<span id="error-username"></span><br>
+	<span id="error-username"></span>
 	<input type="password" name="Register[password]" id="password" placeholder="Password" value="<?php echo $model->password ?>" onchange="cekPassword()" required>
-	<span id="error-password"></span><br>
+	<span id="error-password"></span>
 	<input type="password" name="Register[confirm]" id="confirm" placeholder="Confirm Password" value="<?php echo $model->confirm ?>" onchange="cekConfirm()" required>
-	<span id="error-confirm"></span><br>
+	<span id="error-confirm"></span>
 	<input type="text" name="Register[alamat]" id="alamat" placeholder="alamat" value="<?php echo $model->alamat ?>" onchange="cekAlamat()" required>
-	<span id="error-alamat"></span><br>
+	<span id="error-alamat"></span>
 	<input type="text" name="Register[provinsi]" id="provinsi" placeholder="provinsi" value="<?php echo $model->provinsi ?>" onchange="cekProvinsi()" required>
-	<span id="error-provinsi"></span><br>
+	<span id="error-provinsi"></span>
 	<input type="text" name="Register[kota]" id="kota" placeholder="kota" value="<?php echo $model->kota ?>" onchange="cekKota()" required>
-	<span id="error-kota"></span><br>
+	<span id="error-kota"></span>
 	<input type="text" name="Register[kodepos]" id="kodepos" placeholder="kodepos" value="<?php echo $model->kodepos ?>" onchange="cekKodepos()" required>
-	<span id="error-kodepos"></span><br>
+	<span id="error-kodepos"></span>
 	<input type="text" name="Register[telepon]" id="telepon" placeholder="telepon" value="<?php echo $model->telepon ?>" onchange="cekTelepon()" required>
-	<span id="error-telepon"></span><br>
+	<span id="error-telepon"></span>
 	
-	<button type="submit" id="btn" disabled="disabled">Daftar</button>
+	<button type="submit" id="btn" disabled="disabled" class="btn">Daftar</button>
 </form>
 
 <script type="text/javascript">

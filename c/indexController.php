@@ -3,6 +3,7 @@ class IndexController extends dasarController {
 	public function index() {
 		$template = $this->brankas->template;
 		$template->view = "index";
+		$template->effect = true;
 		$template->show('layout');
 	}
 	public function login() {

@@ -13,6 +13,7 @@
 	}
 	body{
 		background-image : url(../img/site/bg.jpg);
+		color: #fff;
 	}
 	
 /***********************
@@ -52,7 +53,7 @@
 	div#content_frame {
 		width : 1200px;
 		height :440px;
-		overflow: scroll;
+		overflow: auto;
 	}
 	
 	
@@ -205,7 +206,7 @@ h1{
 	font-weight: normal;
 	font-style: normal;
 	margin-top : 17px;
-	color : #000000;
+	color : #fff;
 }
 	
 h1.menu { /*for menu text*/
@@ -288,7 +289,6 @@ p {
 	font-style: normal;
 	color : #DDDDDD;
 }
-
 textarea {
 	font-family : Candara;
 	border : 1px solid #AAAAAA;
@@ -299,4 +299,26 @@ textarea {
 	text-align : left;
 	background : white;
 	border : 1px solid #AAAAAA;
+}
+h1 {
+	margin-bottom: 20px;
+	font-weight: bold;
+	font-size: 2em;
+}
+form span {
+	display: block;
+	color: #ddd;
+	font-size: .8em;
+}
+form {
+	text-align: center;
+}
+form > input {
+	border-radius: 5px;
+	padding: 5px;
+	margin: 5px;
+	width: 200px;
+}
+.btn {
+	padding: 20px;
 }
