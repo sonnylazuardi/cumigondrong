@@ -46,4 +46,8 @@ class IndexController extends dasarController {
 		print_r($model->deskripsi());
 		echo "</pre>";
 	}
+
+	public function shopBag(){
+		
+	}
 }

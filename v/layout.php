@@ -5,6 +5,6 @@
 		<title><?php echo $this->brankas->config['title'] ?></title>
 	</head>
 	<body>
-	<?php $this->show($view) ?>
+	<?php $this->show($view); ?>
 	</body>
 </html>
