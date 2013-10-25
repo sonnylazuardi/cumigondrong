@@ -59,8 +59,8 @@
 					<div class='menuborder'></div>
 				</div>
 				</a>
-				<?php 
-				if ($model==null) $model = array();
+				<?php
+				if ($model === null) $model = array();
 				function writeMenu($data = null, $baseurl,$div) {
 					echo "	<a href='".$baseurl."/kategori/";
 					if ($data!=null) echo "view/".$data->id;

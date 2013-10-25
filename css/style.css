@@ -319,7 +319,7 @@ form span {
 form {
 	text-align: center;
 }
-form > input {
+form > input, form > div > input {
 	padding: 5px;
 	margin: 5px;
 	width: 200px;
@@ -399,3 +399,7 @@ form > input {
 		background-color: #aaa;
 		color : #fff;
 	}
+.error{
+	background: #fdd;
+	/*border: thin solid #ddd;*/
+}
