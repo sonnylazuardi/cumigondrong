@@ -7,7 +7,7 @@
 		function showLogin() {
 			document.getElementById('login_cont').style.opacity = 0;
 			document.getElementById('login_cont').style.top = "0px";
-			var x,aa,bb;
+			var x,aa,bb; 
 			aa = 0;
 			bb = 0;
 			for (x=0;x<=11;x++){
@@ -47,7 +47,7 @@
 				<?php $this->show($view) ?>
 			</div>
 			<div class='head'>
-			<div class='logo'></div>
+			<a href='<?php echo $this->getBaseUrl()?>/index/home'><div class='logo'></div></a>
 			<div class='status'>
 				<p>You are not login. (<a href='#' onclick='showLogin()'>Login</a> or <a href="<?php echo $this->getBaseUrl() ?>/index/register">Register now</a>)</p>
 			<!-- <img src='<?php echo $this->getBaseUrl() ?>/img/site/cart_black.png' style='margin-right:5px;'/> -->
@@ -60,6 +60,15 @@
 					<div class='menuborder'></div>
 				</div>
 				</a>
+
+				<a href='<?php echo $this->getBaseUrl() ?>/index/shop'>
+				<div class='permenu per<?php echo (min(array(count($model),4))+1) ?>'>
+					<div class='menuborder'></div>
+					<div class='menutxt'><h1 id='txtmenu1' class='menu'>shop</h1></div>
+					<div class='menuborder'></div>
+				</div>
+				</a>
+
 				<?php
 				if ($model === null) $model = array();
 				function writeMenu($data = null, $baseurl,$div) {

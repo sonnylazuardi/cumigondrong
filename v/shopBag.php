@@ -1,6 +1,6 @@
 <h1>Shopping bag</h1>
 
-<form method="post" action = "<?php echo $this->getBaseUrl() ?>/shopping/updateBagContent">
+<form method="post" action = "<?php echo $this->getBaseUrl() ?>/shop/updateBagContent">
 	<?php
 			
 			$array = $model->cariSemua();

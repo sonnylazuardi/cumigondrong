@@ -120,7 +120,7 @@
 <p>Silakan Login atau Register</p>
 
 <?php if ($this->userLogged()): ?>
-<a href="<?php echo $this->makeUrl('shopping') ?>">Shop</a>
+<a href="<?php echo $this->makeUrl('shop') ?>">Shop</a>
 <a href="<?php echo $this->makeUrl('index/logout') ?>">Logout</a>		
 <?php else: ?>
 <a href="<?php echo $this->makeUrl('index/login') ?>">Login</a>	
