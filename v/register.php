@@ -9,94 +9,62 @@ if (count($model->error) > 0) {
 	echo "</ul>";
 }
  ?>
- <style>
-	.error{
-		background: #fdd;
-		/*border: thin solid #ddd;*/
-	}
- </style>
-<form method="post">
-	<input type="text" name="Register[nama]" id="nama" placeholder="nama" value="<?php echo $model->nama ?>" onchange="validasi()" required><br>
-	<input type="text" name="Register[email]" id="email" placeholder="email" onchange="cekEmail()" value="<?php echo $model->email ?>" required><br>
-	<input type="text" name="Register[username]" id="username" placeholder="Username" onchange="cekUsername()" value="<?php echo $model->username ?>" required><br>
-	<input type="password" name="Register[password]" id="password" placeholder="Password" value="<?php echo $model->password ?>"><br>
-	<input type="password" name="Register[confirm]" id="confirm" placeholder="Confirm Password" value="<?php echo $model->confirm ?>"><br>
-	<input type="text" name="Register[alamat]" id="alamat" placeholder="alamat" value="<?php echo $model->alamat ?>" required><br>
-	<input type="text" name="Register[provinsi]" id="provinsi" placeholder="provinsi" value="<?php echo $model->provinsi ?>" required><br>
-	<input type="text" name="Register[kota]" id="kota" placeholder="kota" value="<?php echo $model->kota ?>" required><br>
-	<input type="text" name="Register[kodepos]" id="kodepos" placeholder="kodepos" value="<?php echo $model->kodepos ?>" required><br>
-	<input type="text" name="Register[telepon]" id="telepon" placeholder="telepon" value="<?php echo $model->telepon ?>" required><br>
-	
-	<button type="submit" id="btn" disabled="disabled">Daftar</button>
-</form>
 
-<script type="text/javascript">
-	var error = [];
-	var xmlhttp;
-	var validForm = {
-		'username': false,
-		'email': false
-		// 'password': false
-	};
-	if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
-		xmlhttp=new XMLHttpRequest();
-	} else {// code for IE6, IE5
-		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-	}
-	function cekUsername() {
-		var username = document.getElementById('username').value;
-		xmlhttp.onreadystatechange=function() {
-			if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-				var data = JSON.parse(xmlhttp.responseText);
-				if (data.status) {
-					alert('Username tersedia');
-					validForm['username'] = true;
-				} else {
-					alert('Username tidak tersedia');
-					validForm['username'] = false;
-				}
-				validasi();
-			}
-		}
-		xmlhttp.open("GET","<?php echo Template::getBaseUrl() ?>/api/usernameAvailable?username="+username,true);
-		xmlhttp.send();
-	}
-	function cekEmail() {
-		var email = document.getElementById('email').value;
-		xmlhttp.onreadystatechange=function() {
-			if (xmlhttp.readyState==4 && xmlhttp.status==200) {
-				var data = JSON.parse(xmlhttp.responseText);
-				if (data.status) {
-					alert('Email tersedia');
-					validForm['email'] = true;
-				} else {
-					alert('Email tidak tersedia');
-					validForm['email'] = false;
-				}
-				validasi();
-			}
-		}
-		xmlhttp.open("GET","<?php echo Template::getBaseUrl() ?>/api/emailAvailable?email="+email,true);
-		xmlhttp.send();
-	}
-	function validasi() {
-		var valid = true;
-    	for (var key in validForm) {
-			if (validForm.hasOwnProperty(key)) {
-				var a = document.getElementById(key);
-				if (validForm[key] == false) {
-					a.classList.add("error");
-					valid = false;
-				} else {
-					a.classList.remove("error");
-				}
-			}
-		}
-		if (!valid) {
-			document.getElementById("btn").disabled = true;
-		} else {
-			document.getElementById("btn").disabled = false;
-		}
-		return valid;
-	}
+<form method="post">
+	
+	<div>
+		Nama : <input type="text" name="Register[nama]" id="nama" value="<?php echo $model->nama ?>" onchange="Register.cekNama()" required>
+		<span id="error-nama"></span>
+	</div>
+	
+	<div>
+		Email : <input type="text" name="Register[email]" id="email" value="<?php echo $model->email ?>" onchange="Register.cekEmail()" required>
+		<span id="error-email"></span>
+	</div>
+	
+	<div>
+		Username : <input type="text" name="Register[username]" id="username" value="<?php echo $model->username ?>" onchange="Register.cekUsername()"required>
+		<span id="error-username"></span>
+	</div>
+	
+	<div>
+		Password : <input type="password" name="Register[password]" id="password" placeholderPassword : ="" value="<?php echo $model->password ?>" onchange="Register.cekPassword()" required>
+		<span id="error-password"></span>
+	</div>
+	
+	<div>
+		Confirm Password : <input type="password" name="Register[confirm]" id="confirm" value="<?php echo $model->confirm ?>" onchange="Register.cekConfirm()" required>
+		<span id="error-confirm"></span>
+	</div>
+	
+	<div>
+		Alamat : <input type="text" name="Register[alamat]" id="alamat" value="<?php echo $model->alamat ?>" onchange="Register.cekAlamat()" required>
+		<span id="error-alamat"></span>
+	</div>
+	
+	<div>
+		Provinsi : <input type="text" name="Register[provinsi]" id="provinsi" value="<?php echo $model->provinsi ?>" onchange="Register.cekProvinsi()" required>
+		<span id="error-provinsi"></span>
+	</div>
+	
+	<div>
+		Kota : <input type="text" name="Register[kota]" id="kota" value="<?php echo $model->kota ?>" onchange="Register.cekKota()" required>
+		<span id="error-kota"></span>
+	</div>
+	
+	<div>
+		Kodepos : <input type="text" name="Register[kodepos]" id="kodepos" value="<?php echo $model->kodepos ?>" onchange="Register.cekKodepos()" required>
+		<span id="error-kodepos"></span>
+	</div>
+	
+	<div>
+		Telepon : <input type="text" name="Register[telepon]" id="telepon" value="<?php echo $model->telepon ?>" onchange="Register.cekTelepon()" required>
+		<span id="error-telepon"></span>
+	</div>
+	
+	<button type="submit" id="btn" disabled="disabled" class="btn">Daftar</button>
+</form>
+<script src="<?php echo $this->getBaseUrl() ?>/js/register.js"></script>
+<script>
+	var server = "<?php echo Template::getBaseUrl() ?>";
 </script>

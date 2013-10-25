@@ -3,10 +3,11 @@
 -- http://www.phpmyadmin.net
 --
 -- Inang: 127.0.0.1
--- Waktu pembuatan: 23 Okt 2013 pada 11.06
+-- Waktu pembuatan: 24 Okt 2013 pada 12.43
 -- Versi Server: 5.5.32
 -- Versi PHP: 5.4.19
 
+SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
@@ -28,6 +29,7 @@ USE `ruserba`;
 -- Struktur dari tabel `account`
 --
 
+DROP TABLE IF EXISTS `account`;
 CREATE TABLE IF NOT EXISTS `account` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(128) NOT NULL,
@@ -40,14 +42,21 @@ CREATE TABLE IF NOT EXISTS `account` (
   `kodepos` varchar(128) NOT NULL,
   `telepon` varchar(128) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
 
 --
 -- Dumping data untuk tabel `account`
 --
 
 INSERT INTO `account` (`id`, `username`, `password`, `nama`, `email`, `alamat`, `provinsi`, `kota`, `kodepos`, `telepon`) VALUES
-(2, 'sonny', 'sonny', 'sonny', 'sonnylazuardi@gmail.com', 'jl onta no 8', 'jawa barat', 'bandung', '90123', '08123123123');
+(2, 'sonny', 'sonny', 'sonny lazuardi', 'sonnylazuardi@gmail.com', 'jl onta no 8 antapani', 'jawa barat', 'bandung', '90123', '08123123123'),
+(3, 'sonnylz', 'sonnylz123', 'sonny lazuardi', 'sonnylz@gmail.com', 'jalan onta no 8', 'jawa barat', 'bandung', '40123', '022933432'),
+(4, 'sonny', 'sonny', 'sonny lazuardi hermawan', 'sonnylazuardi@gmail.com', 'jl onta no 8', 'jawa barat', 'bandung', '90123', '08123123123'),
+(5, 'sonny', 'sonny', 'sonny lazuardi', 'sonnylazuardi@gmail.com', 'jl onta no 8', 'jawa barat', 'bandung', '90123', '08123123123'),
+(6, 'sonny', 'sonny', 'sonny lazuardi', 'sonnylazuardi@gmail.com', 'jl onta no 8', 'jawa barat', 'bandung', '90123', '08123123123'),
+(7, 'sonny', 'sonny', 'sonny lazuardi', 'sonnylazuardi@gmail.com', 'jl onta no 8', 'jawa barat', 'bandung', '90123', '08123123123'),
+(8, 'sonny', 'sonny', 'sonny lazuardi', 'sonnylazuardi@gmail.com', 'jl onta no 8', 'jawa barat', 'bandung', '90123', '08123123123'),
+(9, 'sonny', 'sonny', 'sonny lazuardi', 'sonnylazuardi@gmail.com', 'jl onta no 8', 'jawa barat', 'bandung', '90123', '08123123123');
 
 -- --------------------------------------------------------
 
@@ -55,6 +64,7 @@ INSERT INTO `account` (`id`, `username`, `password`, `nama`, `email`, `alamat`, 
 -- Struktur dari tabel `barang`
 --
 
+DROP TABLE IF EXISTS `barang`;
 CREATE TABLE IF NOT EXISTS `barang` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_kategori` int(11) NOT NULL,
@@ -77,6 +87,94 @@ INSERT INTO `barang` (`id`, `id_kategori`, `nama`, `harga`, `gambar`, `stok`, `k
 (4, 2, 'Setrika', 4000, 'setrika.jpg', 1, 'setrika listrik'),
 (5, 0, 'Baju', 0, 'baju.jpg', 0, 'baju'),
 (6, 0, 'Celana', 0, 'celana.jpg', 0, 'celana');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `kategori`
+--
+
+DROP TABLE IF EXISTS `kategori`;
+CREATE TABLE IF NOT EXISTS `kategori` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nama` varchar(128) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `kredit`
+--
+
+DROP TABLE IF EXISTS `kredit`;
+CREATE TABLE IF NOT EXISTS `kredit` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_account` int(11) NOT NULL,
+  `card_number` varchar(128) NOT NULL,
+  `name_of_card` varchar(128) NOT NULL,
+  `expired_date` date NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `account_kredit` (`id_account`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `order`
+--
+
+DROP TABLE IF EXISTS `order`;
+CREATE TABLE IF NOT EXISTS `order` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_account` int(11) NOT NULL,
+  `id_kredit` int(11) NOT NULL,
+  `total` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `kredit_order` (`id_kredit`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `order_item`
+--
+
+DROP TABLE IF EXISTS `order_item`;
+CREATE TABLE IF NOT EXISTS `order_item` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_order` int(11) NOT NULL,
+  `id_barang` int(11) NOT NULL,
+  `jumlah` int(11) NOT NULL,
+  `tambahan` varchar(140) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `order_item` (`id_order`),
+  KEY `barang_item` (`id_barang`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
+--
+
+--
+-- Ketidakleluasaan untuk tabel `kredit`
+--
+ALTER TABLE `kredit`
+  ADD CONSTRAINT `account_kredit` FOREIGN KEY (`id_account`) REFERENCES `account` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `order`
+--
+ALTER TABLE `order`
+  ADD CONSTRAINT `kredit_order` FOREIGN KEY (`id_kredit`) REFERENCES `kredit` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Ketidakleluasaan untuk tabel `order_item`
+--
+ALTER TABLE `order_item`
+  ADD CONSTRAINT `barang_item` FOREIGN KEY (`id_barang`) REFERENCES `barang` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `order_item` FOREIGN KEY (`id_order`) REFERENCES `order` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+SET FOREIGN_KEY_CHECKS=1;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -27,12 +27,12 @@ class Register extends FormRecord {
     	$kota = $this->_fields['kota'];
     	$kodepos = $this->_fields['kodepos'];
     	$telepon = $this->_fields['telepon'];
-    	// foreach ($this->_fields as $field=>$value) {
-    	// 	if ($value === "") {
-    	// 		$this->error[] = $field." tidak boleh kosong";
-    	// 		$valid = false;	
-    	// 	}
-    	// }
+    	foreach ($this->_fields as $field=>$value) {
+    		if ($value === "") {
+    			$this->error[] = $field." tidak boleh kosong";
+    			$valid = false;	
+    		}
+    	}
     	if ($username == $password) {
     		$this->error[] = "Username tidak boleh sama dengan Password";
     		$valid = false;
