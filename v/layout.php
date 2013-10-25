@@ -3,6 +3,36 @@
 <head>
 	<title><?php echo $this->brankas->config['title'] ?></title>
 	<link rel='stylesheet' type='text/css' href='<?php echo $this->getBaseUrl() ?>/css/style.css' />
+	<script type="text/javascript">
+		function showLogin() {
+			document.getElementById('login_cont').style.opacity = 0;
+			document.getElementById('login_cont').style.top = "0px";
+			var x,aa,bb;
+			aa = 0;
+			bb = 0;
+			for (x=0;x<=11;x++){
+				setTimeout(function(){
+					document.getElementById('login_cont').style.opacity = 0.1*aa;
+					aa++;
+				}, (50*(bb+1)));
+				bb++;
+			}
+		}
+		function hideLogin() {
+			document.getElementById('login_cont').style.opacity = 1;
+			var x,aa,bb;
+			aa = 0;
+			bb = 0;
+			for (x=0;x<=11;x++){
+				setTimeout(function(){
+					document.getElementById('login_cont').style.opacity = 1-(0.1*aa);
+					if (aa>=10) document.getElementById('login_cont').style.top = "-100%";
+					aa++;
+				}, (50*(bb+1)));
+				bb++;
+			}
+		}
+	</script>
 </head>
 <body onload='fadein()'>
 <?php if (isset($effect)&&$effect) {?>
@@ -17,12 +47,10 @@
 			</div>
 			<div class='head'>
 			<div class='logo'></div>
-			<a href='cart.php' target='page'>
-				<div class='status'>
-					<p>You are not login. (Login or Register now)</p>
-				<img src='<?php echo $this->getBaseUrl() ?>/img/site/cart_black.png' style='margin-right:5px;'/>
-				</div>
-			</a>
+			<div class='status'>
+				<p>You are not login. (<a href='#' onclick='showLogin()'>Login</a> or <a>Register now</a>)</p>
+			<!-- <img src='<?php echo $this->getBaseUrl() ?>/img/site/cart_black.png' style='margin-right:5px;'/> -->
+			</div>
 			<div class='menu'>
 				<a href='<?php echo $this->getBaseUrl() ?>/index/home'>
 				<div class='permenu per<?php echo (min(array(count($model),4))+1) ?>'>
@@ -32,6 +60,7 @@
 				</div>
 				</a>
 				<?php 
+				if ($model==null) $model = array();
 				function writeMenu($data = null, $baseurl,$div) {
 					echo "	<a href='".$baseurl."/kategori/";
 					if ($data!=null) echo "view/".$data->id;
@@ -67,5 +96,17 @@
 			<a href='https://twitter.com/darksta5'><img title='@calvinsalvy' src='<?php echo $this->getBaseUrl() ?>/img/site/twitter.png' id='footer_img'/></a>
 	</div>
 <?php if (isset($effect)&&$effect) echo "</div>" ?>
+	<div id='login_cont'>
+		<div id='login_box'>
+			<h1>LOGIN</h1>
+			<a class='exit' onclick='hideLogin()'>x</a>
+			<form>
+				<label>Username</label><input type='text'></input><br/>
+				<label>Password</label><input type='password'></input><br/>
+				<input type='submit' value='Login' id='submit'></input>
+			</form>
+		</div>
+
+	</div>
 </body>
 </html>
