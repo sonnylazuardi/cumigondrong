@@ -34,7 +34,7 @@ class ActiveRecord {
         }
         
         if(isset($this->_fields[$field])){
-            if($this->_fields[$field]['value']===null){
+            if($this->_fields[$field]['value'] === null){
                 $this->pilih();
             }
             
@@ -188,7 +188,7 @@ class ActiveRecord {
         $stmt = $db->prepare($sql);
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $stmt->execute(array(':key'=>$this->_key));
-        
+
         foreach($stmt->fetch() as $field=>$value){
             //field must present
             assert(isset($this->_fields[$field]));
@@ -217,6 +217,10 @@ class ActiveRecord {
             $this->_fields[$field]['changed'] = false;
             $this->_fields[$field]['value'] = $value;
         }
+
+        $this->_key = $this->_fields['id']['value'];
+        $this->_keyField = 'id';
+
 
         return $this;
     }
@@ -274,11 +278,13 @@ class ActiveRecord {
 
         $items = array();
         foreach ($result as $item) {
-            $model = new $this($item['id']);
+            $model = new $this();
             foreach($item as $field=>$value){
                 $model->_fields[$field]['changed'] = false;
                 $model->_fields[$field]['value'] = $value;
             }
+            $model->_key = $model->_fields['id']['value'];
+            $model->_keyField = 'id';
             $items[] = $model;
         }
         return $items;   
@@ -317,7 +323,7 @@ class ActiveRecord {
             
             
             $field['changed'] = false;
-            $field['value'] = false;
+            $field['value'] = null;
             $type = explode('(', $row['Type'], 2);
 
             $field['fieldType'] = strtolower($type[0]);
