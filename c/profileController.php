@@ -11,7 +11,7 @@ class profileController extends dasarController {
 	public function edit() {
 		$model = $this->loadAccount();
 		if (isset($_POST['Profile'])) {
-			$model->populasi($_POST['Profile'], array('nama','email','alamat','provinsi','kota','kodepos','telepon'));
+			$model->populasi($_POST['Profile'], array('nama','email','alamat','password','provinsi','kota','kodepos','telepon'));
 			echo "hallo";
 			echo $model->nama;
 			$model->simpan();

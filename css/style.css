@@ -324,9 +324,6 @@ form > input, form > div > input {
 	margin: 5px;
 	width: 200px;
 }
-.btn {
-	padding: 20px;
-}
 
 /***********************
   L O G I N P O P U P
@@ -342,7 +339,7 @@ form > input, form > div > input {
 #login_box{
 	position: absolute;
 	width : 400px;
-	height: 200px;
+	height: 240px;
 	left: 50%;
 	top: 50%;
 	margin-left: -205px;
@@ -388,18 +385,25 @@ form > input, form > div > input {
 		width: 200px;
 	}
 
-	#login_box input#submit {
+	.btn {
 		float:right;
 		margin:15px;
+		padding: 10px;
 		width : 100px;
 		background-color: #eee;
 		cursor: pointer;
+		color: #000;
 	}
-	#login_box input#submit:hover {
+	.btn:hover {
 		background-color: #aaa;
 		color : #fff;
 	}
 .error{
 	background: #fdd;
 	/*border: thin solid #ddd;*/
+}
+.loading {
+	background: url("../img/loader.gif") no-repeat center center transparent;
+	height: 20px;
+	width: 100%;
 }

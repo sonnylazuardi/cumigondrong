@@ -108,6 +108,9 @@
 				}, 2000);
 		}
 	</script>
+<?php if (isset($effect)&&$effect) {?>
+	<script>fadein();</script>
+<?php } ?>	
 <h1>Selamat datang di Ruko Serba Ada</h1>
 
 <?php echo $this->userLogged() ?>
