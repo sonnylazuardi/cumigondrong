@@ -322,12 +322,15 @@ form span {
 form {
 	text-align: center;
 }
-form > input {
-	border-radius: 5px;
+form > input, form > div > input {
 	padding: 5px;
 	margin: 5px;
 	width: 200px;
 }
 .btn {
 	padding: 20px;
+}
+.error{
+	background: #fdd;
+	/*border: thin solid #ddd;*/
 }
