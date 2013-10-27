@@ -66,11 +66,11 @@
 				</a>
 
 				<a href='<?php echo $this->getBaseUrl() ?>/index/shop'>
-				<div class='permenu per<?php echo (min(array(count($model),4))+1) ?>'>
+				<!-- <div class='permenu per<?php echo (min(array(count($model),4))+1) ?>'>
 					<div class='menuborder'></div>
 					<div class='menutxt'><h1 id='txtmenu1' class='menu'>shop</h1></div>
 					<div class='menuborder'></div>
-				</div>
+				</div> -->
 				</a>
 
 				<?php

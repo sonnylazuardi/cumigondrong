@@ -16,6 +16,7 @@ class BarangController extends dasarController {
 		$data = $this->getParam();
 		if ($data!="view") $data = $model->cariKategori($data);
 		$template = $this->brankas->template;
+		
 		$template->view = 'barang';
 		$template->model = $data;
 		$template->show('layout');

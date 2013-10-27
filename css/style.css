@@ -244,8 +244,8 @@ h2 { /*for copyright*/
 }
 
 h3 { /*for category title*/
-	font-family : Candara;
-	font-size: 33px;
+	font-family : code_lightregular;
+	font-size: 28px;
 	line-height : 35px;
 	text-align : right;
 	font-weight: normal;
@@ -475,25 +475,43 @@ div.group_product_cont.hidden {
 div#nextarrow, div#prevarrow {
 	margin : 10px 15px;
 	width : 48px;
-	height : 403px;
+	height : 400px;
 	border : 1px solid #AAAAAA;
 	background : #bca549;
 	background-repeat : no-repeat;
-	background-position : bottom left;
+	background-position : center center;
+	cursor: pointer;
 }
 
-div#nextarrow {float:right}
-div#prevarrow {float:left;}
+div#nextarrow:hover, div#prevarrow:hover {
+	background-color: #7c6509;
+	border: 1px solid #430
+}
+
+div#nextarrow {float:right;background-image: url(../img/site/arrow-next.png);}
+div#prevarrow {float:left;background-image: url(../img/site/arrow-prev.png);}
 
 div.prodcont{
 	margin : 10px;
 	width : 245px;
 	height : 400px;
 	border : 1px solid #AAAAAA;
-	background : red;
 	float : left;
 	background-repeat : no-repeat;
 	background-position : bottom left;
+	overflow: hidden;
+}
+
+div.prodcont img.kat_bg {
+	z-index: -1;
+	display: inline-block;
+}
+
+div.prodcont div.data {
+	display: inline-block;
+	height: 100%;
+	width: 100%;
+	margin-top: -450px;
 }
 
 div.prodcont.first {
@@ -517,11 +535,11 @@ div.cat_title{
 	padding-right : 6px;
 	height : 77px;
 	float : left;
-	background : white;
+	background : rgba(255,255,255,0.9);
 }
 
 h3.layout_cat {
-	margin-top:9px
+	margin-top:9px;
 }
 
 div.cat_detail{
@@ -542,7 +560,7 @@ div.browse{
 	width : 120px;
 	height : 30px;
 	float:right;
-	margin-top : 85px;
+	margin-top : 55px;
 	background : #AAAAAA;
 	cursor : pointer;
 }

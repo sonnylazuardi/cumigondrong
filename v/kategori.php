@@ -1,4 +1,4 @@
-<div id='prevarrow' onclick='prevCategory()'><?php echo $page; ?></div>
+<div id='prevarrow' onclick='prevCategory()'></div>
 <?php
 		$page_num = 1;
 		echo "<div class='group_product_cont ";
@@ -16,19 +16,43 @@
 			if ($key%3 == 0) echo " first";
 			if ($key%3 == 2) echo " third";
 			echo"'>
-				<div class='nativearea' id='native1'></div>
-				<div class='cat_title'><h3 class='layout_cat'>".$value->nama_kategori."</h3><p class='layout_detail'><b>Center of Attention</b></p><p class='layout_detail'>-Picture Parterned Shirt-</p></div>
-				<div class='cat_detail'></div>
-				<a href='browse.php?cat=FO' target=''><div class='browse'><h1>BROWSE</h1></div></a>
+				<img class='kat_bg' onload='fitimg(this)' src='".$this->getBaseUrl()."/img/barang/1.jpg'/>
+				<div class='data'>
+					<div class='nativearea' id='native1'></div>
+					<div class='cat_title'><h3 class='layout_cat'>".$value->nama_kategori."</h3>
+					<p class='layout_detail'><b>Description</b></p>
+					<p class='layout_detail'>-Sub Description-</p></div>
+					<div class='cat_detail'></div>
+					<a href='browse.php?cat=FO' target=''><div class='browse'><h1>BROWSE</h1></div></a>
+				</div>
 			</div>
 			";
-		 	// echo "<img src='".$this->getBaseUrl()."/img/barang/".$value->gambar."'/>";
 		}
 		echo "</div>"
 
 ?>
 <div id='nextarrow' onclick='nextCategory()'></div>
 <script type="text/javascript">
+	function fitimg(obj)
+	{
+		var height = obj.offsetHeight;
+		var width = obj.offsetWidth;
+		var screen = height/width;
+		if (screen>=1.6&&screen<=1.7) {
+			obj.width = 245;
+			obj.height = 400;
+		}
+		else if (screen<=1.6){
+				obj.height = 400;
+				obj.width = (400/screen);
+				obj.style.marginLeft = (245-(400/screen))/2;
+			}
+		else {
+				obj.width = 245;
+				obj.height = 400;
+		}
+	}
+
 	function showCategory() {
 		var n = 1;
 		while (document.querySelectorAll('#cont'+n).length) {

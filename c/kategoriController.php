@@ -16,10 +16,10 @@ class KategoriController extends dasarController {
 	}
 
 	public function view() {
-		$model = new Kategori();
+		$model = new Barang();
 		$data = null;
 		$data = $this->getParam();
-		if (is_int($data)) $data = $model->cariKategori($data);
+		if ($data!="view") $data = $model->cariKategori($data);
 		$template = $this->brankas->template;
 		$template->view = 'barang';
 		$template->model = $data;
