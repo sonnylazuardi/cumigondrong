@@ -1,59 +1,32 @@
+<div id='prevarrow' onclick='prevCategory()'><?php echo $page; ?></div>
 <?php
-		// foreach ($model as $value) {
-		// 	echo $value->id." ";
-		// 	echo $value->nama_kategori." ";
-		// 	// echo "<img src='".$this->getBaseUrl()."/img/barang/".$value->gambar."'/>";
-		// 	echo "<br/>";
-		// }
+		$page_num = 1;
+		echo "<div class='group_product_cont ";
+		if ($page!=1) echo "hidden";
+		echo "' id='cont1'>";
+		foreach ($model as $key=>$value) {
+			if (($key%3 == 0)&&($key!=0)) {
+				$page_num++;
+				echo "	</div>
+						<div class='group_product_cont ";
+				if ($page!=$page_num) echo "hidden";
+				echo "' id='cont".$page_num."'>";
+			}
+			echo "<div class='prodcont";
+			if ($key%3 == 0) echo " first";
+			if ($key%3 == 2) echo " third";
+			echo"'>
+				<div class='nativearea' id='native1'></div>
+				<div class='cat_title'><h3 class='layout_cat'>".$value->nama_kategori."</h3><p class='layout_detail'><b>Center of Attention</b></p><p class='layout_detail'>-Picture Parterned Shirt-</p></div>
+				<div class='cat_detail'></div>
+				<a href='browse.php?cat=FO' target=''><div class='browse'><h1>BROWSE</h1></div></a>
+			</div>
+			";
+		 	// echo "<img src='".$this->getBaseUrl()."/img/barang/".$value->gambar."'/>";
+		}
+		echo "</div>"
 
 ?>
-<div id='prevarrow' onclick='prevCategory()'></div>
-<div class='group_product_cont' id='cont1'>
-	<div class='prodcont' id='prod_kemeja' style='margin-left:5px'>
-		<div class='nativearea' id='native1'></div>
-		<div class='cat_title'><h3 class='layout_cat' style='margin-top:9px'>AMITOLA</h3><p class='layout_detail' style='font-size:12px'><b>Center of Attention</b></p><p class='layout_detail'>-Picture Parterned Shirt-</p></div>
-		<div class='cat_detail'></div>
-		<!--<a href='browse.php?cat=FO' target=''><div class='browse'><h1>BROWSE</h1></div></a>-->
-		<div class='browse'><h1 class='comingsoon'>COMING SOON</h1></div>
-	</div>
-	<div class='prodcont' id='prod_case'>
-		<div class='nativearea' id='native3'></div>
-		<div class='cat_title'><h3 style='margin-top:9px'>ELMOZA</h3><p class='layout_detail' style='font-size:12px'><b>Smart Looking and Classy</b></p><p class='layout_detail'>-Gadget Case-</p></div>
-		<div class='cat_detail'></div>
-		<a href='elmoza.php' target=''><div class='browse'><h1>BROWSE</h1></div></a>
-		<!--<div class='browse'><h1 class='comingsoon'>COMING SOON</h1></div>-->
-	</div>
-	<div class='prodcont' id='prod_parfum' style='margin-right:5px'>
-		<div class='nativearea' id='native2'></div>
-		<div class='cat_title'><h3 style='margin-top:1px'>PERLA</h3><p class='layout_detail' style='font-size:12px'><b>Being Trendy and High Sense of Belonging to Indonesia</b></p><p class='layout_detail'>-Air Freshener-</p></div>
-		<div class='cat_detail'></div>
-		<a href='perla.php' target=''><div class='browse'><h1>BROWSE</h1></div></a>
-		<!--<div class='browse'><h1 class='comingsoon'>COMING SOON</h1></div>-->
-	</div>
-</div>
-<div class='group_product_cont hidden' id='cont2'>
-	<div class='prodcont' id='prod_kemeja' style='margin-left:5px'>
-		<div class='nativearea' id='native1'></div>
-		<div class='cat_title'><h3 class='layout_cat' style='margin-top:9px'>AMITOLA 2</h3><p class='layout_detail' style='font-size:12px'><b>Center of Attention</b></p><p class='layout_detail'>-Picture Parterned Shirt-</p></div>
-		<div class='cat_detail'></div>
-		<!--<a href='browse.php?cat=FO' target=''><div class='browse'><h1>BROWSE</h1></div></a>-->
-		<div class='browse'><h1 class='comingsoon'>COMING SOON</h1></div>
-	</div>
-	<div class='prodcont' id='prod_case'>
-		<div class='nativearea' id='native3'></div>
-		<div class='cat_title'><h3 style='margin-top:9px'>ELMOZA 2</h3><p class='layout_detail' style='font-size:12px'><b>Smart Looking and Classy</b></p><p class='layout_detail'>-Gadget Case-</p></div>
-		<div class='cat_detail'></div>
-		<a href='elmoza.php' target=''><div class='browse'><h1>BROWSE</h1></div></a>
-		<!--<div class='browse'><h1 class='comingsoon'>COMING SOON</h1></div>-->
-	</div>
-	<div class='prodcont' id='prod_parfum' style='margin-right:5px'>
-		<div class='nativearea' id='native2'></div>
-		<div class='cat_title'><h3 style='margin-top:1px'>PERLA 2</h3><p class='layout_detail' style='font-size:12px'><b>Being Trendy and High Sense of Belonging to Indonesia</b></p><p class='layout_detail'>-Air Freshener-</p></div>
-		<div class='cat_detail'></div>
-		<a href='perla.php' target=''><div class='browse'><h1>BROWSE</h1></div></a>
-		<!--<div class='browse'><h1 class='comingsoon'>COMING SOON</h1></div>-->
-	</div>
-</div>
 <div id='nextarrow' onclick='nextCategory()'></div>
 <script type="text/javascript">
 	function showCategory() {

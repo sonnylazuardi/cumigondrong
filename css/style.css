@@ -325,12 +325,6 @@ form > input, form > div > input {
 	margin: 5px;
 	width: 200px;
 }
-.btn {
-	padding: 3px 20px;
-	margin-top : 10px;
-	float:right;
-}
-
 /***********************
   L O G I N P O P U P
 ***********************/
@@ -394,8 +388,8 @@ form > input, form > div > input {
 
 	.btn {
 		float:right;
-		margin:15px;
-		padding: 10px;
+		margin:0px;
+		padding: 3px 10px;
 		width : 100px;
 		background-color: #eee;
 		cursor: pointer;
@@ -466,7 +460,6 @@ form > input, form > div > input {
   C A T E G O R I E S
 ***********************/
 div.group_product_cont {
-	background-color: green;
 	float : left;
 	width : 797px;
 	height : 423px;
@@ -484,7 +477,7 @@ div#nextarrow, div#prevarrow {
 	width : 48px;
 	height : 403px;
 	border : 1px solid #AAAAAA;
-	background : blue;
+	background : #bca549;
 	background-repeat : no-repeat;
 	background-position : bottom left;
 }
@@ -502,9 +495,13 @@ div.prodcont{
 	background-repeat : no-repeat;
 	background-position : bottom left;
 }
-	div.prodcont#prod_kemeja{background-image:url(../img_update/category/kemeja.jpg)}
-	div.prodcont#prod_parfum{background-image:url(../img_update/category/parfum.jpg)}
-	div.prodcont#prod_case{background-image:url(../img_update/category/case.jpg)}
+
+div.prodcont.first {
+	margin-left:5px;
+}
+div.prodcont.third {
+	margin-right:5px;
+}
 
 div.nativearea{
 	width : 69px;
@@ -521,6 +518,10 @@ div.cat_title{
 	height : 77px;
 	float : left;
 	background : white;
+}
+
+h3.layout_cat {
+	margin-top:9px
 }
 
 div.cat_detail{
