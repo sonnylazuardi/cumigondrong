@@ -5,7 +5,7 @@ if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
 	xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
 }
 function login() {	
-	var parameters = "Login[username]=" + encodeURI( document.getElementById("username").value ) + "&Login[password]=" + encodeURI( document.getElementById("password").value );
+	var parameters = "Login[username]=" + encodeURI( document.getElementById("login_username").value ) + "&Login[password]=" + encodeURI( document.getElementById("login_password").value );
 	xmlhttp.onreadystatechange=function() {
 		if (xmlhttp.readyState==4 && xmlhttp.status==200) {
 			var data = JSON.parse(xmlhttp.responseText);
