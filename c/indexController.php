@@ -1,11 +1,8 @@
 <?php  
 class IndexController extends dasarController {
 	public function index($effect = true) {
-		$model = new Kategori();
-		$array = $model->cariSemua();
 		$template = $this->brankas->template;
 		$template->view = "index";
-		$template->model = $array;
 		$template->effect = $effect;
 		$template->show('layout');
 	}

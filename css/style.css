@@ -221,6 +221,12 @@ h1{
 	margin-top : 17px;
 	color : #FFF;
 }
+
+h1.header {
+	font-size: 100px;
+	line-height: 55px;
+	text-align: left;
+}
 	
 h1.menu { /*for menu text*/
 	font-size: 24px;
@@ -306,11 +312,6 @@ textarea {
 	background : white;
 	border : 1px solid #AAAAAA;
 }
-h1 {
-	margin-bottom: 20px;
-	font-weight: bold;
-	font-size: 2em;
-}
 form span {
 	display: block;
 	color: #ddd;
@@ -325,7 +326,9 @@ form > input, form > div > input {
 	width: 200px;
 }
 .btn {
-	padding: 20px;
+	padding: 3px 20px;
+	margin-top : 10px;
+	float:right;
 }
 
 /***********************
@@ -356,7 +359,8 @@ form > input, form > div > input {
 }
 	#login_box h1 {
 		font-family : code_lightregular;
-		font-size: 60px;
+		font-size: 40px;
+		margin-bottom: 14px;
 		line-height : 10px;
 		text-align : center;
 		font-weight: normal;
@@ -403,3 +407,156 @@ form > input, form > div > input {
 	background: #fdd;
 	/*border: thin solid #ddd;*/
 }
+
+/***********************
+     REGISTER PAGE
+***********************/
+.register_div {
+	margin-left : 2%;
+	width:47.8%;
+	display: inline-table;
+	height : 100%;
+}
+
+.register_div label {
+	margin: 5px 10px;
+	width: 100px;
+	display: inline-block;
+	text-align: right;
+	color : white;
+}
+
+.register_div label.uncheck {
+	margin: 15px 10px;
+}
+
+.register_div input {
+	display: inline-block;
+	width: 250px;
+	height: 20px;
+	padding : 3px;
+}
+
+.register_div span.error {
+	margin : 0 20px;
+	margin-bottom: 5px;
+	font-size: 12px;
+	text-align: right;
+	font-style: italic;
+	height : 30px;
+	background: transparent;
+}
+
+.register_div .per_form {
+	background: rgba(0,0,0,0.4);
+	border-bottom: 1px solid #7c6509;
+	margin : 5px 0;
+}
+.register_div span.errorsmall {
+	height : 15px;
+}
+.register_div p.keterangan {
+	margin-top: 15px;
+}
+
+
+/***********************
+  C A T E G O R I E S
+***********************/
+div.group_product_cont {
+	background-color: green;
+	float : left;
+	width : 797px;
+	height : 423px;
+	overflow: hidden;
+}
+
+div.group_product_cont.hidden {
+	position: absolute;
+	top:-10000px;
+	opacity: 0;
+}
+
+div#nextarrow, div#prevarrow {
+	margin : 10px 15px;
+	width : 48px;
+	height : 403px;
+	border : 1px solid #AAAAAA;
+	background : blue;
+	background-repeat : no-repeat;
+	background-position : bottom left;
+}
+
+div#nextarrow {float:right}
+div#prevarrow {float:left;}
+
+div.prodcont{
+	margin : 10px;
+	width : 245px;
+	height : 400px;
+	border : 1px solid #AAAAAA;
+	background : red;
+	float : left;
+	background-repeat : no-repeat;
+	background-position : bottom left;
+}
+	div.prodcont#prod_kemeja{background-image:url(../img_update/category/kemeja.jpg)}
+	div.prodcont#prod_parfum{background-image:url(../img_update/category/parfum.jpg)}
+	div.prodcont#prod_case{background-image:url(../img_update/category/case.jpg)}
+
+div.nativearea{
+	width : 69px;
+	height : 77px;
+	float : left;
+}
+	div.nativearea#native1{background-image:url(../img/native_s/1.jpg)}
+	div.nativearea#native2{background-image:url(../img/native_s/2.jpg)}
+	div.nativearea#native3{background-image:url(../img/native_s/3.jpg)}
+
+div.cat_title{
+	width : 170px;
+	padding-right : 6px;
+	height : 77px;
+	float : left;
+	background : white;
+}
+
+div.cat_detail{
+	width : 170px;
+	height : 150px;
+	float : left;
+	margin-left : 70px;
+	margin-top : 50px;
+}
+	p.layout_detail{
+		font-size: 11px;
+		line-height : 13px;
+		text-align : right;
+		color : #6c491c;
+	}
+
+div.browse{
+	width : 120px;
+	height : 30px;
+	float:right;
+	margin-top : 85px;
+	background : #AAAAAA;
+	cursor : pointer;
+}
+	div.browse h1{
+		line-height : 0px;
+		color : white;	
+	}
+	
+	div.browse:hover h1{
+		color : #6c491c;
+	}
+	div.browse:active h1{
+		color : #23609e;
+	}
+	
+	div.browse h1.comingsoon {
+		font-size: 14px;
+		line-height : 0px;
+		color : white;
+	}
