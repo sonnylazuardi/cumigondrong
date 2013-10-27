@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Inang: 127.0.0.1
--- Waktu pembuatan: 24 Okt 2013 pada 12.43
+-- Waktu pembuatan: 27 Okt 2013 pada 15.41
 -- Versi Server: 5.5.32
 -- Versi PHP: 5.4.19
 
@@ -41,22 +41,16 @@ CREATE TABLE IF NOT EXISTS `account` (
   `kota` varchar(128) NOT NULL,
   `kodepos` varchar(128) NOT NULL,
   `telepon` varchar(128) NOT NULL,
+  `auth_key` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data untuk tabel `account`
 --
 
-INSERT INTO `account` (`id`, `username`, `password`, `nama`, `email`, `alamat`, `provinsi`, `kota`, `kodepos`, `telepon`) VALUES
-(2, 'sonny', 'sonny', 'sonny lazuardi', 'sonnylazuardi@gmail.com', 'jl onta no 8 antapani', 'jawa barat', 'bandung', '90123', '08123123123'),
-(3, 'sonnylz', 'sonnylz123', 'sonny lazuardi', 'sonnylz@gmail.com', 'jalan onta no 8', 'jawa barat', 'bandung', '40123', '022933432'),
-(4, 'sonny', 'sonny', 'sonny lazuardi hermawan', 'sonnylazuardi@gmail.com', 'jl onta no 8', 'jawa barat', 'bandung', '90123', '08123123123'),
-(5, 'sonny', 'sonny', 'sonny lazuardi', 'sonnylazuardi@gmail.com', 'jl onta no 8', 'jawa barat', 'bandung', '90123', '08123123123'),
-(6, 'sonny', 'sonny', 'sonny lazuardi', 'sonnylazuardi@gmail.com', 'jl onta no 8', 'jawa barat', 'bandung', '90123', '08123123123'),
-(7, 'sonny', 'sonny', 'sonny lazuardi', 'sonnylazuardi@gmail.com', 'jl onta no 8', 'jawa barat', 'bandung', '90123', '08123123123'),
-(8, 'sonny', 'sonny', 'sonny lazuardi', 'sonnylazuardi@gmail.com', 'jl onta no 8', 'jawa barat', 'bandung', '90123', '08123123123'),
-(9, 'sonny', 'sonny', 'sonny lazuardi', 'sonnylazuardi@gmail.com', 'jl onta no 8', 'jawa barat', 'bandung', '90123', '08123123123');
+INSERT INTO `account` (`id`, `username`, `password`, `nama`, `email`, `alamat`, `provinsi`, `kota`, `kodepos`, `telepon`, `auth_key`) VALUES
+(2, 'sonny', 'sonny', 'sonny lazuardi hermawan', 'sonnylazuardi@gmail.com', 'jl onta no 8 antapani', 'jawa barat', 'bandung', '90123', '08123123123', 'af7b49edd270ef450221d7fe19b1b890');
 
 -- --------------------------------------------------------
 
@@ -81,12 +75,12 @@ CREATE TABLE IF NOT EXISTS `barang` (
 --
 
 INSERT INTO `barang` (`id`, `id_kategori`, `nama`, `harga`, `gambar`, `stok`, `keterangan`) VALUES
-(1, 1, 'Kulkas', 12000, 'kulkas.jpg', 5, 'kulkas dingin'),
+(1, 3, 'Kulkas', 12000, 'kulkas.jpg', 5, 'kulkas dingin'),
 (2, 1, 'Meja', 30000, 'meja.jpg', 3, 'meja kriya'),
 (3, 1, 'Kursi', 4000, 'kursi.jpg', 2, 'kursi kayu'),
 (4, 2, 'Setrika', 4000, 'setrika.jpg', 1, 'setrika listrik'),
-(5, 0, 'Baju', 0, 'baju.jpg', 0, 'baju'),
-(6, 0, 'Celana', 0, 'celana.jpg', 0, 'celana');
+(5, 2, 'Baju', 0, 'baju.jpg', 0, 'baju'),
+(6, 2, 'Celana', 0, 'celana.jpg', 0, 'celana');
 
 -- --------------------------------------------------------
 
@@ -116,7 +110,14 @@ CREATE TABLE IF NOT EXISTS `kredit` (
   `expired_date` date NOT NULL,
   PRIMARY KEY (`id`),
   KEY `account_kredit` (`id_account`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+
+--
+-- Dumping data untuk tabel `kredit`
+--
+
+INSERT INTO `kredit` (`id`, `id_account`, `card_number`, `name_of_card`, `expired_date`) VALUES
+(5, 2, '01213123', 'sonny lazuardi hermawan', '2013-10-27');
 
 -- --------------------------------------------------------
 
@@ -128,10 +129,9 @@ DROP TABLE IF EXISTS `order`;
 CREATE TABLE IF NOT EXISTS `order` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_account` int(11) NOT NULL,
-  `id_kredit` int(11) NOT NULL,
   `total` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `kredit_order` (`id_kredit`)
+  KEY `order_card` (`id_account`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -166,7 +166,7 @@ ALTER TABLE `kredit`
 -- Ketidakleluasaan untuk tabel `order`
 --
 ALTER TABLE `order`
-  ADD CONSTRAINT `kredit_order` FOREIGN KEY (`id_kredit`) REFERENCES `kredit` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `order_card` FOREIGN KEY (`id_account`) REFERENCES `account` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `order_item`

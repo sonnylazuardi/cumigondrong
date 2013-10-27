@@ -23,7 +23,7 @@
 					obj.height = height;
 					if (xfit) {
 						obj.width = (height/screen);
-						obj.style.marginLeft = (width-(height/screen))/2;
+						obj.style.marginLeft = ((width-(height/screen))/2).toString()+"px";;
 					}
 					else {
 						obj.width = width;
@@ -33,7 +33,7 @@
 					obj.width = width;
 					if (yfit) {
 						obj.height = (width*screen);
-						obj.style.marginTop = (height-(width*screen))/2;
+						obj.style.marginTop = ((height-(width*screen))/2).toString()+"px";;
 					}
 					else {
 						obj.height = height;
@@ -43,7 +43,7 @@
 		function showLogin() {
 			document.getElementById('login_cont').style.opacity = 0;
 			document.getElementById('login_cont').style.top = "0px";
-			document.getElementById('username').focus();
+			document.getElementById('login_username').focus();
 			var x,aa,bb;
 			aa = 0;
 			bb = 0;
@@ -157,8 +157,8 @@
 			<a class='exit' onclick='hideLogin()'>x</a>
 			<div id="loading"></div>
 			<form>
-				<label>Username</label><input type='text' id="username" name="Login[username]"></input><br/>
-				<label>Password</label><input type='password' id="password" name="Login[password]"></input><br/>
+				<label>Username</label><input type='text' id="login_username" name="Login[username]"></input><br/>
+				<label>Password</label><input type='password' id="login_password" name="Login[password]"></input><br/>
 				<button type='submit' onclick="login(); return false;" class='btn right'>Login</button>
 			</form>
 		</div>

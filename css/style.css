@@ -262,14 +262,16 @@ h3 { /*for category title*/
 	}
 
 h4 { /*for product name title*/
-	font-family : Candara;
-	font-size: 20px;
+	font-family : code_lightregular;
+	font-size: 30px;
+	margin-bottom: 5px;
 	line-height : 20px;
 	text-align : center;
 	font-weight: normal;
 	font-style: normal;
-	margin : 5px;
 	color : #DDDDDD;
+	background: #222;
+	padding: 10px;
 }
 
 h5 { /*for product page title*/
@@ -480,6 +482,10 @@ form > input, form > div > input {
 .register_div span.errorsmall {
 	height : 15px;
 }
+
+
+
+
 .register_div p.keterangan {
 	margin-top: 15px;
 }
@@ -501,7 +507,7 @@ div.group_product_cont.hidden {
 	opacity: 0;
 }
 
-div#nextarrow, div#prevarrow {
+div.nextarrow, div.prevarrow {
 	margin : 10px 15px;
 	width : 48px;
 	height : 400px;
@@ -512,13 +518,17 @@ div#nextarrow, div#prevarrow {
 	cursor: pointer;
 }
 
-div#nextarrow:hover, div#prevarrow:hover {
+div.short {
+	height: 340px;
+}
+
+div.nextarrow:hover, div.prevarrow:hover {
 	background-color: #7c6509;
 	border: 1px solid #430
 }
 
-div#nextarrow {float:right;background-image: url(../img/site/arrow-next.png);}
-div#prevarrow {float:left;background-image: url(../img/site/arrow-prev.png);}
+div.nextarrow {float:right;background-image: url(../img/site/arrow-next.png);}
+div.prevarrow {float:left;background-image: url(../img/site/arrow-prev.png);}
 
 div.prodcont{
 	margin : 10px;
@@ -618,7 +628,7 @@ div.browse{
 }
 
 /***********************
-  SHOP CATEGORY BOX
+  ITEM LIST
 ***********************/
 .square {
 	width: 17%;
@@ -638,20 +648,79 @@ div.browse{
 
 
 /***********************
-	   ITEM LIST
+  	   LIST BARANG
 ***********************/
-div.itembox_img{
-		margin : 3px;
-		margin-bottom : 6px;
-		width : 170px;
-		height : 170px;
-		background : white;
-		padding : 0px;
-		float : none;
-		overflow : hidden;
-		border : 3px solid #fff;
-	}
-	
-	div.vertdiv{
-		float : left;
-	}
+div.vertdiv {
+	display: inline-block;
+	text-align: left;
+	margin: 0px 2px;
+}
+
+div.itembox_img {
+	margin: 4px 0px;
+	width: 150px;
+	height: 170px;
+	overflow: hidden;
+	border: 2px solid white;
+}
+
+/***********************
+  	DETAIL BARANG
+***********************/
+div.item_price, div.item_detail, div.item_pict {
+	display: inline-block;
+	text-align: left;
+	overflow: hidden;
+}
+div.item_pict {
+	height:340px;
+	width:400px;
+	border: 5px solid white;
+	margin-right:15px;
+}
+
+div.item_detail {
+	height:330px;
+	padding: 10px;
+	width:490px;
+	margin-right:15px;
+	background: rgba(0,0,0,0.5);
+	overflow: hidden;
+}
+
+div.price, div.item_detail form {
+	padding:0 1%;
+	width: 47.5%;
+	margin-bottom:10px;
+	display: inline-block;
+	overflow: hidden;
+}
+
+div.item_detail form {
+	background: rgba(0,0,0,0.5);
+	padding-top : 10px;
+}
+
+div.quantity, input.cart {
+	padding:0 1%;
+	width: 40%;
+	margin-left : 3%;
+	margin-right: 3%;
+	margin-bottom:10px;
+	display: inline-block;
+}
+
+div.quantity input.qty {
+	width: 20px;
+	background: #ddd;
+	text-align: center;
+}
+
+input.cart {
+	width: 40%;
+	height: 50px;
+	margin-top:0;
+	padding-top:20px;
+	line-height: 0;
+	font-family: Candara;
+}
