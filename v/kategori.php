@@ -3,7 +3,7 @@
 		fitimg(obj,245,400,true,false);
 	}
 </script>
-<div id='prevarrow' onclick='prevCategory()'></div>
+<div class='prevarrow' onclick='prevCategory()'></div>
 <?php
 		$page_num = 1;
 		echo "<div class='group_product_cont ";
@@ -36,28 +36,8 @@
 		echo "</div>"
 
 ?>
-<div id='nextarrow' onclick='nextCategory()'></div>
+<div class='nextarrow' onclick='nextCategory()'></div>
 <script type="text/javascript">
-	function fitimgasdasd(obj)
-	{
-		var height = obj.offsetHeight;
-		var width = obj.offsetWidth;
-		var screen = height/width;
-		if (screen>=1.6&&screen<=1.7) {
-			obj.width = 245;
-			obj.height = 400;
-		}
-		else if (screen<=1.6){
-				obj.height = 400;
-				obj.width = (400/screen);
-				obj.style.marginLeft = (245-(400/screen))/2;
-			}
-		else {\
-				obj.width = 245;
-				obj.height = 400;
-		}
-	}
-
 	function showCategory() {
 		var n = 1;
 		while (document.querySelectorAll('#cont'+n).length) {

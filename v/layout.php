@@ -23,7 +23,7 @@
 					obj.height = height;
 					if (xfit) {
 						obj.width = (height/screen);
-						obj.style.marginLeft = (width-(height/screen))/2;
+						obj.style.marginLeft = ((width-(height/screen))/2).toString()+"px";;
 					}
 					else {
 						obj.width = width;
@@ -33,7 +33,7 @@
 					obj.width = width;
 					if (yfit) {
 						obj.height = (width*screen);
-						obj.style.marginTop = (height-(width*screen))/2;
+						obj.style.marginTop = ((height-(width*screen))/2).toString()+"px";;
 					}
 					else {
 						obj.height = height;

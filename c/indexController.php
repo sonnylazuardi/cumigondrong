@@ -2,7 +2,7 @@
 class IndexController extends dasarController {
 	public function index($effect = true) {
 		$template = $this->brankas->template;
-		$template->view = "index";
+		$template->view = "browse";
 		$template->effect = $effect;
 		$template->show('layout');
 	}
