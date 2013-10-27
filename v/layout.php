@@ -1,3 +1,7 @@
+<?php
+	$_model_ = new Kategori();
+	$_listkategori_ = $_model_->cariSemua();
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,21 +52,30 @@
 				<?php $this->show($view) ?>
 			</div>
 			<div class='head'>
-			<div class='logo'></div>
+			<a href='<?php echo $this->getBaseUrl()?>/index/home'><div class='logo'></div></a>
 			<div class='status'>
-				<p>You are not login. (<a href='#' onclick='showLogin()'>Login</a> or <a href="<?php echo $this->getBaseUrl() ?>/index/register">Register now</a>)</p>
+				<p>You are not login. (<a href='#' onclick='showLogin()'>Login</a> or <a href='<?php echo $this->getBaseUrl() ?>/index/register'>Register now</a>)</p>
 			<!-- <img src='<?php echo $this->getBaseUrl() ?>/img/site/cart_black.png' style='margin-right:5px;'/> -->
 			</div>
 			<div class='menu'>
 				<a href='<?php echo $this->getBaseUrl() ?>/index/home'>
-				<div class='permenu per<?php echo (min(array(count($model),4))+1) ?>'>
+				<div class='permenu per<?php echo (min(array(count($_listkategori_),4))+1) ?>'>
 					<div class='menuborder'></div>
 					<div class='menutxt'><h1 id='txtmenu0' class='menu'>home</h1></div>
 					<div class='menuborder'></div>
 				</div>
 				</a>
+
+				<a href='<?php echo $this->getBaseUrl() ?>/index/shop'>
+				<!-- <div class='permenu per<?php echo (min(array(count($model),4))+1) ?>'>
+					<div class='menuborder'></div>
+					<div class='menutxt'><h1 id='txtmenu1' class='menu'>shop</h1></div>
+					<div class='menuborder'></div>
+				</div> -->
+				</a>
+
 				<?php
-				if ($model === null) $model = array();
+				if ($_listkategori_ === null) $_listkategori_ = array();
 				function writeMenu($data = null, $baseurl,$div) {
 					echo "	<a href='".$baseurl."/kategori/";
 					if ($data!=null) echo "view/".$data->id;
@@ -76,17 +89,17 @@
 						</div>
 					</a>";
 				}
-				foreach ($model as $key => $value) {
+				foreach ($_listkategori_ as $key => $value) {
 					if ($key<3) {
-						writeMenu($value,$this->getBaseUrl(),(min(array(count($model),4))+1));
+						writeMenu($value,$this->getBaseUrl(),(min(array(count($_listkategori_),4))+1));
 					}
 					else {
 						if ($key==3) {
-							if (count($model)==4) {
-								writeMenu($value,$this->getBaseUrl(),(min(array(count($model),4))+1));
+							if (count($_listkategori_)==4) {
+								writeMenu($value,$this->getBaseUrl(),(min(array(count($_listkategori_),4))+1));
 							}
 							else {
-								writeMenu(null,$this->getBaseUrl(),(min(array(count($model),4))+1));
+								writeMenu(null,$this->getBaseUrl(),(min(array(count($_listkategori_),4))+1));
 							}
 						}
 					}
@@ -94,7 +107,7 @@
 				?>
 			</div>
 		</div>
-			<h2 id='footer_txt'><b>www.calvinsalvy.com Oficial Website</b></br>Explore The World at Rapid Speed</h2>
+			<h2 id='footer_txt'><b>www.calvinsalvy.com Oficial Website</b></br>Karena rasa adalah segalanya.</h2>
 			<a href='https://twitter.com/darksta5'><img title='@calvinsalvy' src='<?php echo $this->getBaseUrl() ?>/img/site/twitter.png' id='footer_img'/></a>
 	</div>
 <?php if (isset($effect)&&$effect) echo "</div>" ?>

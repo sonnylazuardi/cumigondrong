@@ -118,6 +118,7 @@
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, unde, voluptates nobis rerum saepe commodi placeat autem cupiditate eos ex deleniti quod vitae dolore mollitia corporis tempora cum. Quod, perspiciatis.</p>
 
 <?php if ($this->userLogged()): ?>
+<a href="<?php echo $this->makeUrl('shop') ?>">Shop</a>
 <a href="<?php echo $this->makeUrl('index/logout') ?>">Logout</a>		
 <?php else: ?>
 <a href="<?php echo $this->makeUrl('index/login') ?>">Login</a>	

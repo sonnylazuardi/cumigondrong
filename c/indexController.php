@@ -1,11 +1,8 @@
 <?php  
 class IndexController extends dasarController {
 	public function index($effect = true) {
-		$model = new Kategori();
-		$array = $model->cariSemua();
 		$template = $this->brankas->template;
 		$template->view = "index";
-		$template->model = $array;
 		$template->effect = $effect;
 		$template->show('layout');
 	}
@@ -54,5 +51,14 @@ class IndexController extends dasarController {
 		echo "<pre>";
 		print_r($model->deskripsi());
 		echo "</pre>";
+	}
+
+	public function shop(){
+		$model = new Barang();
+		
+		$template = $this->brankas->template;
+		$template->view = "shop";
+		$template->model = $model;
+		$template->show('layout');
 	}
 }
