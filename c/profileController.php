@@ -2,7 +2,6 @@
 class profileController extends dasarController {
 	public function index() {
 		$model = $this->loadAccount();
-
 		$template = $this->brankas->template;
 		$template->view = "profile";
 		$template->model = $model;

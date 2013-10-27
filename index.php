@@ -16,5 +16,9 @@ $brankas->router->setPath(__DIREKTORI_UTAMA . '/c');
 // load template
 $brankas->template = new Template($brankas);
 
+//mengecek cookie untuk login
+Login::cekCookie();
+
 // load controller
 $brankas->router->loader();
+

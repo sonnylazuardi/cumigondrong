@@ -43,7 +43,8 @@
 		function showLogin() {
 			document.getElementById('login_cont').style.opacity = 0;
 			document.getElementById('login_cont').style.top = "0px";
-			var x,aa,bb; 
+			document.getElementById('username').focus();
+			var x,aa,bb;
 			aa = 0;
 			bb = 0;
 			for (x=0;x<=11;x++){
@@ -85,8 +86,15 @@
 			<div class='head'>
 			<a href='<?php echo $this->getBaseUrl()?>/index/home'><div class='logo'></div></a>
 			<div class='status'>
-				<p>You are not login. (<a href='#' onclick='showLogin()'>Login</a> or <a href='<?php echo $this->getBaseUrl() ?>/index/register'>Register now</a>)</p>
-			<!-- <img src='<?php echo $this->getBaseUrl() ?>/img/site/cart_black.png' style='margin-right:5px;'/> -->
+				<?php if ($this->userLogged()): ?>
+					<p class="left"> welcome, <?php echo $this->userLogged() ?>! (<a href='<?php echo $this->makeUrl('profile/index') ?>/'>Profile</a> | <a href='<?php echo $this->makeUrl('index/logout') ?>'>Logout</a>)
+					</p>
+					<p class="right">
+						<a href="<?php echo $this->makeUrl('shopping/index') ?>">Shopping Cart</a> <img src='<?php echo $this->getBaseUrl() ?>/img/site/cart_black.png' style='margin-right:5px;'/>
+					</p>
+				<?php else: ?>
+					<p>You are not login. (<a href='#' onclick='showLogin()'>Login</a> or <a href='<?php echo $this->getBaseUrl() ?>/index/register'>Register now</a>)</p>
+				<?php endif ?>
 			</div>
 			<div class='menu'>
 				<a href='<?php echo $this->getBaseUrl() ?>/index/home'>
@@ -120,17 +128,18 @@
 						</div>
 					</a>";
 				}
+				$minKategori = (min(array(count($_listkategori_),4))+1);
 				foreach ($_listkategori_ as $key => $value) {
 					if ($key<3) {
-						writeMenu($value,$this->getBaseUrl(),(min(array(count($_listkategori_),4))+1));
+						writeMenu($value,$this->getBaseUrl(),$minKategori);
 					}
 					else {
 						if ($key==3) {
 							if (count($_listkategori_)==4) {
-								writeMenu($value,$this->getBaseUrl(),(min(array(count($_listkategori_),4))+1));
+								writeMenu($value,$this->getBaseUrl(),$minKategori);
 							}
 							else {
-								writeMenu(null,$this->getBaseUrl(),(min(array(count($_listkategori_),4))+1));
+								writeMenu(null,$this->getBaseUrl(),$minKategori);
 							}
 						}
 					}
@@ -150,7 +159,7 @@
 			<form>
 				<label>Username</label><input type='text' id="username" name="Login[username]"></input><br/>
 				<label>Password</label><input type='password' id="password" name="Login[password]"></input><br/>
-				<button type='submit' onclick="login(); return false;" class='btn'>Login</button>
+				<button type='submit' onclick="login(); return false;" class='btn right'>Login</button>
 			</form>
 		</div>
 		<script src="<?php echo $this->getBaseUrl() ?>/js/login.js"></script>

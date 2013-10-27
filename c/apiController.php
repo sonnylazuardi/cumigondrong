@@ -8,8 +8,8 @@ class apiController extends dasarController {
 			$req = $_REQUEST['Login'];
 			$model = new Login();
 			$model->populasi($_POST['Login']);
-			if ($account = $model->login()) {
-				$_SESSION['account_id'] = $account->username;
+			$account = $model->login();
+			if ($account != null) {
 				$res = array('success'=>true);	
 			} else {
 				$res = array('success'=>false);	
@@ -20,6 +20,8 @@ class apiController extends dasarController {
 		}
 	}
 	public function logout() {
+		setcookie("auth_key", "", time() - 3600, '/');
+		session_unset($_SESSION['account_id']);
 		session_destroy();
 		echo json_encode(array('success'=>true));	
 	}

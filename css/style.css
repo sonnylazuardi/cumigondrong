@@ -75,7 +75,7 @@
 		float : left;
 		margin-top:0px;
 	}
-		div.status img,div.status p{
+		div.status p{
 			float : right;
 		}
 		div.status p a {
@@ -84,6 +84,9 @@
 		}
 		div.status p.left{
 			float:left;
+		}
+		div.status p.right{
+			float:right;
 		}
 	div.menu{
 		height : 50px;
@@ -351,56 +354,82 @@ form > input, form > div > input {
 	box-shadow: 0px 0px 20px black;
 	padding: 10px;
 }
-	#login_box h1 {
-		font-family : code_lightregular;
-		font-size: 40px;
-		margin-bottom: 14px;
-		line-height : 10px;
-		text-align : center;
-		font-weight: normal;
-		font-style: normal;
-		margin-top : 17px;
-		color : #000;
-	}
+#login_box h1 {
+	font-family : code_lightregular;
+	font-size: 40px;
+	margin-bottom: 14px;
+	line-height : 10px;
+	text-align : center;
+	font-weight: normal;
+	font-style: normal;
+	margin-top : 17px;
+	color : #000;
+}
 
-	#login_box a {
-		position: absolute;
-		top : 0px;
-		left : 7px;
-		color : black;
-		font-size: 20px;
-		cursor: pointer;
-	}
-		#login_box a:hover {color: #a00}
+#login_box a {
+	position: absolute;
+	top : 0px;
+	left : 7px;
+	color : black;
+	font-size: 20px;
+	cursor: pointer;
+}
+#login_box a:hover {color: #a00}
 
-	#login_box label {
-		margin: 15px 10px;
-		width: 80px;
-		display: inline-block;
-		text-align: right;
-		color : black;
-	}
+#login_box label {
+	margin: 15px 10px;
+	width: 80px;
+	display: inline-block;
+	text-align: right;
+	color : black;
+}
 
-	#login_box input {
-		display: inline-block;
-		width: 200px;
-	}
+#login_box input {
+	display: inline-block;
+	width: 200px;
+}
+.btn {
+	margin:15px;
+	padding: 10px;
+	width : 100px;
+	cursor: pointer;
+	position: relative;
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+    background-color: #666;
+    -webkit-box-shadow: 0px 9px 0px rgba(50,50,50,1), 0px 9px 25px rgba(0,0,0,.7);
+    -moz-box-shadow: 0px 9px 0px rgba(50,50,50,1), 0px 9px 25px rgba(0,0,0,.7);
+    box-shadow: 0px 9px 0px rgba(50,50,50,1), 0px 9px 25px rgba(0,0,0,.7);
+	/*width: 530px;*/
+	text-align: center;
+	-webkit-transition: all .1s ease;
+	-moz-transition: all .1s ease;
+	-ms-transition: all .1s ease;
+	-o-transition: all .1s ease;
+	transition: all .1s ease;
+	-webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+}
 
-	.btn {
-		float:right;
-		margin:0px;
-		padding: 3px 10px;
-		width : 100px;
-		background-color: #eee;
-		cursor: pointer;
-		color: #000;
-	}
-	.btn:hover {
-		background-color: #aaa;
-		color : #fff;
-	}
+.btn:active {
+    -webkit-box-shadow: 0px 3px 0px rgba(50,50,50,1), 0px 3px 6px rgba(0,0,0,.9);
+    -moz-box-shadow: 0px 3px 0px rgba(50,50,50,1), 0px 3px 6px rgba(0,0,0,.9);
+    box-shadow: 0px 3px 0px rgba(50,50,50,1), 0px 3px 6px rgba(0,0,0,.9);
+    position: relative;
+    top: 6px;
+}
+
+.btn:disabled {
+	background-color: #d2d2d2;
+}
+
+.btn.right {
+	float:right;
+}
+
 .error{
-	background: #fdd;
+	background: #f99;
 	/*border: thin solid #ddd;*/
 }
 
