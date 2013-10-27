@@ -17,12 +17,17 @@ class KategoriController extends dasarController {
 
 	public function view() {
 		$model = new Barang();
+		$kategori = new Kategori();
 		$data = null;
 		$data = $this->getParam();
-		if ($data!="view") $data = $model->cariKategori($data);
-		$template = $this->brankas->template;
-		$template->view = 'barang';
-		$template->model = $data;
-		$template->show('layout');
+		if ($data!="view") {
+			$model_data = $model->cariKategori($data);
+			$attrib = $kategori->getData($data);
+			$template = $this->brankas->template;
+			$template->view = 'barang';
+			$template->attribute = $attrib[0];
+			$template->model = $model_data;
+			$template->show('layout');
+		}
 	}
 }

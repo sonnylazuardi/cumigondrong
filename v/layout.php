@@ -8,6 +8,38 @@
 	<title><?php echo $this->brankas->config['title'] ?></title>
 	<link rel='stylesheet' type='text/css' href='<?php echo $this->getBaseUrl() ?>/css/style.css' />
 	<script type="text/javascript">
+		function fitimg(obj,width,height,xfit,yfit)
+		{
+			var objheight = obj.offsetHeight;
+			var objwidth = obj.offsetWidth;
+			var screen = objheight/objwidth;
+			var fit = height/width;
+
+			if (Math.abs(screen-fit)<=0.1) {
+				obj.width = width;
+				obj.height = height;
+			}
+			else if (screen<fit){
+					obj.height = height;
+					if (xfit) {
+						obj.width = (height/screen);
+						obj.style.marginLeft = (width-(height/screen))/2;
+					}
+					else {
+						obj.width = width;
+					}
+				}
+			else {
+					obj.width = width;
+					if (yfit) {
+						obj.height = (width*screen);
+						obj.style.marginTop = (height-(width*screen))/2;
+					}
+					else {
+						obj.height = height;
+					}
+			}
+		}
 		function showLogin() {
 			document.getElementById('login_cont').style.opacity = 0;
 			document.getElementById('login_cont').style.top = "0px";
