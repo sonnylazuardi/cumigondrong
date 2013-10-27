@@ -90,7 +90,7 @@
 					<p class="left"> welcome, <?php echo $this->userLogged() ?>! (<a href='<?php echo $this->makeUrl('profile/index') ?>/'>Profile</a> | <a href='<?php echo $this->makeUrl('index/logout') ?>'>Logout</a>)
 					</p>
 					<p class="right">
-						<a href="<?php echo $this->makeUrl('shopping/index') ?>">Shopping Cart</a> <img src='<?php echo $this->getBaseUrl() ?>/img/site/cart_black.png' style='margin-right:5px;'/>
+						<a href="<?php echo $this->makeUrl('/cart/index') ?>">Shopping Cart</a> <img src='<?php echo $this->getBaseUrl() ?>/img/site/cart_black.png' style='margin-right:5px;'/>
 					</p>
 				<?php else: ?>
 					<p>You are not login. (<a href='#' onclick='showLogin()'>Login</a> or <a href='<?php echo $this->getBaseUrl() ?>/index/register'>Register now</a>)</p>
