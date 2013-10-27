@@ -34,7 +34,7 @@ class ActiveRecord {
         }
         
         if(isset($this->_fields[$field])){
-            if($this->_fields[$field]['value'] === null){
+            if($this->_fields[$field]['value'] === null && $this->_key != null){
                 $this->pilih();
             }
             
@@ -119,6 +119,7 @@ class ActiveRecord {
         
         $sql = "INSERT INTO `{$this->_tableName}` (".implode(', ', $fields['left']).') VALUES ('.implode(', ', $fields['right']).');';
     
+        echo $sql;
         $db = $this->getCheckedDBConnection();
         $stmt = $db->prepare($sql);
         $stmt->execute($values);
