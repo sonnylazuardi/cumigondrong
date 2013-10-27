@@ -1,3 +1,8 @@
+<script type="text/javascript">
+	function fitcat(obj) {
+		fitimg(obj,245,400,true,false);
+	}
+</script>
 <div id='prevarrow' onclick='prevCategory()'></div>
 <?php
 		$page_num = 1;
@@ -16,7 +21,7 @@
 			if ($key%3 == 0) echo " first";
 			if ($key%3 == 2) echo " third";
 			echo"'>
-				<img class='kat_bg' onload='fitimg(this)' src='".$this->getBaseUrl()."/img/barang/1.jpg'/>
+				<img class='kat_bg' onload='fitcat(this)' src='".$this->getBaseUrl()."/img/barang/1.jpg'/>
 				<div class='data'>
 					<div class='nativearea' id='native1'></div>
 					<div class='cat_title'><h3 class='layout_cat'>".$value->nama_kategori."</h3>
@@ -33,7 +38,7 @@
 ?>
 <div id='nextarrow' onclick='nextCategory()'></div>
 <script type="text/javascript">
-	function fitimg(obj)
+	function fitimgasdasd(obj)
 	{
 		var height = obj.offsetHeight;
 		var width = obj.offsetWidth;
@@ -47,7 +52,7 @@
 				obj.width = (400/screen);
 				obj.style.marginLeft = (245-(400/screen))/2;
 			}
-		else {
+		else {\
 				obj.width = 245;
 				obj.height = 400;
 		}
