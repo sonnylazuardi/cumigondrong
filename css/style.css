@@ -54,7 +54,7 @@
 	div#content_frame {
 		width : 960px;
 		height :440px;
-		overflow: auto;
+		overflow: hidden;
 	}
 	
 	
@@ -497,8 +497,12 @@ form > input, form > div > input {
 div.group_product_cont {
 	float : left;
 	width : 797px;
-	height : 423px;
+	height : 425px;
 	overflow: hidden;
+}
+
+div.nextarrow.short, div.prevarrow.short {
+	height : 340px;
 }
 
 div.group_product_cont.hidden {
@@ -516,10 +520,6 @@ div.nextarrow, div.prevarrow {
 	background-repeat : no-repeat;
 	background-position : center center;
 	cursor: pointer;
-}
-
-div.short {
-	height: 340px;
 }
 
 div.nextarrow:hover, div.prevarrow:hover {
@@ -661,6 +661,7 @@ div.itembox_img {
 	width: 150px;
 	height: 170px;
 	overflow: hidden;
+	background-color: white;
 	border: 2px solid white;
 }
 
@@ -672,9 +673,17 @@ div.item_price, div.item_detail, div.item_pict {
 	text-align: left;
 	overflow: hidden;
 }
+div.item_price {
+	height:330px;
+	padding: 10px;
+	width:200px;
+	background: rgba(0,0,0,0.5);
+	overflow: hidden;
+}
 div.item_pict {
+	background: white;
 	height:340px;
-	width:400px;
+	width:340px;
 	border: 5px solid white;
 	margin-right:15px;
 }
@@ -682,7 +691,7 @@ div.item_pict {
 div.item_detail {
 	height:330px;
 	padding: 10px;
-	width:490px;
+	width:330px;
 	margin-right:15px;
 	background: rgba(0,0,0,0.5);
 	overflow: hidden;
@@ -710,17 +719,35 @@ div.quantity, input.cart {
 	display: inline-block;
 }
 
-div.quantity input.qty {
-	width: 20px;
+label.qty {
+	width: 120px;
+	display: inline-block;
+}
+
+textarea.req_msg {
+	width: 190px;
+	height: 120px;
+}
+
+input.qty {
+	width: 30px;
 	background: #ddd;
 	text-align: center;
 }
 
 input.cart {
-	width: 40%;
-	height: 50px;
-	margin-top:0;
-	padding-top:20px;
+	width: 180px;
+	height: 70px;
+	margin-top:10px;
+	padding-top:40px;
 	line-height: 0;
 	font-family: Candara;
+	font-size: 20px;
+	background-image: url(../img/site/cart.png);
+	background-repeat: no-repeat;
+	background-position: top center;
+	cursor: pointer;
+}
+input.cart:hover {
+	background-color: #888;
 }
