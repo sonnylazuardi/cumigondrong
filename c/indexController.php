@@ -16,9 +16,9 @@ class IndexController extends dasarController {
 		$model = new Login();
 		if (isset($_POST['Login'])) {
 			$model->populasi($_POST['Login']);
-			if ($account = $model->login()) {
-				$_SESSION['account_id'] = $account->username;
-				$this->redirect('index/home');	
+			$account = $model->login();
+			if ($account != null) {
+				$this->redirect('index/home');
 			}
 		}
 		$template = $this->brankas->template;
@@ -27,6 +27,8 @@ class IndexController extends dasarController {
 		$template->show('layout');
 	}
 	public function logout() {
+		setcookie("auth_key", "", time() - 3600, '/');
+		session_unset($_SESSION['account_id']);
 		session_destroy();
 		$this->redirect('index/home');
 	}

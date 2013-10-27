@@ -7,6 +7,7 @@
 		function showLogin() {
 			document.getElementById('login_cont').style.opacity = 0;
 			document.getElementById('login_cont').style.top = "0px";
+			document.getElementById('username').focus();
 			var x,aa,bb;
 			aa = 0;
 			bb = 0;
@@ -105,7 +106,7 @@
 			<form>
 				<label>Username</label><input type='text' id="username" name="Login[username]"></input><br/>
 				<label>Password</label><input type='password' id="password" name="Login[password]"></input><br/>
-				<button type='submit' onclick="login(); return false;" class='btn'>Login</button>
+				<button type='submit' onclick="login(); return false;" class='btn right'>Login</button>
 			</form>
 		</div>
 		<script src="<?php echo $this->getBaseUrl() ?>/js/login.js"></script>
