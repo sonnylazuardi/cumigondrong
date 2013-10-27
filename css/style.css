@@ -75,7 +75,7 @@
 		float : left;
 		margin-top:0px;
 	}
-		div.status img,div.status p{
+		div.status p{
 			float : right;
 		}
 		div.status p a {
@@ -84,6 +84,9 @@
 		}
 		div.status p.left{
 			float:left;
+		}
+		div.status p.right{
+			float:right;
 		}
 	div.menu{
 		height : 50px;
@@ -353,7 +356,8 @@ form > input, form > div > input {
 }
 #login_box h1 {
 	font-family : code_lightregular;
-	font-size: 60px;
+	font-size: 40px;
+	margin-bottom: 14px;
 	line-height : 10px;
 	text-align : center;
 	font-weight: normal;
@@ -423,8 +427,9 @@ form > input, form > div > input {
 .btn.right {
 	float:right;
 }
+
 .error{
-	background: #fdd;
+	background: #f99;
 	/*border: thin solid #ddd;*/
 }
 
