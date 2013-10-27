@@ -11,7 +11,7 @@
 		function showLogin() {
 			document.getElementById('login_cont').style.opacity = 0;
 			document.getElementById('login_cont').style.top = "0px";
-			var x,aa,bb;
+			var x,aa,bb; 
 			aa = 0;
 			bb = 0;
 			for (x=0;x<=11;x++){
@@ -38,8 +38,9 @@
 		}
 	</script>
 </head>
-<body onload='fadein()'>
+<body>
 <?php if (isset($effect)&&$effect) {?>
+
 <img class='loader' id='starter' src='<?php echo $this->getBaseUrl() ?>/img/site/logo_b.png'></img>
 <div class='prolog' id='starter2'><p>We are here to provide you with a brand new aura in our country through fashion, creativity, and innovative designs with world class quality. We always provide the best for our consumers by giving the best quality of our products. We will bring to you products made out of best chosen materials. We collaborate with the experts who have years and years of experience in the fashion and design industry. We will excite you with our new and creative concept to be more fashionable. And we guarantee you no dissatisfaction because we are sure that you will be satisfied at any cost whatsoever.</br></br>Best Regards,</br>Calvin Valentino & Salvy Reynalv</p></div>
 <img class='trans' id='trans' src='img/logo.png'></img>
@@ -50,7 +51,7 @@
 				<?php $this->show($view) ?>
 			</div>
 			<div class='head'>
-			<div class='logo'></div>
+			<a href='<?php echo $this->getBaseUrl()?>/index/home'><div class='logo'></div></a>
 			<div class='status'>
 				<p>You are not login. (<a href='#' onclick='showLogin()'>Login</a> or <a href='<?php echo $this->getBaseUrl() ?>/index/register'>Register now</a>)</p>
 			<!-- <img src='<?php echo $this->getBaseUrl() ?>/img/site/cart_black.png' style='margin-right:5px;'/> -->
@@ -63,6 +64,15 @@
 					<div class='menuborder'></div>
 				</div>
 				</a>
+
+				<a href='<?php echo $this->getBaseUrl() ?>/index/shop'>
+				<div class='permenu per<?php echo (min(array(count($model),4))+1) ?>'>
+					<div class='menuborder'></div>
+					<div class='menutxt'><h1 id='txtmenu1' class='menu'>shop</h1></div>
+					<div class='menuborder'></div>
+				</div>
+				</a>
+
 				<?php
 				if ($_listkategori_ === null) $_listkategori_ = array();
 				function writeMenu($data = null, $baseurl,$div) {
@@ -104,13 +114,17 @@
 		<div id='login_box'>
 			<h1>LOGIN</h1>
 			<a class='exit' onclick='hideLogin()'>x</a>
+			<div id="loading"></div>
 			<form>
-				<label>Username</label><input type='text'></input><br/>
-				<label>Password</label><input type='password'></input><br/>
-				<input type='submit' value='Login' id='submit'></input>
+				<label>Username</label><input type='text' id="username" name="Login[username]"></input><br/>
+				<label>Password</label><input type='password' id="password" name="Login[password]"></input><br/>
+				<button type='submit' onclick="login(); return false;" class='btn'>Login</button>
 			</form>
 		</div>
-
+		<script src="<?php echo $this->getBaseUrl() ?>/js/login.js"></script>
+		<script>
+			var server = "<?php echo $this->getBaseUrl() ?>";
+		</script>
 	</div>
 </body>
 </html>

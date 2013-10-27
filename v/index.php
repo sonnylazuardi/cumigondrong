@@ -108,6 +108,9 @@
 				}, 2000);
 		}
 	</script>
+<?php if (isset($effect)&&$effect) {?>
+	<script>fadein();</script>
+<?php } ?>	
 <h1>Selamat datang di Ruko Serba Ada</h1>
 
 <?php echo $this->userLogged() ?>
@@ -117,6 +120,7 @@
 <p>Silakan Login atau Register</p>
 
 <?php if ($this->userLogged()): ?>
+<a href="<?php echo $this->makeUrl('shop') ?>">Shop</a>
 <a href="<?php echo $this->makeUrl('index/logout') ?>">Logout</a>		
 <?php else: ?>
 <a href="<?php echo $this->makeUrl('index/login') ?>">Login</a>	
