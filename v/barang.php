@@ -3,7 +3,7 @@
 		fitimg(obj,170,170,true,true);
 	}
 </script>
-<h1 class='header'><?php echo $attribute->nama_kategori ?></h1>
+<h1 class='header'><?php // echo $attribute->nama_kategori ?></h1>
 
 <?php
 	foreach ($model as $key=>$value) {
