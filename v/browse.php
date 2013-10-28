@@ -11,7 +11,7 @@ $query = array(
 
 <script type="text/javascript">
 	function fitbarang(obj) {
-		fitimg(obj,150,170,true,true);
+		fitimg(obj,150,170,true,true,false);
 	}
 </script>
 

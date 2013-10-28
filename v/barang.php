@@ -20,7 +20,7 @@ function toRP($num) {
 ?>
 <script type="text/javascript">
 	function fitpict(obj) {
-		fitimg(obj,340,340,true,true);
+		fitimg(obj,340,340,true,true,false);
 	}
 </script>
 <h1 class='small-header'><?php echo $model->nama ?></h1>

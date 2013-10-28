@@ -22,7 +22,7 @@
 			ele.className=ele.className.replace(reg,' ');
 			}
 		}
-		function fitimg(obj,width,height,xfit,yfit)
+		function fitimg(obj,width,height,xfit,yfit,overlay)
 		{
 			var objheight = obj.offsetHeight;
 			var objwidth = obj.offsetWidth;
@@ -32,11 +32,11 @@
 				obj.width = width;
 				obj.height = height;
 			}
-			else if (screen<fit){
+			else if (((screen<fit)&&overlay)||((screen>fit)&&!overlay)){
 					obj.height = height;
 					if (xfit) {
-						obj.width = (height/screen);
-						obj.style.marginLeft = ((width-(height/screen))/2).toString()+"px";
+						obj.width = ((height*1.0)/(screen*1.0));
+						obj.style.marginLeft = (((1.0*width)-((1.0*height)/(1.0*screen)))/2).toString()+"px";
 					}
 					else {
 						obj.width = width;
@@ -160,10 +160,6 @@
 				?>
 			</div>
 		</div>
-		<div id='search_box'>
-			<label>search</label>
-			<input type='text'></input>
-		</div>
 		<h2 id='footer_txt'><b>www.calvinsalvy.com Oficial Website</b></br>Karena rasa adalah segalanya.</h2>
 		<a href='https://twitter.com/darksta5'><img title='@calvinsalvy' src='<?php echo $this->getBaseUrl() ?>/img/site/twitter.png' id='footer_img'/></a>
 	</div>
@@ -184,7 +180,34 @@
 			var server = "<?php echo $this->getBaseUrl() ?>";
 		</script>
 	</div>
-	<div class="search">
+	<script type="text/javascript">
+		function _opensearchbox(margin) {
+			if (margin<=0) {
+				document.getElementById('search-popup-content').style.marginLeft = margin.toString()+"px";
+				setTimeout(function(){
+					_opensearchbox(margin+2);
+				}, 5);
+			}
+		}
+		function _hideicon(margin) {
+			if (margin>=-70) {
+				document.getElementById('search-popup').style.marginLeft = margin.toString()+"px";
+				setTimeout(function(){
+					_hideicon(margin-2);
+				}, 5);
+			}
+			else {
+				setTimeout(function(){
+					_opensearchbox(-200);
+				}, 100);
+			}
+		}
+		function opensearch() {
+			_hideicon(0);
+		}
+	</script>
+	<div id='search-popup' onclick='opensearch()'></div>
+	<div id='search-popup-content'>
 		<form action="<?php echo $this->makeUrl('barang/search') ?>" method="get">
 			<?php 
 				$q = (isset($_GET['q'])?$_GET['q']:"");
@@ -192,9 +215,9 @@
 				$h1 = (isset($_GET['h1'])?$_GET['h1']:""); 
 				$h2 = (isset($_GET['h2'])?$_GET['h2']:""); 
 			?>
-			<input type="text" name="q" value="<?php echo $q ?>" placeholder="Nama Barang" required>
+			<h4>Search</h4><input type="text" name="q" value="<?php echo $q ?>" placeholder="Nama Barang" required>
 			<select name="kat" value="<?php echo $kat ?>" required>
-				<option value="0">Semua</option>
+				<option value="0">All Categories</option>
 				<?php foreach ($_listkategori_ as $key => $value): ?>
 					<option value="<?php echo $value->id ?>"><?php echo $value->nama_kategori ?></option>
 				<?php endforeach ?>

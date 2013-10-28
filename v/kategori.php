@@ -1,6 +1,6 @@
 <script type="text/javascript">
 	function fitcat(obj) {
-		fitimg(obj,245,400,true,false);
+		fitimg(obj,245,400,true,false,false);
 	}
 </script>
 <div class='prevarrow' onclick='prevCategory()'></div>

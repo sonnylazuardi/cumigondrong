@@ -161,7 +161,7 @@ div.prolog{
        FOOTER
 ***********************/
 #footer_txt {
-	width:300px;
+	width:900px;
 	float:left
 }
 #footer_img {
@@ -169,19 +169,15 @@ div.prolog{
 	margin-top:4px;
 	margin-left:10px;
 }
-#search_box {
-	width: 400px;
-	margin-left: 200px;
-	height: 30px;
-	float:left;
-	background: red;
-}
 
 #search_box label {
+	padding: 3px;
 	width: 60px;
 	display: inline-block;
 }
 #search_box input {
+	margin: 3px;
+	width: 200px;
 	padding: 3px;
 	font-style: 
 }
@@ -824,6 +820,8 @@ div.triplebest div.best {
 .pagination ul > li > a {
 	color: #999;
 }
+
+
 /***********************
   	ORDER CHART
 ***********************/
@@ -888,3 +886,50 @@ div#item p{margin-top : 4px;margin-left : 2px;}
 div#price p{margin-top : 10px;margin-left : 2px;text-align:center}
 div#qty p{margin-top : 10px;text-align:center;margin-left : 0px;}
 div#msg p{margin-top : 0px;margin-left : 2px;text-align:center;}
+
+
+
+/***********************
+  	 SEARCH-POPUP
+***********************/
+div#search-popup {
+	position: absolute;
+	top : 50%;
+	left: 0;
+	margin-top:-35px;
+	width: 70px;
+	height: 70px;
+	background: url(../img/site/search.jpg);
+}
+
+div#search-popup-content {
+	position: absolute;
+	top : 50%;
+	left: 0;
+	margin-top:-150px;
+	margin-left: -200px;
+	width: 200px;
+	height: 300px;
+	background:#ddd;
+}
+
+div#search-popup-content input {
+	width: 150px;
+	padding: 5px;
+	margin : 10px 5px;
+	font-size: 12px;
+	line-height: 12px;
+}
+
+div#search-popup-content select {
+	width: 160px;
+	padding: 5px;
+	margin : 10px 5px;
+	font-size: 12px;
+	line-height: 12px;
+}
+
+div#search-popup-content option {
+	width: 160px;
+	margin: 5px;
+}

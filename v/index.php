@@ -128,7 +128,7 @@
 
 <script type="text/javascript">
 	function fitBest(obj) {
-		fitimg(obj,300,330,true,true);
+		fitimg(obj,300,330,true,true,false);
 	}
 </script>
 
