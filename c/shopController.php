@@ -10,5 +10,8 @@ class ShopController extends dasarController{
 		 $template->show('layout');
 	}
 
+	public function payment() {
+		echo "Transaksi Selesai";
+		//clear session cart
+	}
 }
-?>

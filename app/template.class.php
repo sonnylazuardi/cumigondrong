@@ -60,14 +60,26 @@ class Template {
         }
     }
 
-    public function paginasi($jumlah, $hal, $count) {
-        $jumHalaman = $jumlah / $count;
-        for ($i=1; $i <= $jumHalaman; $i++) { 
-            if ($i == $hal)
-                echo $i . ' ';
-            else 
-                echo '<a href="?halaman=' .$i . '">' . $i . '</a> ';
+    public function paginasi($total, $hal, $count) {
+        $jumHalaman = ceil($total / $count);
+        $str = "<ul class='paginasi'>";
+        $query = "";
+        if (isset($_GET['q'])) {
+            $query .= "&q=".$_GET['q'];
         }
+        if (isset($_GET['sort'])) {
+            $query .= "&sort=".$_GET['sort'];
+        }
+        for ($i=1; $i <= $jumHalaman; $i++) { 
+            $str .= '<li>';
+            if ($i == $hal)
+                $str .= $i;
+            else 
+                $str .= '<a href="?hal=' .$i . $query . '">' . $i . '</a>';
+            $str .= '</li>';
+        }
+        $str .= "<ul>";
+        return $str;
     }
 
     public function toCurrency($num) {

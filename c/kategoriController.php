@@ -16,16 +16,21 @@ class KategoriController extends dasarController {
 	}
 
 	public function view() {
+		$hal = (isset($_GET['hal']) ? $_GET['hal'] : 1);
+		$sort = (isset($_GET['sort']) ? $_GET['sort'] : null);
+		if (!in_array($sort, array('nama asc', 'nama desc', 'harga asc', 'harga desc'))) $sort = null;
 		$model = new Barang();
 		$kategori = new Kategori();
 		$data = null;
 		$data = $this->getParam();
 		if ($data!="view") {
-			$model_data = $model->cariKategori($data);
+			$model_data = $model->cariKategori($data, $hal, $sort);
+			$total = $model->jumlahSemua('id_kategori=:i',array(':i'=>$data));
 			$attrib = $kategori->getData($data);
 			$template = $this->brankas->template;
+			$template->paging = $template->paginasi($total, $hal, 10);
 			$template->view = 'browse';
-			$template->attribute = $attrib[0];
+			$template->title = $attrib[0]->nama_kategori;
 			$template->model = $model_data;
 			$template->show('layout');
 		}

@@ -1,3 +1,4 @@
+
 <script>
 		function RefreshCartandShow(){
 			//REFRESH CART
@@ -111,16 +112,86 @@
 <?php if (isset($effect)&&$effect) {?>
 	<script>fadein();</script>
 <?php } ?>	
-<h1>Selamat datang di Ruko Serba Ada</h1>
+<?php
+	foreach ($model as $key => $value) {
+		echo "	<div onmouseover='setRun(false,".$key.")' onmouseout='setRun(true,".$key.")' class='home_categori ";
+		if ($key!=1) echo "hidden";
+		echo "' id='cont".$key."'>
+					<h1 class='header'>".$value['kat_data']->nama_kategori."<h1>
+					<div class='triplebest'>";
+		for ($i=0; $i < 3; $i++) 
+			echo "<a href='".$this->getBaseUrl()."/barang/view/".$value[$i]->id."''><div class='best'><img title='".$value[$i]->nama." (IDR ".$this->toCurrency($value[$i]->harga).")' onload='fitBest(this)' src='".$this->getBaseUrl()."/img/barang/".$value[$i]->gambar."'/></div></a>";
+		echo "		</div>
+				</div>";
+	}
+?>
 
-<?php echo $this->userLogged() ?>
+<script type="text/javascript">
+	function fitBest(obj) {
+		fitimg(obj,300,330,true,true,false);
+	}
+</script>
 
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, unde, voluptates nobis rerum saepe commodi placeat autem cupiditate eos ex deleniti quod vitae dolore mollitia corporis tempora cum. Quod, perspiciatis.</p>
+<script type="text/javascript">
+function showCategory() {
+	var n = 1;
+	while (document.querySelectorAll('#cont'+n).length) {
+		if (!document.querySelectorAll('#cont'+n+'.hidden').length) return n;
+		n++;
+	}
+	return 0;
+}
 
-<?php if ($this->userLogged()): ?>
-<a href="<?php echo $this->makeUrl('shop') ?>">Shop</a>
-<a href="<?php echo $this->makeUrl('index/logout') ?>">Logout</a>		
-<?php else: ?>
-<a href="<?php echo $this->makeUrl('index/login') ?>">Login</a>	
-<a href="<?php echo $this->makeUrl('index/register') ?>">Register</a>
-<?php endif ?>
+var show = showCategory();
+var items = document.querySelectorAll('.home_categori').length;
+var run = true;
+function setRun(isrun,id) {
+	if (id==show) {
+		run = isrun;
+		console.log('setRun by '+id+' -> '+isrun);
+	}
+}
+
+setTimeout(function(){
+ 		effect();
+ 	}, 5000);
+
+function effect() {
+	if (run) {
+		var x,y,vara,varb,varc,vard;
+		vara = 0;
+		varb = 0;
+		console.log('hide : '+show);
+		for (x=0;x<=11;x++){
+			setTimeout(function(){
+				document.getElementById('cont'+show).style.opacity = 1-(0.1*vara);
+				if (vara==10) addClass(document.getElementById('cont'+show), " hidden");
+				vara++;
+			}, (30*(varb+1)));
+			varb++;
+		}
+		setTimeout(function(){
+			if (show<items) {
+				show++;
+			}
+			else {
+				show=1;
+			}
+			console.log('show : '+show);
+			varc = 0;
+			vard = 0;
+			for (y=0;y<=11;y++){
+				setTimeout(function(){
+					if (varc==0) removeClass(document.getElementById('cont'+show), "hidden");
+					document.getElementById('cont'+show).style.opacity = 0.1*varc;
+					varc++;
+				}, ((30*(vard+1))));
+				vard++;
+			}
+		},400);
+	}
+	setTimeout(function(){
+ 		effect();
+ 	}, 5000);
+}
+</script>

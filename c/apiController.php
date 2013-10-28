@@ -57,6 +57,22 @@ class apiController extends dasarController {
 			return json_encode(array('status'=>true));
 		}
 
-
+	public function creditNumberValid() {
+		$credit_number = $_GET['credit_number'];
+		$valid = Credit::creditNumberValid($credit_number);
+		if ($valid) {
+			echo json_encode(array("status"=>true));
+		} else {
+			echo json_encode(array("status"=>false));
+		}
+	}
+	public function nameOfCardValid() {
+		$name_of_card = $_GET['name_of_card'];
+		$valid = Credit::nameOfCardValid($name_of_card);
+		if ($valid) {
+			echo json_encode(array("status"=>true));
+		} else {
+			echo json_encode(array("status"=>false));
+		}
 	}
 }

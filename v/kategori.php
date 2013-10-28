@@ -1,6 +1,6 @@
 <script type="text/javascript">
 	function fitcat(obj) {
-		fitimg(obj,245,400,true,false);
+		fitimg(obj,245,400,true,false,false);
 	}
 </script>
 <div class='prevarrow' onclick='prevCategory()'></div>
@@ -21,7 +21,7 @@
 			if ($key%3 == 0) echo " first";
 			if ($key%3 == 2) echo " third";
 			echo"'>
-				<img class='kat_bg' onload='fitcat(this)' src='".$this->getBaseUrl()."/img/barang/1.jpg'/>
+				<img class='kat_bg' onload='fitcat(this)' src='".$this->getBaseUrl()."/img/kategori/".$value->gambar."'/>
 				<div class='data'>
 					<div class='nativearea' id='native1'></div>
 					<div class='cat_title'><h3 class='layout_cat'>".$value->nama_kategori."</h3>
@@ -50,20 +50,6 @@
 	var show = showCategory();
 	var items = document.querySelectorAll('.group_product_cont').length;
 	
-	function hasClass(ele,cls) {
-		return ele.className.match(new RegExp('(\\s|^)'+cls+'(\\s|$)'));
-	}
-	 
-	function addClass(ele,cls) {
-		if (!this.hasClass(ele,cls)) ele.className += " "+cls;
-	}
-	 
-	function removeClass(ele,cls) {
-		if (hasClass(ele,cls)) {
-		var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)');
-		ele.className=ele.className.replace(reg,' ');
-		}
-	}
 	function nextCategory () {
 		if (show<items) {
 			var x,y,vara,varb,varc,vard;
