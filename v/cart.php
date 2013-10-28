@@ -3,15 +3,22 @@
 <?php
 		/**dummy dapat dilihat di cartController.php*/
 		echo "Detail Pembelian barang:" . '<br/>';
-		$x = 0;
-		foreach ($_SESSION['cart_cat'] as $key => $value) {
-			if ($value != null){
-				$x++;
-				echo  '<br/>' . "$value" . '<br/>';
-					foreach ($_SESSION[$value] as $key2 => $value2){
-						echo "merk --> $key2 , Quantity = $value2 " . '<br/>';
-					}
+
+		$array = $model->cariSemua();
+		if ($array == null){
+			$array = array();
+		}
+		$total = 0;
+		foreach ($array as $item) {
+			if ((isset($_SESSION[$item->nama])) && ($_SESSION[$item->nama] > 0)){
+				echo $item->nama; echo " Q = ";//nama item
+				echo $_SESSION[$item->nama];//jumlah pesanan
+				$total_pars = $item->harga * $_SESSION[$item->nama];
+				echo "harga : $total_pars"; 
+				echo "</br>";
+				$total = $total + $total_pars;
 			}
-		}		
+		}
+		echo "Total akhir : $total";
 
 ?>
