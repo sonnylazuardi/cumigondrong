@@ -21,7 +21,7 @@
 		if (($key==0)||(($key%2)==0)){
 			echo "<div class='vertdiv'>";
 		}
-		echo "	<a href='".$this->getBaseUrl()."/barang/".$value->id."'><div class='itembox_img'><img onload='fitbarang(this)' src='".$this->getBaseUrl()."/img/barang/".$value->gambar."' onload='FitImage(this)'/></div></a>";
+		echo "	<a href='".$this->getBaseUrl()."/barang/".$value->id."'><div class='itembox_img' ><img title='".$value->nama." (IDR ".$this->toCurrency($value->harga).")' onload='fitbarang(this)' src='".$this->getBaseUrl()."/img/barang/".$value->gambar."' onload='FitImage(this)'/></div></a>";
 		// VERTICAL DIV CLOSER
 		if (($key%2)==1||($key==(count($model)-1))||($key==9))echo "</div>";
 	}

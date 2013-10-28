@@ -33,7 +33,7 @@ function toRP($num) {
 
 <div class='item_price'>
 		<p>get it for :</p>
-		<h4>IDR <?php echo toRP($model->harga) ?></h4>
+		<h4>IDR <?php echo $this->toCurrency($model->harga) ?></h4>
 	<form>
 		<label class='qty'>Quantity</label><input type='number' class='qty' value=1></input>
 		<p>Request Message :</p>
