@@ -21,7 +21,7 @@
 			if ($key%3 == 0) echo " first";
 			if ($key%3 == 2) echo " third";
 			echo"'>
-				<img class='kat_bg' onload='fitcat(this)' src='".$this->getBaseUrl()."/img/barang/1.jpg'/>
+				<img class='kat_bg' onload='fitcat(this)' src='".$this->getBaseUrl()."/img/kategori/".$value->gambar."'/>
 				<div class='data'>
 					<div class='nativearea' id='native1'></div>
 					<div class='cat_title'><h3 class='layout_cat'>".$value->nama_kategori."</h3>
