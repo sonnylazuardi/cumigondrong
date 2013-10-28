@@ -35,11 +35,11 @@ class BarangController extends dasarController {
 
 				$_SESSION[$model->nama]= $quantity;
 				
-		 $template = $this->brankas->template;
-		 $template->view = "cart";
-		 $template->model = $model;
-		 $template->show('layout');
-
+		 // $template = $this->brankas->template;
+		 // $template->view = "cart";
+		 // $template->model = $model;
+		 // $template->show('layout');
+				$this->redirect("barang/" . $id_barang);
 
 }
 

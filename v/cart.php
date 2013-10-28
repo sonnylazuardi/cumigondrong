@@ -11,7 +11,7 @@
 		$total = 0;
 		foreach ($array as $item) {
 			if ((isset($_SESSION[$item->nama])) && ($_SESSION[$item->nama] > 0)){
-				echo $item->nama; echo " ";//nama item
+				echo $item->nama; echo " Q = ";//nama item
 				echo $_SESSION[$item->nama];//jumlah pesanan
 				$total_pars = $item->harga * $_SESSION[$item->nama];
 				echo "harga : $total_pars"; 

@@ -42,6 +42,6 @@ function toRP($num) {
 		<input type="hidden" name="id_barang" value="<?php echo $model->id; ?>"
 		<p>Request Message :</p>
 		<textarea class='req_msg' name='req_msg'></textarea>
-		<button type='submit' class='cart'>Add to Cart</button>
+		<input type='submit' class='cart' value = 'Add to Cart'></input>
 	</form>
 </div>
