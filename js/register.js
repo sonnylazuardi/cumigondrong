@@ -7,16 +7,22 @@ if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
 var Register = {
 	error: [],
 	validForm: {
-		'username': false,
-		'email': false,
-		'password': false,
-		'confirm': false,
-		'nama':false
+		'username': true,
+		'email': true,
+		'password': true,
+		'confirm': true,
+		'nama':true,
+		'alamat':true,
+		'provinsi':true,
+		'kota':true,
+		'kodepos':true,
+		'telepon':true
 	},
 	defaultForm: {},
 	cekNama: function(){
 		var nama = document.getElementById('nama').value;
-		if (nama.indexOf(' ') == -1) {
+		var spasi = nama.trim().indexOf(' ');
+		if (spasi == -1) {
 			this.error['nama'] = "Nama Lengkap harus minimal mengandung satu spasi antara dua karakter (ada nama depan dan nama belakang)";
 			this.validForm['nama'] = false;
 		} else {
@@ -42,7 +48,9 @@ var Register = {
 		if (username == password) {
 			this.error['password'] = 'Password tidak boleh sama dengan Username';
 			this.validForm['password'] = false;
-			this.validasi();
+		} else if (password.length < 8) {
+			this.error['password'] = 'Password minimal 8 karakter';
+			this.validForm['password'] = false;
 		} else if (password == email) {
 			this.error['password'] = "Password tidak boleh sama dengan email";
 			this.validForm['password'] = false;
@@ -132,6 +140,18 @@ var Register = {
 			document.getElementById("btn").disabled = false;
 		}
 		return valid;
+	},
+	compareDefault: function() {
+		var res = false;
+		for (var key in defaultForm) {
+			if (defaultForm.hasOwnProperty(key)) {
+				if (defaultForm[key] != document.getElementById(key).value) res = true;
+			}
+		}
+		if (!res) {
+			alert('Tidak ada field yang diubah');
+		}
+		return res;
 	}
 }
 

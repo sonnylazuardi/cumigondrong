@@ -19,6 +19,7 @@ class IndexController extends dasarController {
 	public function home() {
 		$this->index(false);
 	}
+	
 	public function login() {
 		$model = new Login();
 		if (isset($_POST['Login'])) {
@@ -41,6 +42,7 @@ class IndexController extends dasarController {
 	}
 	public function register() {
 		$model = new Register();
+		if (isset($_SESSION['account_id'])) $this->redirect('index/index');
 		if (isset($_POST['Register'])) {
 			$account = new Account();
 			$model->populasi($_POST['Register']);
@@ -48,7 +50,7 @@ class IndexController extends dasarController {
 				$account->populasi($_POST['Register'], array(
 				'username', 'password', 'nama', 'email', 'alamat', 'provinsi', 'kota', 'kodepos', 'telepon'));
 				$account->simpan();
-				$this->redirect('index/login');	
+				$this->redirect('index/home');	
 			}
 		}
 		$template = $this->brankas->template;

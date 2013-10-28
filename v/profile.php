@@ -1,28 +1,31 @@
-<h1>Profil</h1>
+<div class="center">
+<div class="register_div">
+	<h1 class='header'>Profil</h1>
+	<div class="per_form">
+		<label>Nama Lengkap:</label><p><?php echo $model->nama ?></p>
+	</div>
+	<div class="per_form">
+		<label>Username:</label><p><?php echo $model->username ?></p>
+	</div>
+	<div class="per_form">
+		<label>Email:</label><p><?php echo $model->email ?></p>
+	</div>
+	<div class="per_form">
+		<label>Alamat:</label><p><?php echo $model->alamat ?></p>
+	</div>
+	<div class="per_form">
+		<label>Provinsi:</label><p><?php echo $model->provinsi ?></p>
+	</div>
+	<div class="per_form">
+		<label>Kota:</label><p><?php echo $model->kota ?></p>
+	</div>
+	<div class="per_form">
+		<label>Kode Pos:</label><p><?php echo $model->kodepos ?></p>
+	</div>
+	<div class="per_form">
+		<label>Telepon:</label><p><?php echo $model->telepon ?></p>
+	</div>
+	<a href="<?php echo $this->makeUrl('profile/edit') ?>" class="btn">Edit Profile</a>
+</div>
 
-<div>
-	<p>Nama Lengkap: <?php echo $model->nama ?></p>
 </div>
-<div>
-	<p>Username: <?php echo $model->username ?></p>
-</div>
-<div>
-	<p>Email: <?php echo $model->email ?></p>
-</div>
-<div>
-	<p>Alamat: <?php echo $model->alamat ?></p>
-</div>
-<div>
-	<p>Provinsi: <?php echo $model->provinsi ?></p>
-</div>
-<div>
-	<p>Kota: <?php echo $model->kota ?></p>
-</div>
-<div>
-	<p>Kode Pos: <?php echo $model->kodepos ?></p>
-</div>
-<div>
-	<p>Telepon: <?php echo $model->telepon ?></p>
-</div>
-
-<a href="<?php echo $this->makeUrl('profile/edit') ?>" class="btn">Edit Profile</a>
