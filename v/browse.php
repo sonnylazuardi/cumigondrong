@@ -1,42 +1,34 @@
 <script type="text/javascript">
-	function fitcat(obj) {
-		fitimg(obj,245,400,true,false);
+	function fitbarang(obj) {
+		fitimg(obj,150,170,true,true);
 	}
 </script>
-<div class='prevarrow' onclick='prevCategory()'></div>
+<h1 class='header'><?php echo $attribute->nama_kategori ?></h1>
+<div class='prevarrow short' onclick='prevPage()'></div>
 <?php
-		$page_num = 1;
-		echo "<div class='group_product_cont ";
-		if ($page!=1) echo "hidden";
-		echo "' id='cont1'>";
-		foreach ($model as $key=>$value) {
-			if (($key%3 == 0)&&($key!=0)) {
-				$page_num++;
-				echo "	</div>
-						<div class='group_product_cont ";
-				if ($page!=$page_num) echo "hidden";
-				echo "' id='cont".$page_num."'>";
-			}
-			echo "<div class='prodcont";
-			if ($key%3 == 0) echo " first";
-			if ($key%3 == 2) echo " third";
-			echo"'>
-				<img class='kat_bg' onload='fitcat(this)' src='".$this->getBaseUrl()."/img/barang/1.jpg'/>
-				<div class='data'>
-					<div class='nativearea' id='native1'></div>
-					<div class='cat_title'><h3 class='layout_cat'>".$value->nama_kategori."</h3>
-					<p class='layout_detail'><b>Description</b></p>
-					<p class='layout_detail'>-Sub Description-</p></div>
-					<div class='cat_detail'></div>
-					<a href='browse.php?cat=FO' target=''><div class='browse'><h1>BROWSE</h1></div></a>
-				</div>
-			</div>
-			";
+	$page_count = 1;
+	$page = 1;
+	echo "<div id='cont1' class='group_product_cont short";
+	if ($page!=1) echo " hidden";
+	echo "'>";
+	foreach ($model as $key=>$value) {
+		if ((($key%10)==0)&&($key!=0)) {
+			$page_count++;
+			echo "</div><div id='cont".$page_count."' class='group_product_cont short";
+			if ($page_count!=$page) echo " hidden";
+			echo "'>";
 		}
-		echo "</div>"
-
+		if (($key==0)||(($key%2)==0)){
+			echo "<div class='vertdiv'>";
+		}
+		echo "	<a href='".$this->getBaseUrl()."/barang/".$value->id."'><div class='itembox_img'><img onload='fitbarang(this)' src='".$this->getBaseUrl()."/img/barang/".$value->gambar."' onload='FitImage(this)'/></div></a>";
+		// VERTICAL DIV CLOSER
+		if (($key%2)==1||($key==(count($model)-1))||($key==9))echo "</div>";
+	}
 ?>
-<div class='nextarrow' onclick='nextCategory()'></div>
+</div>
+<div class='nextarrow short' onclick='nextPage()'></div>
+
 <script type="text/javascript">
 	function showCategory() {
 		var n = 1;
@@ -64,7 +56,7 @@
 		ele.className=ele.className.replace(reg,' ');
 		}
 	}
-	function nextCategory () {
+	function nextPage() {
 		if (show<items) {
 			var x,y,vara,varb,varc,vard;
 			vara = 0;
@@ -94,7 +86,7 @@
 			},600);
 		}
 	}
-	function prevCategory () {
+	function prevPage() {
 		if (show>1) {
 			var x,y,vara,varb,varc,vard;
 			vara = 0;

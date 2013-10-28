@@ -24,7 +24,7 @@ class KategoriController extends dasarController {
 			$model_data = $model->cariKategori($data);
 			$attrib = $kategori->getData($data);
 			$template = $this->brankas->template;
-			$template->view = 'barang';
+			$template->view = 'browse';
 			$template->attribute = $attrib[0];
 			$template->model = $model_data;
 			$template->show('layout');

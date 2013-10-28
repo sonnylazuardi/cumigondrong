@@ -2,7 +2,7 @@
 class IndexController extends dasarController {
 	public function index($effect = true) {
 		$template = $this->brankas->template;
-		$template->view = "index";
+		$template->view = "browse";
 		$template->effect = $effect;
 		$template->show('layout');
 	}
@@ -53,12 +53,11 @@ class IndexController extends dasarController {
 		echo "</pre>";
 	}
 
-	public function shop(){
-		$model = new Barang();
-		
-		$template = $this->brankas->template;
-		$template->view = "shop";
-		$template->model = $model;
-		$template->show('layout');
-	}
+	// public function shop(){
+	// 	$model = new Barang();
+	// 	$template = $this->brankas->template;
+	// 	$template->view = "shop";
+	// 	$template->model = $model;
+	// 	$template->show('layout');
+	// }
 }

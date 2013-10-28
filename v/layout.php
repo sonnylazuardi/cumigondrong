@@ -14,16 +14,15 @@
 			var objwidth = obj.offsetWidth;
 			var screen = objheight/objwidth;
 			var fit = height/width;
-
 			if (Math.abs(screen-fit)<=0.1) {
 				obj.width = width;
 				obj.height = height;
 			}
-			else if (screen<fit){
+			else if (screen>fit){
 					obj.height = height;
 					if (xfit) {
 						obj.width = (height/screen);
-						obj.style.marginLeft = (width-(height/screen))/2;
+						obj.style.marginLeft = ((width-(height/screen))/2).toString()+"px";
 					}
 					else {
 						obj.width = width;
@@ -33,7 +32,7 @@
 					obj.width = width;
 					if (yfit) {
 						obj.height = (width*screen);
-						obj.style.marginTop = (height-(width*screen))/2;
+						obj.style.marginTop = ((height-(width*screen))/2).toString()+"px";
 					}
 					else {
 						obj.height = height;
@@ -90,7 +89,7 @@
 					<p class="left"> welcome, <?php echo $this->userLogged() ?>! (<a href='<?php echo $this->makeUrl('profile/index') ?>/'>Profile</a> | <a href='<?php echo $this->makeUrl('index/logout') ?>'>Logout</a>)
 					</p>
 					<p class="right">
-						<a href="<?php echo $this->makeUrl('shopping/index') ?>">Shopping Cart</a> <img src='<?php echo $this->getBaseUrl() ?>/img/site/cart_black.png' style='margin-right:5px;'/>
+						<a href="<?php echo $this->makeUrl('/cart/index') ?>">Shopping Cart</a> <img src='<?php echo $this->getBaseUrl() ?>/img/site/cart_black.png' style='margin-right:5px;'/>
 					</p>
 				<?php else: ?>
 					<p>You are not login. (<a href='#' onclick='showLogin()'>Login</a> or <a href='<?php echo $this->getBaseUrl() ?>/index/register'>Register now</a>)</p>
