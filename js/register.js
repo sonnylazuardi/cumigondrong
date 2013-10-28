@@ -132,6 +132,16 @@ var Register = {
 			document.getElementById("btn").disabled = false;
 		}
 		return valid;
+	},
+	compareDefault: function() {
+		var res = false;
+		for (var key in defaultForm) {
+			if (defaultForm.hasOwnProperty(key)) {
+				if (defaultForm[key] != document.getElementById(key).value) res = true;
+			}
+		}
+		alert(res);
+		return res;
 	}
 }
 
