@@ -150,7 +150,7 @@
 			<a href='https://twitter.com/darksta5'><img title='@calvinsalvy' src='<?php echo $this->getBaseUrl() ?>/img/site/twitter.png' id='footer_img'/></a>
 	</div>
 <?php if (isset($effect)&&$effect) echo "</div>" ?>
-	<div id='login_cont' style="display:none">
+	<div id='login_cont'>
 		<div id='login_box'>
 			<h1>LOGIN</h1>
 			<a class='exit' onclick='hideLogin()'>x</a>
@@ -165,6 +165,12 @@
 		<script>
 			var server = "<?php echo $this->getBaseUrl() ?>";
 		</script>
+	</div>
+	<div class="search">
+		<form action="<?php echo $this->makeUrl('barang/search') ?>" method="get">
+			<?php $q = (isset($_GET['q'])?$_GET['q']:""); ?>
+			<input type="text" name="q" value="<?php echo $q ?>">
+		</form>
 	</div>
 </body>
 </html>

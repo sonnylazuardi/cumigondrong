@@ -391,7 +391,7 @@ form > input, form > div > input {
 	width: 200px;
 }
 .btn {
-	margin:15px;
+	margin:15px 5px;
 	padding: 10px;
 	width : 100px;
 	cursor: pointer;
@@ -457,7 +457,7 @@ form > input, form > div > input {
 	margin: 15px 10px;
 }
 
-.register_div input {
+.register_div input, .register_div select {
 	display: inline-block;
 	width: 250px;
 	height: 20px;
@@ -483,8 +483,14 @@ form > input, form > div > input {
 	height : 15px;
 }
 
+.register_div .per_form p {
+	display: inline-block;
+	width: 250px;
+}
 
-
+.center {
+	text-align: center;
+}
 
 .register_div p.keterangan {
 	margin-top: 15px;
@@ -495,7 +501,9 @@ form > input, form > div > input {
   C A T E G O R I E S
 ***********************/
 div.group_product_cont {
-	float : left;
+	/*float : left;*/
+	display: block;
+	margin: 0 auto;
 	width : 797px;
 	height : 425px;
 	overflow: hidden;
@@ -750,4 +758,22 @@ input.cart {
 }
 input.cart:hover {
 	background-color: #888;
+}
+
+
+.sorting, .pagination {
+	float: right;
+}
+.pagination ul {
+	list-style: none;
+}
+.pagination ul > li {
+	padding: 10px;
+	font-size: 1.2em;
+	margin-right: 10px;
+	display: inline-block;
+	background: rgba(0,0,0,.5)
+}
+.pagination ul > li > a {
+	color: #999;
 }

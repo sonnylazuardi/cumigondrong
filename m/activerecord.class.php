@@ -226,16 +226,18 @@ class ActiveRecord {
         return $this;
     }
 
-    public function jumlahSemua($condition = null, $params = array()) {
+    public function jumlahSemua($condition = null, $params = array(), $order = null, $join = null) {
         if(!$this->_fields){
             $this->deskripsi();
         }
         
         $db = $this->getCheckedDBConnection();    
+        $sql = "SELECT COUNT(`{$this->_tableName}`.id) FROM `{$this->_tableName}`";
+        if ($join !== null) {
+            $sql .= " " . $join;
+        }
         if ($condition !== null) {
-            $sql = "SELECT COUNT(id) FROM `{$this->_tableName}` WHERE {$condition}";
-        } else {
-            $sql = "SELECT COUNT(id) FROM `{$this->_tableName}`";
+            $sql .= " WHERE {$condition}";
         }
         // echo $sql;
         $stmt = $db->prepare($sql);
@@ -245,19 +247,28 @@ class ActiveRecord {
         else 
             $stmt->execute();
         $result = $stmt->fetch();
-        return $result['COUNT(id)'];   
+        // echo "<pre>";
+        // echo reset($result);
+        // echo "</pre>";
+        // die();
+        return reset($result);   
     }
 
-    public function cariSemua($condition = null, $params = array(), $offset = null, $count = null, $order = null) {
+    public function cariSemua($condition = null, $params = array(), $offset = null, $count = null, $order = null, $select = null, $join = null) {
         if(!$this->_fields){
             $this->deskripsi();
         }
         
         $db = $this->getCheckedDBConnection();    
+        $sql = "SELECT * FROM `{$this->_tableName}`";
+        if ($select !== null) {
+            $sql = "SELECT " . $select . " FROM `{$this->_tableName}`";
+        }
+        if ($join !== null) {
+            $sql .= " " . $join;
+        }
         if ($condition !== null) {
-            $sql = "SELECT * FROM `{$this->_tableName}` WHERE {$condition}";
-        } else {
-            $sql = "SELECT * FROM `{$this->_tableName}`";
+            $sql .= " WHERE {$condition}";
         }
         if ($order !== null) {
             $sql .= " ORDER BY {$order}";
