@@ -44,7 +44,7 @@
 					echo "Total Pembayaran : $total";
 					?>
 					<div class = "row">
-					<a href='<?php echo $this->getBaseUrl() ?>/profile/credit'><input type="btn" name="submit" value="Process to payment" class="button"></a>
+					<a href='<?php echo $this->getBaseUrl() ?>/profile/credit?redirect=shop/payment'><input type="btn" name="submit" value="Process to payment" class="button"></a>
 					<a href='<?php echo $this->getBaseUrl() ?>/index/home'><input type="btn" name="submit" value="Add Item" class="button"></a>
 					</div>
 					</div>

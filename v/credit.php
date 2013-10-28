@@ -16,5 +16,8 @@
 			<span class='error' id="error-expired_date"></span>
 		</div>
 		<button type="submit" id="btn" class="btn">Register</button>
+		<?php if (!$sudahSet): ?>
+			<a href="<?php echo $this->makeUrl('kategori/index') ?>" class="btn">Skip</a>
+		<?php endif; ?>
 	</div>
 </form>

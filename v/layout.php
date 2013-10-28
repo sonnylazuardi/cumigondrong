@@ -195,8 +195,8 @@
 					<option value="<?php echo $value->id ?>"><?php echo $value->nama_kategori ?></option>
 				<?php endforeach ?>
 			</select>
-			<input type="text" name="h1" value="<?php echo $h1 ?>" placeholder="Harga Bawah" required>
-			<input type="text" name="h2" value="<?php echo $h2 ?>" placeholder="Harga Atas" required>
+			<input type="number" name="h1" value="<?php echo $h1 ?>" placeholder="Harga Bawah" required>
+			<input type="number" name="h2" value="<?php echo $h2 ?>" placeholder="Harga Atas" required>
 			<button type="submit" class="btn">Search</button>
 		</form>
 	</div>

@@ -44,7 +44,7 @@ if (count($model->error) > 0) {
 		
 		<div class='per_form small'>
 			<label>Provinsi: </label>
-			<select value="<?php echo $model->provinsi ?>" name="Profile[provinsi]" id="provinsi" required>
+			<select value="<?php echo $model->provinsi ?>" name="Register[provinsi]" id="provinsi" required>
 				<option value="">Pilih Provinsi :</option>
 				<?php 
 				$propinsi = array("Aceh", "Sumatera Utara", "Sumatera Barat", "Riau", "Jambi", "Sumatera Selatan", "Lampung", "Bengkulu", "Bangka Belitung", "Kepulauan Riau", "Jakarta", "Jawa Barat", "Jawa Tengah", "Yogyakarta", "Jawa Timur", "Banten", "Bali", "Nusa Tenggara Barat", "Nusa Tenggara Timur", "Kalimantan Barat", "Kalimantan Timur", "Kalimantan Tengah", "Kalimantan Selatan", "Sulawesi Utara", "Sulawesi Tengah", "Sulawesi Selatan", "Sulawesi Tenggara", "Gorontalo", "Sulawesi Barat", "Maluku", "Maluku Utara", "Papua", "Papua Barat");

@@ -21,12 +21,12 @@ $query = array(
 		$query['sort'] = 'sort=nama asc';
 		if (isset($_GET['sort'])) if ($_GET['sort'] == 'nama asc') $query['sort'] = 'sort=nama desc';
 	?>
-	<a href="?<?php echo implode('&', $query) ?>" class="btn">Nama</a> 
+	<a href="?<?php echo implode('&', array_filter($query)) ?>" class="btn">Nama</a> 
 	<?php 
 		$query['sort'] = 'sort=harga asc';
 		if (isset($_GET['sort'])) if ($_GET['sort'] == 'harga asc') $query['sort'] = 'sort=harga desc';
 	?>
-	<a href="?<?php echo implode('&', $query) ?>" class="btn">Harga</a>
+	<a href="?<?php echo implode('&', array_filter($query)) ?>" class="btn">Harga</a>
 </div>
 <div class="pagination"><?php echo $paging; ?></div>
 

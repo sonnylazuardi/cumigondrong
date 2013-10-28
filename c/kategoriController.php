@@ -18,6 +18,7 @@ class KategoriController extends dasarController {
 	public function view() {
 		$hal = (isset($_GET['hal']) ? $_GET['hal'] : 1);
 		$sort = (isset($_GET['sort']) ? $_GET['sort'] : null);
+		if (!in_array($sort, array('nama asc', 'nama desc', 'harga asc', 'harga desc'))) $sort = null;
 		$model = new Barang();
 		$kategori = new Kategori();
 		$data = null;
