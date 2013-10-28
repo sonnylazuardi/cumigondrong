@@ -47,4 +47,16 @@ class apiController extends dasarController {
 			echo json_encode(array("status"=>false));
 		}
 	}
+	public function stokCukup() {
+		$quantity = $_GET['quantity'];
+		$id_barang = $_GET['id_barang'];
+		$model = new Barang($id_barang);
+		if ($quantity < $model->stok) {
+			return json_encode(array('status'=>false));
+		} else {
+			return json_encode(array('status'=>true));
+		}
+
+
+	}
 }

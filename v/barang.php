@@ -36,7 +36,8 @@ function toRP($num) {
 <div class='item_price'>
 		<p>get it for :</p>
 		<h4>IDR <?php echo toRP($model->harga) ?></h4>
-	<form action = "<?php echo $this->makeUrl("barang/update"); ?>" method="post">
+	<!-- <form method="post" onSubmit="Stok(); return false;" >  -->
+	<form method="post"  action = "<?php echo $this->makeUrl("barang/update"); ?>"> 
 		<label class='qty'>Quantity</label>
 		<input type='number' name="quantity" class='qty' value=1></input>
 		<input type="hidden" name="id_barang" value="<?php echo $model->id; ?>">
@@ -45,3 +46,40 @@ function toRP($num) {
 		<input type='submit' class='cart' value = 'Add to Cart'></input>
 	</form>
 </div>
+
+<!-- something wrong here -->
+<script>
+function Stok()
+{
+	var xmlhttp;
+	var id_barang = document.getElementById('id_barang').value;
+	var quantity = document.getElementById('quantity').value;
+	var server = "<?php echo Template::getBaseUrl() ?>";
+	
+	if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
+		xmlhttp=new XMLHttpRequest();	
+	} else {// code for IE6, IE5
+		xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	xmlhttp.onreadystatechange=function()
+	  {
+	  if (xmlhttp.readyState==4 && xmlhttp.status==200)
+	    {
+	    		var data = JSON.parse(xmlhttp.responseText);
+				if (data.status) {
+				// 	$model = new Barang($id_barang);
+
+				// $_SESSION[$model->nama]= $quantity;
+				// $_SESSION[ "msg" . $model->nama] = $req_msg;
+				
+				//  $this->redirect("cart/index");
+				} else {
+					//pop up error
+					document.write("Stok tidak tersedia!");				
+				}
+	    }
+	  }
+	xmlhttp.open("GET",server+"/api/stokCukup?id_barang="+id_barang +"&quantity="+quantity ,true);
+	xmlhttp.send();
+}
+</script>

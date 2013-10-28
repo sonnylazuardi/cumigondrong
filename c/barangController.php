@@ -1,6 +1,8 @@
 <?php
 
 class BarangController extends dasarController {
+
+
 	public function index() {
 		$model = new Barang();
 		$array = $model->cariID($this->getParam());
@@ -16,26 +18,25 @@ class BarangController extends dasarController {
 		$id_barang = $_POST['id_barang'];
 		$model = new Barang($id_barang);
 
-				$contain = 0;
+				// $contain = 0;
 
-				if (!isset($_SESSION['cart_cat'])){
-					$_SESSION['cart_cat'] = array();
-				}
+				// if (!isset($_SESSION['cart_cat'])){
+				// 	$_SESSION['cart_cat'] = array();
+				// }
 
-				foreach ($_SESSION['cart_cat'] as $key) {
-					if ($key == $model->id_kategori){
-						$contain = 1;
-					}
-				}
+				// foreach ($_SESSION['cart_cat'] as $key) {
+				// 	if ($key == $model->id_kategori){
+				// 		$contain = 1;
+				// 	}
+				// }
 
-				if ($contain == 0) {
-					array_push($_SESSION['cart_cat'], $model->id_kategori);
-				}
+				// if ($contain == 0) {
+				// 	array_push($_SESSION['cart_cat'], $model->id_kategori);
+				// }
 
 				$_SESSION[$model->nama]= $quantity;
 				$_SESSION[ "msg" . $model->nama] = $req_msg;
 				
-				// $this->redirect("barang/" . $id_barang);
 				 $this->redirect("cart/index");
 	}
 
@@ -44,21 +45,21 @@ class BarangController extends dasarController {
 		$id_barang = $this->getParam();
 		$model = new Barang($id_barang);
 
-				$contain = 0;
+				// $contain = 0;
 
-				if (!isset($_SESSION['cart_cat'])){
-					$_SESSION['cart_cat'] = array();
-				}
+				// if (!isset($_SESSION['cart_cat'])){
+				// 	$_SESSION['cart_cat'] = array();
+				// }
 
-				foreach ($_SESSION['cart_cat'] as $key) {
-					if ($key == $model->id_kategori){
-						$contain = 1;
-					}
-				}
+				// foreach ($_SESSION['cart_cat'] as $key) {
+				// 	if ($key == $model->id_kategori){
+				// 		$contain = 1;
+				// 	}
+				// }
 
-				if ($contain == 0) {
-					array_push($_SESSION['cart_cat'], $model->id_kategori);
-				}
+				// if ($contain == 0) {
+				// 	array_push($_SESSION['cart_cat'], $model->id_kategori);
+				// }
 
 				$_SESSION[$model->nama]= $quantity;
 				$_SESSION[ "msg" . $model->nama] = $req_msg;
@@ -66,7 +67,5 @@ class BarangController extends dasarController {
 				 $this->redirect("cart/index");
 	}
 
-}	
-
-
-	
+}
+?>	
