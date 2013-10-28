@@ -35,10 +35,38 @@ class BarangController extends dasarController {
 				$_SESSION[$model->nama]= $quantity;
 				$_SESSION[ "msg" . $model->nama] = $req_msg;
 				
-
-
-				$this->redirect("barang/" . $id_barang);
+				// $this->redirect("barang/" . $id_barang);
+				 $this->redirect("cart/index");
 	}
+
+	public function delete(){
+		$quantity = 0;
+		$id_barang = $this->getParam();
+		$model = new Barang($id_barang);
+
+				$contain = 0;
+
+				if (!isset($_SESSION['cart_cat'])){
+					$_SESSION['cart_cat'] = array();
+				}
+
+				foreach ($_SESSION['cart_cat'] as $key) {
+					if ($key == $model->id_kategori){
+						$contain = 1;
+					}
+				}
+
+				if ($contain == 0) {
+					array_push($_SESSION['cart_cat'], $model->id_kategori);
+				}
+
+				$_SESSION[$model->nama]= $quantity;
+				$_SESSION[ "msg" . $model->nama] = $req_msg;
+				
+				 $this->redirect("cart/index");
+	}
+
 }	
 
 
+	

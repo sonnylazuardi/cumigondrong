@@ -39,7 +39,7 @@ function toRP($num) {
 	<form action = "<?php echo $this->makeUrl("barang/update"); ?>" method="post">
 		<label class='qty'>Quantity</label>
 		<input type='number' name="quantity" class='qty' value=1></input>
-		<input type="hidden" name="id_barang" value="<?php echo $model->id; ?>"
+		<input type="hidden" name="id_barang" value="<?php echo $model->id; ?>">
 		<p>Request Message :</p>
 		<textarea class='req_msg' name='req_msg'></textarea>
 		<input type='submit' class='cart' value = 'Add to Cart'></input>

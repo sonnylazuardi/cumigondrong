@@ -10,9 +10,8 @@
 						<div class = "list_head" id = "qty"><label>Qty</label> </div>
 						<div class = "list_head" id = "price"><label>Subtotal</label></div>
 						<div class = "list_head" id = "msg"><label>Message</label></div>
-							
+						<div class = "list_head" id = "price"><label>Action</label></div>	
 				</div>
-
 					<?php
 					$array = $model->cariSemua();
 					if ($array == null){
@@ -26,7 +25,7 @@
 								echo '<div class = "row">';
 								echo '<div class = "list_body" id = "no">'. $ind . '</div>' ; 
 								echo '<div class = "list_body" id = "item">'. $item->nama . '</div>' ; 
-								echo '<div class = "list_body" id = "qty">'. $_SESSION[$item->nama] . '</div>' ; 
+								echo '<div class = "list_body" id = "qty">'. $_SESSION[$item->nama] . '</div>' ;
 								$total_pars = $item->harga * $_SESSION[$item->nama];
 								echo '<div class = "list_body" id = "price">'. $total_pars . '</div>' ; 
 								if (isset($_SESSION[ 'msg' . $item->nama  ])){
@@ -35,7 +34,7 @@
 								else{
 									echo '<div class = "list_body" id = "msg"></div>' ;	
 								}
-
+								echo '<div class = "list_body" id ="price"><a href=" '. $this->getBaseUrl() . '/barang/'.$item->id.'">Edit</a>|<a href=" '. $this->getBaseUrl() . '/barang/delete/'.$item->id.'">Delete</a>  </div>';
 								$ind++;						
 								$total = $total + $total_pars;
 								echo '</div>'	;
@@ -43,12 +42,15 @@
 					}
 					echo '<div class = "row">';
 					echo "Total Pembayaran : $total";
-					echo '</div><br/>'	;
 					?>
 					<div class = "row">
-					<input type="btn" name="submit" value="Send" class="button">
-
+					<a href='<?php echo $this->getBaseUrl() ?>/profile/credit'><input type="btn" name="submit" value="Process to payment" class="button"></a>
+					<a href='<?php echo $this->getBaseUrl() ?>/index/home'><input type="btn" name="submit" value="Add Item" class="button"></a>
 					</div>
+					</div>
+					<br/>
+
+				
 			</div>
 
 					
