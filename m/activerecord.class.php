@@ -276,7 +276,7 @@ class ActiveRecord {
         if ($offset !== null && $count !== null) {
             $sql .= " LIMIT {$offset}, {$count}";
         }
-        //echo $sql;
+        // echo $sql;
         $stmt = $db->prepare($sql);
         $stmt->setFetchMode(PDO::FETCH_ASSOC);
         if (count($params))

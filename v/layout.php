@@ -168,8 +168,22 @@
 	</div>
 	<div class="search">
 		<form action="<?php echo $this->makeUrl('barang/search') ?>" method="get">
-			<?php $q = (isset($_GET['q'])?$_GET['q']:""); ?>
-			<input type="text" name="q" value="<?php echo $q ?>">
+			<?php 
+				$q = (isset($_GET['q'])?$_GET['q']:"");
+				$kat = (isset($_GET['kat'])?$_GET['kat']:""); 
+				$h1 = (isset($_GET['h1'])?$_GET['h1']:""); 
+				$h2 = (isset($_GET['h2'])?$_GET['h2']:""); 
+			?>
+			<input type="text" name="q" value="<?php echo $q ?>" placeholder="Nama Barang" required>
+			<select name="kat" value="<?php echo $kat ?>" required>
+				<option value="0">Semua</option>
+				<?php foreach ($_listkategori_ as $key => $value): ?>
+					<option value="<?php echo $value->id ?>"><?php echo $value->nama_kategori ?></option>
+				<?php endforeach ?>
+			</select>
+			<input type="text" name="h1" value="<?php echo $h1 ?>" placeholder="Harga Bawah" required>
+			<input type="text" name="h2" value="<?php echo $h2 ?>" placeholder="Harga Atas" required>
+			<button type="submit" class="btn">Search</button>
 		</form>
 	</div>
 </body>
