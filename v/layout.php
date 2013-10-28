@@ -160,8 +160,12 @@
 				?>
 			</div>
 		</div>
-			<h2 id='footer_txt'><b>www.calvinsalvy.com Oficial Website</b></br>Karena rasa adalah segalanya.</h2>
-			<a href='https://twitter.com/darksta5'><img title='@calvinsalvy' src='<?php echo $this->getBaseUrl() ?>/img/site/twitter.png' id='footer_img'/></a>
+		<div id='search_box'>
+			<label>search</label>
+			<input type='text'></input>
+		</div>
+		<h2 id='footer_txt'><b>www.calvinsalvy.com Oficial Website</b></br>Karena rasa adalah segalanya.</h2>
+		<a href='https://twitter.com/darksta5'><img title='@calvinsalvy' src='<?php echo $this->getBaseUrl() ?>/img/site/twitter.png' id='footer_img'/></a>
 	</div>
 <?php if (isset($effect)&&$effect) echo "</div>" ?>
 	<div id='login_cont'>

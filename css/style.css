@@ -161,13 +161,29 @@ div.prolog{
        FOOTER
 ***********************/
 #footer_txt {
-	width:900px;
+	width:300px;
 	float:left
 }
 #footer_img {
 	float:left;
 	margin-top:4px;
 	margin-left:10px;
+}
+#search_box {
+	width: 400px;
+	margin-left: 200px;
+	height: 30px;
+	float:left;
+	background: red;
+}
+
+#search_box label {
+	width: 60px;
+	display: inline-block;
+}
+#search_box input {
+	padding: 3px;
+	font-style: 
 }
 
 
@@ -507,7 +523,7 @@ form > input, form > div > input {
   C A T E G O R I E S
 ***********************/
 div.group_product_cont {
-	/*float : left;*/
+	float : left;
 	display: block;
 	margin: 0 auto;
 	width : 797px;
@@ -519,7 +535,7 @@ div.nextarrow.short, div.prevarrow.short {
 	height : 340px;
 }
 
-div.hidden {
+div.hidden, div.group_product_cont.hidden {
 	position: absolute;
 	top:-1000px;
 	opacity: 0;
