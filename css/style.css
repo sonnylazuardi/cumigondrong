@@ -292,6 +292,17 @@ h4 { /*for product name title*/
 	padding: 10px;
 }
 
+	h4.small {
+		font-size: 20px;
+		padding: 5px;
+		line-height: 15px;
+		cursor: pointer;
+	}
+
+	h4.small:hover {
+		background: #111;
+	}
+
 h5 { /*for product page title*/
 	font-family : Candara;
 	font-size: 30px;
@@ -415,29 +426,37 @@ form > input, form > div > input {
 	cursor: pointer;
 	position: relative;
     color: #fff;
-    font-weight: bold;
+    font-weight: normal;
     text-decoration: none;
     background-color: #666;
-    -webkit-box-shadow: 0px 9px 0px rgba(50,50,50,1), 0px 9px 25px rgba(0,0,0,.7);
-    -moz-box-shadow: 0px 9px 0px rgba(50,50,50,1), 0px 9px 25px rgba(0,0,0,.7);
-    box-shadow: 0px 9px 0px rgba(50,50,50,1), 0px 9px 25px rgba(0,0,0,.7);
-	/*width: 530px;*/
+    /*-webkit-box-shadow: 0px 3px 0px rgba(50,50,50,1), 0px 3px 5px rgba(0,0,0,.7);
+    -moz-box-shadow: 0px 3px 0px rgba(50,50,50,1), 0px 3px 5px rgba(0,0,0,.7);
+    box-shadow: 0px 3px 0px rgba(50,50,50,1), 0px 3px 5px rgba(0,0,0,.7);
+	width: 530px;*/
 	text-align: center;
-	-webkit-transition: all .1s ease;
+	/*-webkit-transition: all .1s ease;
 	-moz-transition: all .1s ease;
 	-ms-transition: all .1s ease;
 	-o-transition: all .1s ease;
 	transition: all .1s ease;
-	-webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
-    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+	-webkit-touch-callout: none;
+    -webkit-user-select: none;  */
+}
+
+.btn.small {
+	padding: 3px 10px;
 }
 
 .btn:active {
-    -webkit-box-shadow: 0px 3px 0px rgba(50,50,50,1), 0px 3px 6px rgba(0,0,0,.9);
-    -moz-box-shadow: 0px 3px 0px rgba(50,50,50,1), 0px 3px 6px rgba(0,0,0,.9);
-    box-shadow: 0px 3px 0px rgba(50,50,50,1), 0px 3px 6px rgba(0,0,0,.9);
+    /*-webkit-box-shadow: 0px 1px 0px rgba(50,50,50,1), 0px 3px 0px rgba(0,0,0,.9);
+    -moz-box-shadow: 0px 1px 0px rgba(50,50,50,1), 0px 3px 0px rgba(0,0,0,.9);
+    box-shadow: 0px 1px 0px rgba(50,50,50,1), 0px 3px 0px rgba(0,0,0,.9);*/
     position: relative;
-    top: 6px;
+    top: 0px;
+}
+
+.btn:hover {
+	background-color:#444;
 }
 
 .btn:disabled {
@@ -678,17 +697,47 @@ div.browse{
 ***********************/
 div.vertdiv {
 	display: inline-block;
-	text-align: left;
+	text-align: center;
 	margin: 0px 2px;
 }
 
-div.itembox_img {
+div.itembox {
 	margin: 4px 0px;
-	width: 150px;
-	height: 170px;
+	width: 180px;
+	height: 175px;
 	overflow: hidden;
 	background-color: white;
 	border: 2px solid white;
+}
+
+div.itembox_img {
+	width: 180px;
+	height: 175px;
+	overflow: hidden;
+	background-color: white;
+}
+
+div.header_divider {
+	width: 49%;
+	height: 50px;
+	display: inline-block;
+	text-align: left;
+}
+
+div.minicart_icon {
+	width: 25px;
+	height: 25px;
+	margin-top : -30px;
+	top : -10px;
+	line-height: -10px;
+	z-index: 10;
+}
+
+div.minicart {
+	width: 170px;
+	height: 165px;
+	padding: 5px;
+	background: #444;
 }
 
 /***********************
@@ -750,9 +799,19 @@ label.qty {
 	display: inline-block;
 }
 
+label.qty.small {
+	width: 80px;
+	display: inline-block;
+}
+
 textarea.req_msg {
 	width: 190px;
 	height: 120px;
+}
+
+textarea.req_msg.small {
+	width: 160px;
+	height: 50px;
 }
 
 input.qty {
@@ -774,8 +833,30 @@ input.cart {
 	background-position: top center;
 	cursor: pointer;
 }
+
+input.cart.small {
+	width: 150px;
+	height: 25px;
+	margin-top:5px;
+	padding-top:0;
+	line-height: 0;
+	background: #ddd;
+	font-family: code_lightregular;
+	font-size: 20px;
+	cursor: pointer;
+}
+
 input.cart:hover {
 	background-color: #888;
+}
+
+.back {
+	text-align: left;
+	display: block;
+	margin-top :0;
+	line-height: 10px;
+	font-size: 12px;
+	cursor: pointer;
 }
 
 /***********************
@@ -807,6 +888,11 @@ div.triplebest div.best {
 .sorting, .pagination {
 	float: right;
 }
+
+.sorting {
+	margin-top : 10px;
+}
+
 .pagination ul {
 	list-style: none;
 }
@@ -919,6 +1005,13 @@ div#search-popup-content input {
 	margin : 10px 5px;
 	font-size: 12px;
 	line-height: 12px;
+}
+
+div#search-popup-content p {
+	cursor: pointer;
+	margin-top:-45px;
+	margin-left : 185px;
+	margin-bottom: 30px;
 }
 
 div#search-popup-content select {

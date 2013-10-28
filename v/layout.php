@@ -103,7 +103,7 @@
 					<p class="left"> welcome, <?php echo $this->userLogged() ?>! (<a href='<?php echo $this->makeUrl('profile/index') ?>/'>Profile</a> | <a href='<?php echo $this->makeUrl('index/logout') ?>'>Logout</a>)
 					</p>
 					<p class="right">
-						<a href="<?php echo $this->makeUrl('/cart/index') ?>">Shopping Cart</a> <img src='<?php echo $this->getBaseUrl() ?>/img/site/cart_black.png' style='margin-right:5px;'/>
+						<a href="<?php echo $this->makeUrl('/cart/index') ?>">Shopping Cart</a> <img src='<?php echo $this->getBaseUrl() ?>/img/site/cart_white.png' style='margin-right:5px;'/>
 					</p>
 				<?php else: ?>
 					<p>You are not login. (<a href='#' onclick='showLogin()'>Login</a> or <a href='<?php echo $this->getBaseUrl() ?>/index/register'>Register now</a>)</p>
@@ -189,6 +189,19 @@
 				}, 5);
 			}
 		}
+		function _closesearchbox(margin) {
+			if (margin>=-200) {
+				document.getElementById('search-popup-content').style.marginLeft = margin.toString()+"px";
+				setTimeout(function(){
+					_closesearchbox(margin-2);
+				}, 5);
+			}
+			else {
+				setTimeout(function(){
+					_showicon(-75);
+				}, 100);
+			}
+		}
 		function _hideicon(margin) {
 			if (margin>=-70) {
 				document.getElementById('search-popup').style.marginLeft = margin.toString()+"px";
@@ -202,8 +215,19 @@
 				}, 100);
 			}
 		}
+		function _showicon(margin) {
+			if (margin<=0) {
+				document.getElementById('search-popup').style.marginLeft = margin.toString()+"px";
+				setTimeout(function(){
+					_showicon(margin+2);
+				}, 5);
+			}
+		}
 		function opensearch() {
 			_hideicon(0);
+		}
+		function closesearch() {
+			_closesearchbox(0);
 		}
 	</script>
 	<div id='search-popup' onclick='opensearch()'></div>
@@ -215,7 +239,9 @@
 				$h1 = (isset($_GET['h1'])?$_GET['h1']:""); 
 				$h2 = (isset($_GET['h2'])?$_GET['h2']:""); 
 			?>
-			<h4>Search</h4><input type="text" name="q" value="<?php echo $q ?>" placeholder="Nama Barang" required>
+			<h4>Search</h4>
+			<p onclick='closesearch()'>x</p>
+			<input type="text" name="q" value="<?php echo $q ?>" placeholder="Nama Barang" required>
 			<select name="kat" value="<?php echo $kat ?>" required>
 				<option value="0">All Categories</option>
 				<?php foreach ($_listkategori_ as $key => $value): ?>
