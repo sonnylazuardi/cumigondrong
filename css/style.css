@@ -777,3 +777,67 @@ input.cart:hover {
 .pagination ul > li > a {
 	color: #999;
 }
+/***********************
+  	ORDER CHART
+***********************/
+
+.payment_div {
+	width:80%;
+	overflow: auto;
+	text-align: center;
+	height : 350px;
+}
+
+input.button{
+	height : 25px;
+	width : 120px;
+	margin-top : 15px;
+	margin-right : 10px;
+	float : right;
+	background :#CCCCCC;
+	border :1px solid #888888;
+	cursor : pointer;
+	font-size : 12px;
+	line-height : 25px;
+	text-align : center;
+	}
+
+	input.button:hover{
+		background :#888888;
+		color :white;
+	}
+
+
+#contentV_m div{
+	overflow : hidden;
+}
+div#no{width:30px;}
+div#item{width:165px;}
+div#price{width:75px;}
+div#qty{width:40px;}
+div#msg{width: 300px;}
+
+div.list_head{
+	border-bottom : 1px solid #555555;
+	height : 30px;
+	float : left;
+}
+
+div.list_body{
+	border-bottom : 1px solid #d3852f;
+	height : 35px;
+	float : left;
+}
+
+div.row p{
+	font-size: 12px;
+	line-height : 12px;
+	text-align : left;
+	color : #131313;
+}
+
+div#no p{margin-top : 10px;text-align:center;}
+div#item p{margin-top : 4px;margin-left : 2px;}
+div#price p{margin-top : 10px;margin-left : 2px;text-align:center}
+div#qty p{margin-top : 10px;text-align:center;margin-left : 0px;}
+div#msg p{margin-top : 0px;margin-left : 2px;text-align:center;}

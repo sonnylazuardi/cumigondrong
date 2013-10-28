@@ -81,4 +81,20 @@ class Template {
         $str .= "<ul>";
         return $str;
     }
+
+    public function toCurrency($num) {
+        // PRICE ADVANCE PRINT IN Rp
+        $price = strval($num);
+        $price = strrev($price); 
+        $nchar = strlen($price);
+        $rp = '';
+        for($i=0;$i<strlen($price);$i++){
+            $rp .= $price[$i];
+            if((($i+1)%3==0)&&($i!=(strlen($price)-1))){
+                $rp .= '.';
+            }
+        }
+        $rp = strrev($rp); 
+        return $rp;
+    }
 }

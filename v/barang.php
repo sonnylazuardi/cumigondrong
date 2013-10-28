@@ -15,12 +15,14 @@ function toRP($num) {
 	return $rp;
 }
 
+
+
 ?>
 <script type="text/javascript">
 	function fitpict(obj) {
 		fitimg(obj,340,340,true,true);
 	}
-</script>
+</script>	
 <h1 class='header'><?php echo $model->nama ?></h1>
 <div class='item_pict'>
 	<img src='<?php echo $this->getBaseUrl() ?>/img/barang/<?php echo $model->gambar; ?>' onload='fitpict(this)' ></img>
@@ -34,10 +36,12 @@ function toRP($num) {
 <div class='item_price'>
 		<p>get it for :</p>
 		<h4>IDR <?php echo toRP($model->harga) ?></h4>
-	<form>
-		<label class='qty'>Quantity</label><input type='number' class='qty' value=1></input>
+	<form action = "<?php echo $this->makeUrl("barang/update"); ?>" method="post">
+		<label class='qty'>Quantity</label>
+		<input type='number' name="quantity" class='qty' value=1></input>
+		<input type="hidden" name="id_barang" value="<?php echo $model->id; ?>">
 		<p>Request Message :</p>
 		<textarea class='req_msg' name='req_msg'></textarea>
-		<input type='submit' class='cart' value='Add to Cart'></input>
+		<input type='submit' class='cart' value = 'Add to Cart'></input>
 	</form>
 </div>
