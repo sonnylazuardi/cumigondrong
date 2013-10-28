@@ -21,15 +21,6 @@ class profileController extends dasarController {
 		$template->model = $model;
 		$template->show('layout');	
 	}
-	public function cekCredit() {
-		$account = $this->loadAccount();
-		$res = $model->cari('id_account=:i', array(':i'=>$account->id));
-		if ($res != null) {
-			$this->redirect('cart/payment');
-		} else {
-			$this->redirect('cart/payment');
-		}
-	}
 	public function loadAccount() {
 		$model = new Account();
 		$result = $model->cari('username=:u',array(':u'=>$_SESSION['account_id']));
@@ -37,22 +28,32 @@ class profileController extends dasarController {
 		return $model;
 	}
 
-	public function credit($redirect='profile/index') {
+	public function credit() {
+		$edit=isset($_GET['edit']);
+		$redirect=(isset($_GET['redirect']) ? $_GET['redirect'] : 'profile/index');
+
 		$account = $this->loadAccount();
+
 		$model = new Credit();
 		$res = $model->cari('id_account=:i', array(':i'=>$account->id));
+		$template = $this->brankas->template;
+
 		if ($res == null) {
 			$model = new Credit();
 			$model->id_account = $account->id;
 			$model->name_of_card = $account->nama;
 			$model->expired_date = date('Y-m-d');
+			$template->sudahSet = false;
+		} else {
+			$template->sudahSet = true;
+			if (!$edit) $this->redirect($redirect);
 		}
 		if (isset($_POST['Credit'])) {
 			$model->populasi($_POST['Credit'], array('card_number', 'name_of_card', 'expired_date'));
 			$model->simpan();
 			$this->redirect($redirect);
 		}
-		$template = $this->brankas->template;
+		
 		$template->view = "credit";
 		$template->model = $model;
 		$template->show('layout');
