@@ -23,7 +23,7 @@ function toRP($num) {
 		fitimg(obj,340,340,true,true);
 	}
 </script>
-<h1 class='header'><?php echo $model->nama ?></h1>
+<h1 class='small-header'><?php echo $model->nama ?></h1>
 <div class='item_pict'>
 	<img src='<?php echo $this->getBaseUrl() ?>/img/barang/<?php echo $model->gambar; ?>' onload='fitpict(this)' ></img>
 </div>

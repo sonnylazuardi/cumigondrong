@@ -8,6 +8,20 @@
 	<title><?php echo $this->brankas->config['title'] ?></title>
 	<link rel='stylesheet' type='text/css' href='<?php echo $this->getBaseUrl() ?>/css/style.css' />
 	<script type="text/javascript">
+		function hasClass(ele,cls) {
+			return ele.className.match(new RegExp('(\\s|^)'+cls+'(\\s|$)'));
+		}
+		 
+		function addClass(ele,cls) {
+			if (!this.hasClass(ele,cls)) ele.className += " "+cls;
+		}
+		 
+		function removeClass(ele,cls) {
+			if (hasClass(ele,cls)) {
+			var reg = new RegExp('(\\s|^)'+cls+'(\\s|$)');
+			ele.className=ele.className.replace(reg,' ');
+			}
+		}
 		function fitimg(obj,width,height,xfit,yfit)
 		{
 			var objheight = obj.offsetHeight;
@@ -18,7 +32,7 @@
 				obj.width = width;
 				obj.height = height;
 			}
-			else if (screen>fit){
+			else if (screen<fit){
 					obj.height = height;
 					if (xfit) {
 						obj.width = (height/screen);

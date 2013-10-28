@@ -1,8 +1,18 @@
 <?php  
 class IndexController extends dasarController {
 	public function index($effect = true) {
+		$model = array();
+		$kategori = new Kategori();
+		$kategori_arr = $kategori->cariSemua();
+		$index = 1;
+		foreach ($kategori_arr as $value) {
+			$barang = new Barang();
+			$model[$index] = $barang->tripleBestCategory($value->id);
+			$index++;
+		}
 		$template = $this->brankas->template;
 		$template->view = "index";
+		$template->model = $model;
 		$template->effect = $effect;
 		$template->show('layout');
 	}
