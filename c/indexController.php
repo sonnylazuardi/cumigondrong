@@ -9,6 +9,7 @@ class IndexController extends dasarController {
 	public function home() {
 		$this->index(false);
 	}
+	
 	public function login() {
 		$model = new Login();
 		if (isset($_POST['Login'])) {
