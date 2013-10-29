@@ -133,7 +133,7 @@
 						</div>
 					</a>";
 				}
-				$minKategori = (min(array(count($_listkategori_),4)));
+				$minKategori = (min(array(count($_listkategori_),5)));
 				foreach ($_listkategori_ as $key => $value) {
 					if ($key<4) {
 						writeMenu($value,$this->getBaseUrl(),$minKategori);
