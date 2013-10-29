@@ -27,7 +27,7 @@ function cekQuantity(id_brg) {
 					document.getElementById('form-shop-'+id_brg).submit();
 				}
 			} else {
-				alert("Stok untuk barang tersebut tidak cukup");
+				alert("Stok untuk barang tersebut tidak cukup, stok barang bersisa "+data.stok);
 			}
 		}
 	}
@@ -52,7 +52,7 @@ function cekCart(nama_brg, defaultValue) {
 				window.location.reload();
 			} else {
 				document.getElementById('quantity_'+nama_brg).value = defaultValue;
-				alert("Stok untuk barang tersebut tidak cukup");
+				alert("Stok untuk barang tersebut tidak cukup, stok barang bersisa "+data.stok);
 			}
 		}
 	}

@@ -51,10 +51,10 @@ class apiController extends dasarController {
 		$id_barang = $_GET['id_barang'];
 		$quantity = $_GET['quantity'];
 		$model = new Barang($id_barang);
-		if ($quantity < $model->stok && $quantity >= 0) {
+		if ($quantity <= $model->stok && $quantity >= 0) {
 			echo json_encode(array("status"=>true));
 		} else {
-			echo json_encode(array("status"=>false));
+			echo json_encode(array("status"=>false, "stok"=>$model->stok));
 		}
 	}
 	public function changeQuantity() {
@@ -62,12 +62,12 @@ class apiController extends dasarController {
 		$quantity = $_GET['quantity'];
 		$model = new Barang();
 		$model = $model->cari('nama=:a',array(':a'=>$nama_barang));
-		if ($quantity < $model->stok && $quantity >= 0) {
+		if ($quantity <= $model->stok && $quantity >= 0) {
 			if(isset($_SESSION[$nama_barang]))
 			$_SESSION[$nama_barang] = $quantity;
 			echo json_encode(array("status"=>true));
 		} else {
-			echo json_encode(array("status"=>false));
+			echo json_encode(array("status"=>false, "stok"=>$model->stok));
 		}
 	}
 	public function creditNumberValid() {

@@ -20,8 +20,8 @@ SET time_zone = "+00:00";
 --
 -- Basis data: `ruserba`
 --
-CREATE DATABASE IF NOT EXISTS `ruserba` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `ruserba`;
+-- CREATE DATABASE IF NOT EXISTS `ruserba` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+-- USE `ruserba`;
 
 -- --------------------------------------------------------
 

@@ -28,7 +28,7 @@
 					<p class='layout_detail'><b>Description</b></p>
 					<p class='layout_detail'>-Sub Description-</p></div>
 					<div class='cat_detail'></div>
-					<a href='browse.php?cat=FO' target=''><div class='browse'><h1>BROWSE</h1></div></a>
+					<a href='".$this->makeUrl('kategori/view/'.$value->id)."' target=''><div class='browse'><h1>BROWSE</h1></div></a>
 				</div>
 			</div>
 			";
