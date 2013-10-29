@@ -119,7 +119,7 @@
 		echo "' id='cont".$key."'>
 					<h1 class='header'>".$value['kat_data']->nama_kategori."<h1>
 					<div class='triplebest'>";
-		for ($i=0; $i < 3; $i++) 
+		for ($i=0; $i < 4; $i++) 
 			echo "<a href='".$this->getBaseUrl()."/barang/view/".$value[$i]->id."''><div class='best'><img title='".$value[$i]->nama." (IDR ".$this->toCurrency($value[$i]->harga).")' onload='fitBest(this)' src='".$this->getBaseUrl()."/img/barang/".$value[$i]->gambar."'/></div></a>";
 		echo "		</div>
 				</div>";
@@ -128,7 +128,7 @@
 
 <script type="text/javascript">
 	function fitBest(obj) {
-		fitimg(obj,300,330,true,true,false);
+		fitimg(obj,220,150,true,true,false);
 	}
 </script>
 

@@ -7,7 +7,7 @@ class IndexController extends dasarController {
 		$index = 1;
 		foreach ($kategori_arr as $value) {
 			$barang = new Barang();
-			$model[$index] = $barang->tripleBestCategory($value->id);
+			$model[$index] = $barang->fourBestCategory($value->id);
 			$index++;
 		}
 		$template = $this->brankas->template;

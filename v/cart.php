@@ -29,7 +29,7 @@
 									<div class='list_body' id='no'><p>".$ind.".</p></div>
 									<div class='list_body' id='item'><p><b>".$kategori->cari('id=:_id',array('_id'=>$brg->id_kategori))->nama_kategori." :</b><br/> &nbsp &nbsp &nbsp".$item."</p></div>
 									<div class='list_body' id='price'><p>IDR ".$this->toCurrency($brg->harga)."</p></div>
-									<div class='list_body' id='qty'><p>".$_SESSION[$item]."</p></div>
+									<div class='list_body' id='qty'><input type='number' value='".$_SESSION[$item]."'></input></div>
 									<div class='list_body' id='subtotal'><p>IDR ".$this->toCurrency($brg->harga*$_SESSION[$item])."</p></div>
 								</div>
 								";
