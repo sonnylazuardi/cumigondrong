@@ -52,9 +52,9 @@ class apiController extends dasarController {
 		$quantity = $_GET['quantity'];
 		$model = new Barang($id_barang);
 		if ($quantity < $model->stok) {
-			return json_encode(array("status"=>false));
+			echo json_encode(array("status"=>true));
 		} else {
-			return json_encode(array("status"=>true));
+			echo json_encode(array("status"=>false));
 		}
 	}
 	

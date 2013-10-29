@@ -31,7 +31,7 @@ class profileController extends dasarController {
 	public function credit() {
 		$edit=isset($_GET['edit']);
 		$redirect=(isset($_GET['redirect']) ? $_GET['redirect'] : 'profile/index');
-
+		
 		$account = $this->loadAccount();
 
 		$model = new Credit();
