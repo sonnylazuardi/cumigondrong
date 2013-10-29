@@ -54,7 +54,7 @@ class apiController extends dasarController {
 		if ($quantity < $model->stok && $quantity >= 0) {
 			echo json_encode(array("status"=>true));
 		} else {
-			echo json_encode(array("status"=>false));
+			echo json_encode(array("status"=>false, "stok"=>$model->stok));
 		}
 	}
 	public function changeQuantity() {

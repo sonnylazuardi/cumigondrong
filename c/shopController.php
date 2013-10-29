@@ -62,6 +62,7 @@ class ShopController extends dasarController{
 						$order_item->simpan();
 
 						$brg->stok -= $_SESSION[$x];
+						$brg->counter += $_SESSION[$x];
 						$brg->simpan();
 
 			 			unset($_SESSION[$x]);

@@ -12,7 +12,7 @@ if (count($model->error) > 0) {
 	<div class='register_div'>
 		<h1 class='header'>Register</h1>
 		<div class='per_form'>
-			<label>Nama</label><input type="text" name="Register[nama]" id="nama" value="<?php echo $model->nama ?>" onkeyup="Register.cekNama()" required>
+			<label>Nama Lengkap</label><input type="text" name="Register[nama]" id="nama" value="<?php echo $model->nama ?>" onkeyup="Register.cekNama()" required>
 			<span class='error' id="error-nama"></span>
 		</div>
 		
@@ -43,7 +43,7 @@ if (count($model->error) > 0) {
 		</div>
 		
 		<div class='per_form small'>
-			<label>Provinsi: </label>
+			<label>Provinsi</label>
 			<select value="<?php echo $model->provinsi ?>" name="Register[provinsi]" id="provinsi" required>
 				<option value="">Pilih Provinsi :</option>
 				<?php 
