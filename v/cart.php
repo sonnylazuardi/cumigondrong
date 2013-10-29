@@ -37,7 +37,9 @@
 								$ind++;
 							}
 						}
-						} ?>			
+						} 
+						$_SESSION['total_shopping'] = $total;
+						?>			
 						<div class='row'>
 							<div class='list_foot' id='totallabel'><h6>TOTAL</h6></div>
 							<div class='list_foot' id='total'><p>IDR <?php echo $this->toCurrency($total) ?></p></div>
