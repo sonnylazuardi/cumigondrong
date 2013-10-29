@@ -105,29 +105,28 @@ $query = array(
 			if (($key==0)||(($key%2)==0)){
 				echo "<div class='vertdiv'>";
 			}
-			echo "<a href='".$this->getBaseUrl()."/barang/".$value->id."'>
-						<div class='itembox'>
-							<div class='pict' id='item".$value->id."'>
-								<div title='".$value->nama." (IDR ".$this->toCurrency($value->harga).")' class='itembox_img'>
-									<img onload='fitbarang(this)' src='".$this->getBaseUrl()."/img/barang/".$value->gambar."'/>
-								</div>
-								<div class='minicart_icon'>
-									<a href=# onclick='goToCart(".$value->id.")'><img src='".$this->getBaseUrl()."/img/site/cart_black.png'/></a>
-								</div>
+			echo "	<div class='itembox'>
+						<div class='pict' id='item".$value->id."'>
+							<div title='".$value->nama." (IDR ".$this->toCurrency($value->harga).")' class='itembox_img'>
+								<img onload='fitbarang(this)' src='".$this->getBaseUrl()."/img/barang/".$value->gambar."'/>
 							</div>
-							<div class='minicart hidden' id='cart".$value->id."'>
-								<form action = ".$this->makeUrl("barang/update")." id='form-shop-".$value->id."' method='post' onsubmit='cekQuantity(".$value->id."); return false;'>
-									<label class='qty small'>Quantity</label>
-									<input type='number' name='quantity' id='quantity_".$value->id."' class='qty' value=1></input>
-									<input type='hidden' name='id_barang' id='id_barang_".$value->id."' value='".$value->id."'>
-									<p>Request Message :</p>
-									<textarea class='req_msg small' name='req_msg'></textarea>
-									<input type='submit' class='cart small' value = 'Add to Cart'></input>
-									<p class='back' href=# onclick='backToPict(".$value->id.")'>back</p>
-								</form>
+							<div class='minicart_icon'>
+								<a href=# onclick='goToCart(".$value->id.")'><img src='".$this->getBaseUrl()."/img/site/cart_black.png'/></a>
 							</div>
+							<div class='item_name'><a href='".$this->getBaseUrl()."/barang/".$value->id."'>".$value->nama."</a><br/>IDR ".$value->harga."</div>
 						</div>
-					</a>";
+						<div class='minicart hidden' id='cart".$value->id."'>
+							<form action = ".$this->makeUrl("barang/update")." id='form-shop-".$value->id."' method='post' onsubmit='cekQuantity(".$value->id."); return false;'>
+								<label class='qty small'>Quantity</label>
+								<input type='number' name='quantity' id='quantity_".$value->id."' class='qty' value=1></input>
+								<input type='hidden' name='id_barang' id='id_barang_".$value->id."' value='".$value->id."'>
+								<p>Request Message :</p>
+								<textarea class='req_msg small' name='req_msg'></textarea>
+								<input type='submit' class='cart small' value = 'Add to Cart'></input>
+								<p class='back' href=# onclick='backToPict(".$value->id.")'>back</p>
+							</form>
+						</div>
+					</div>";
 			// VERTICAL DIV CLOSER
 			if (($key%2)==1||($key==(count($model)-1))||($key==9))echo "</div>";
 		}

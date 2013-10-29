@@ -25,6 +25,13 @@
 	<div class="per_form">
 		<label>Telepon:</label><p><?php echo $model->telepon ?></p>
 	</div>
+	<div class="per_form">
+		<?php
+			$order = new Order(); 
+			$order_count = $order->jumlahSemua('id_account=:a', array(':a'=>$model->id));
+		?>
+		<label>Transaksi:</label><p><?php echo $order_count ?></p>
+	</div>
 	<a href="<?php echo $this->makeUrl('profile/edit') ?>" class="btn">Edit Profile</a>
 </div>
 

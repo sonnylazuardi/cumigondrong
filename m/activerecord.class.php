@@ -119,7 +119,7 @@ class ActiveRecord {
         
         $sql = "INSERT INTO `{$this->_tableName}` (".implode(', ', $fields['left']).') VALUES ('.implode(', ', $fields['right']).');';
     
-        echo $sql;
+        // echo $sql;
         $db = $this->getCheckedDBConnection();
         $stmt = $db->prepare($sql);
         $stmt->execute($values);

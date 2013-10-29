@@ -47,6 +47,7 @@ class BarangController extends dasarController {
 		$res = $model->cariSemua($sql, $params, ($hal-1)*10, 10, $sort);
 		$template = $this->brankas->template;
 		$template->paging = $template->paginasi($total, $hal, 10);
+		$template->search_show = true;
 		$template->view = 'browse';
 		$template->title = 'Search';
 		$template->model = $res;
@@ -57,25 +58,30 @@ class BarangController extends dasarController {
 		$quantity = $_POST['quantity'];
 		$req_msg = $_POST['req_msg'];
 		$id_barang = $_POST['id_barang'];
+
 		$model = new Barang($id_barang);
 
-				// $contain = 0;
-
-				// if (!isset($_SESSION['cart_cat'])){
-				// 	$_SESSION['cart_cat'] = array();
-				// }
-
-				// foreach ($_SESSION['cart_cat'] as $key) {
-				// 	if ($key == $model->id_kategori){
-				// 		$contain = 1;
-				// 	}
-				// }
-
-				// if ($contain == 0) {
-				// 	array_push($_SESSION['cart_cat'], $model->id_kategori);
-				// }
-
 				$_SESSION[$model->nama]= $quantity;
+
+				//added to $_SESSION['dibeli']
+				if (isset($_SESSION["dibeli"])){
+					$isAda =false;
+					foreach ($_SESSION["dibeli"] as $key ) {
+						if ($key == $model->nama){
+							$isAda =true;							
+						}
+					}
+					if ($isAda == false){
+						$arr =$_SESSION["dibeli"];
+						array_push($arr, $model->nama);
+						$_SESSION["dibeli"]=$arr;						
+					}
+				
+				}
+				else{
+					$_SESSION["dibeli"] = array($model->nama);
+				}
+
 				$_SESSION[ "msg" . $model->nama] = $req_msg;
 				
 				 $this->redirect("cart/index");
@@ -86,25 +92,9 @@ class BarangController extends dasarController {
 		$id_barang = $this->getParam();
 		$model = new Barang($id_barang);
 
-				// $contain = 0;
-
-				// if (!isset($_SESSION['cart_cat'])){
-				// 	$_SESSION['cart_cat'] = array();
-				// }
-
-				// foreach ($_SESSION['cart_cat'] as $key) {
-				// 	if ($key == $model->id_kategori){
-				// 		$contain = 1;
-				// 	}
-				// }
-
-				// if ($contain == 0) {
-				// 	array_push($_SESSION['cart_cat'], $model->id_kategori);
-				// }
-
-				$_SESSION[$model->nama]= $quantity;
-				$_SESSION[ "msg" . $model->nama] = $req_msg;
+		$_SESSION[$model->nama]= $quantity;
+		$_SESSION[ "msg" . $model->nama] = $req_msg;
 				
-				 $this->redirect("cart/index");
+		$this->redirect("cart/index");
 	}
 }	
