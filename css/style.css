@@ -885,7 +885,7 @@ input.cart:hover {
   	   H  O  M  E
 ***********************/
 div.home_categori {
-	width: 100%;
+	width: 50%;
 	height: 100%;
 	opacity: 1;
 }
@@ -898,9 +898,9 @@ div.triplebest {
 }
 
 div.triplebest div.best {
-	width: 300px;
-	height: 330px;
-	margin : 0 5px;
+	width: 220px;
+	height: 150px;
+	margin : 5px 5px;
 	background: white;
 	display: inline-block;
 	text-align: center;
@@ -929,6 +929,10 @@ div.triplebest div.best {
 	color: #999;
 }
 
+.howto {
+	width: 50%;
+	float:right;
+}
 
 /***********************
   	ORDER CHART
@@ -1122,31 +1126,6 @@ div.formbox {
 	border-bottom : 1px solid #AAAAAA;
 }
 
-div.data {
-	width : 220px;
-	float : left;
-	margin-top : 2px;
-}
-	div.data input{
-		margin : 2px;
-		padding : 2px;
-		float : left;
-		font-size : 12px;
-		text-align : left;
-		color : #535353;
-		background : white;
-		border : 1px solid #555555;
-	}
-
-div.label p, div.data p{
-	font-size : 12px;
-	text-align : left;
-	line-height : 25px;
-	color : #535353;
-	margin : 0px;
-	margin-left : 3px;
-}
-
 div.orderdata{
 	display:block;
 	width:960px;
@@ -1219,12 +1198,13 @@ textarea{
 	overflow : hidden;
 }
 div#no{width:30px;}
-div#item{width:215px;}
+div#item{width:180px;}
 div#price{width:100px;}
 div#qty{width:45px;}
 div#subtotal{width:120px;}
-div#totallabel{width:60px;padding-left:350px}
-div#total{width:100px;}
+div#totallabel{width:60px;padding-left:305px;}
+div#total{width:100px;padding-right: 40px;}
+div#remove{width:30px;}
 
 div.list_head{
 	border-bottom : 2px solid #555555;
@@ -1255,9 +1235,10 @@ div.row p{
 div#no p{margin-top : 10px;text-align:center;}
 div#item p{margin-top : 4px;margin-left : 2px;}
 div#price p{margin-top : 10px;margin-left : 2px;text-align:center}
-div#qty p{margin-top : 10px;text-align:center;margin-left : 0px;}
+div#qty input{margin-top : 5px;text-align:center;margin-left : 6px;width: 30px;padding: 3px;background: #ccc;}
 div#subtotal p{margin-top : 10px;margin-left : 2px;text-align:center}
 div#total p{margin-top : 5px;margin-left : 2px;text-align:center;color:red;font-weight: bold;}
+div#remove p{margin-top : 10px;margin-left : 2px;text-align:center;color:red;font-weight: bold;cursor: pointer;}
 
 div.row{
 	width : 100%;
