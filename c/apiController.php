@@ -48,14 +48,15 @@ class apiController extends dasarController {
 		}
 	}
 	public function stokCukup() {
-		$quantity = $_GET['quantity'];
 		$id_barang = $_GET['id_barang'];
+		$quantity = $_GET['quantity'];
 		$model = new Barang($id_barang);
 		if ($quantity < $model->stok) {
-			return json_encode(array('status'=>false));
+			return json_encode(array("status"=>false));
 		} else {
-			return json_encode(array('status'=>true));
+			return json_encode(array("status"=>true));
 		}
+	}
 
 	public function creditNumberValid() {
 		$credit_number = $_GET['credit_number'];
