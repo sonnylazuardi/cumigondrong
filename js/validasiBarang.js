@@ -7,14 +7,25 @@ if (window.XMLHttpRequest) {// code for IE7+, Firefox, Chrome, Opera, Safari
 }
 
 
-function cekQuantity() {
-	var id_barang = document.getElementById('id_barang').value;
-	var quantity = document.getElementById('quantity').value;
+function cekQuantity(id_brg) {
+	var quantity;
+	id_brg = typeof id_brg !== 'undefined' ? id_brg : 0;
+	if (id_brg == 0) {
+		id_barang = document.getElementById('id_barang').value;
+		quantity = document.getElementById('quantity').value;
+	} else {
+		id_barang = document.getElementById('id_barang_'+id_brg).value;
+		quantity = document.getElementById('quantity_'+id_brg).value;
+	}
 	xmlhttp.onreadystatechange=function() {
 		if (xmlhttp.readyState==4 && xmlhttp.status==200) {
 			var data = JSON.parse(xmlhttp.responseText);
 			if (data.status) {
-				document.getElementById('form-shop').submit();
+				if (id_brg == 0) {
+					document.getElementById('form-shop').submit();
+				} else {
+					document.getElementById('form-shop-'+id_brg).submit();
+				}
 			} else {
 				alert("Stok untuk barang tersebut tidak cukup");
 			}

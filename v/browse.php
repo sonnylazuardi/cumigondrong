@@ -105,7 +105,7 @@ $query = array(
 			if (($key==0)||(($key%2)==0)){
 				echo "<div class='vertdiv'>";
 			}
-			echo "	<a href='".$this->getBaseUrl()."/barang/".$value->id."'>
+			echo "<a href='".$this->getBaseUrl()."/barang/".$value->id."'>
 						<div class='itembox'>
 							<div class='pict' id='item".$value->id."'>
 								<div title='".$value->nama." (IDR ".$this->toCurrency($value->harga).")' class='itembox_img'>
@@ -116,10 +116,10 @@ $query = array(
 								</div>
 							</div>
 							<div class='minicart hidden' id='cart".$value->id."'>
-								<form action = ".$this->makeUrl("barang/update")." method='post'>
+								<form action = ".$this->makeUrl("barang/update")." id='form-shop-".$value->id."' method='post' onsubmit='cekQuantity(".$value->id."); return false;'>
 									<label class='qty small'>Quantity</label>
-									<input type='number' name='quantity' class='qty' value=1></input>
-									<input type='hidden' name='id_barang' value='".$value->id."'>
+									<input type='number' name='quantity' id='quantity_".$value->id."' class='qty' value=1></input>
+									<input type='hidden' name='id_barang' id='id_barang_".$value->id."' value='".$value->id."'>
 									<p>Request Message :</p>
 									<textarea class='req_msg small' name='req_msg'></textarea>
 									<input type='submit' class='cart small' value = 'Add to Cart'></input>
@@ -132,3 +132,8 @@ $query = array(
 			if (($key%2)==1||($key==(count($model)-1))||($key==9))echo "</div>";
 		}
 	?>
+
+<script src="<?php echo $this->getBaseUrl() ?>/js/validasiBarang.js"></script>
+<script>
+	var server = "<?php echo $this->getBaseUrl() ?>";
+</script>
