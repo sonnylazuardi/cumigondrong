@@ -11,6 +11,7 @@
 						<div class='list_head' id='price'><h6>Price</h6></div>
 						<div class='list_head' id='qty'><h6>Qty.</h6></div>
 						<div class='list_head' id='subtotal'><h6>Sub Total</h6></div>
+						<div class='list_head' id='remove'><h6>X</h6></div>
 					</div>
 					<?php
 					$total = 0;
@@ -31,6 +32,7 @@
 									<div class='list_body' id='price'><p>IDR ".$this->toCurrency($brg->harga)."</p></div>
 									<div class='list_body' id='qty'><input type='number' value='".$_SESSION[$item]."'></input></div>
 									<div class='list_body' id='subtotal'><p>IDR ".$this->toCurrency($brg->harga*$_SESSION[$item])."</p></div>
+									<div class='list_body' id='remove'><p title='Remove ".$item." from your Shopping Cart'>x</p></div>
 								</div>
 								";
 								$total += $brg->harga*$_SESSION[$item];
