@@ -33,7 +33,7 @@
 									<div class='list_body' id='qty'><input id='quantity_".$brg->nama."' type='number' onkeyup='cekCart(\"".$brg->nama."\", ".$_SESSION[$item].")' value='".$_SESSION[$item]."'></input></div>
 									<input type='hidden' id='id_barang_".$brg->nama."' value='".$brg->nama."'>
 									<div class='list_body' id='subtotal'><p>IDR ".$this->toCurrency($brg->harga*$_SESSION[$item])."</p></div>
-									<div class='list_body' id='remove'><p title='Remove ".$item." from your Shopping Cart'>x</p></div>
+									<div class='list_body' id='remove'><a href='".$this->makeUrl("barang/delete/".$brg->id)."' title='Remove ".$item." from your Shopping Cart'>x</a></div>
 								</div>
 								";
 								$total += $brg->harga*$_SESSION[$item];

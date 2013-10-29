@@ -94,7 +94,7 @@ class BarangController extends dasarController {
 
 		$_SESSION[$model->nama]= $quantity;
 		$_SESSION[ "msg" . $model->nama] = $req_msg;
-				
+		
 		$this->redirect("cart/index");
 	}
 }	
