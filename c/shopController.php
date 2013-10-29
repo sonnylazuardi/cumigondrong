@@ -14,32 +14,54 @@ class ShopController extends dasarController{
 
 		//Check whether transaction success
 		 $template = $this->brankas->template;
+		 $template->isSuccess = true;
 		 $template->view = "transaksiSelesai";
 
 		 $model = new Barang();
-		 $array = $model->cariSemua();
-		 $template->isSuccess = true;
+		 $array = $_SESSION["dibeli"];
 
 		 foreach ($array as $item) {
-		 	if(isset($_SESSION[$item->nama])){ 
-			 	if ($_SESSION[$item->nama] > 0){ 
-			 		if ($_SESSION[$item->nama] > $item->stok){
+		 	$data = new Barang();
+			$brg = $data->cari('nama=:n',array(':n'=>$item));
+		 	if(isset($_SESSION[$item])){ 
+			 	if ($_SESSION[$item] > 0){ 
+			 		if ($_SESSION[$item] > $brg->stok){
 						//transaction failed
 						$template->isSuccess = false;
-						// echo "Not works because" . $item->nama . " n = " . $_SESSION[$item->nama];
 			 		}
 			 	}
 		 	}
 		 }
 
 		 if ($template->isSuccess){
-		 	foreach ($array as $item) {
-			 	if(isset($_SESSION[$item->nama])){ 
-			 		unset($_SESSION[$item->nama]);			 		
-			 	}
+		 	$data2 = new Account();
+		 	$account = $data2->cari('username=:n',array(':n'=>$template->userLogged()));
+			$order = new Order();
+			$order->id_account = $account->id;
+			$order->total = $_SESSION['total_shopping'];
+			$order->simpan();
+		 	foreach ($array as $x) {
+			 	if(isset($_SESSION[$x])){ 
+			 		$data = new Barang();
+			 		$brg = $data->cari('nama=:n',array(':n'=>$x));
+
+			 		$order_item = new OrderItem();
+					$order_item->id_order = $order->id;
+					$order_item->id_barang = $brg->id;
+					$order_item->jumlah = $_SESSION[$x];
+					$order_item->tambahan = $_SESSION['msg'.$x];
+					$order_item->simpan();
+
+					$brg->stok -= $_SESSION[$x];
+					$brg->simpan();
+
+		 			unset($_SESSION[$x]);
+		 			unset($_SESSION['msg'.$x]);
+		 		}
 		 	}
+		 	unset($_SESSION['dibeli']);
+		 	unset($_SESSION['total_shopping']);
 		 }
 		 $template->show('layout');
-
 	}
 }
