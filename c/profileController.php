@@ -24,7 +24,7 @@ class profileController extends dasarController {
 	public function loadAccount() {
 		$model = new Account();
 		$result = $model->cari('username=:u',array(':u'=>$_SESSION['account_id']));
-		if (!$result) $this->redirect('index/login');
+		if (!$result) $this->redirect('index/register');
 		return $model;
 	}
 
