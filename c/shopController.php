@@ -24,6 +24,7 @@ class ShopController extends dasarController{
 		 	$template->errorMsg = "Tidak ada barang yang dibeli";
 		 	$template->show('layout');
 		 }else{
+		 	$total = 0;
 			 foreach ($array as $item) {
 			 	$data = new Barang();
 				$brg = $data->cari('nama=:n',array(':n'=>$item));
@@ -31,12 +32,15 @@ class ShopController extends dasarController{
 				 	if ($_SESSION[$item] > 0){ 
 				 		if ($_SESSION[$item] > $brg->stok){
 							//transaction failed
+							$total += $brg->harga*$_SESSION[$item];
 							$template->isSuccess = false;
 							$template->errorMsg = "Ada Stok Barang yang tidak tersedia";
 				 		}
 				 	}
 			 	}
 			 }
+
+			 $_SESSION['total_shopping'] = $total;
 
 			 if ($template->isSuccess){
 			 	$data2 = new Account();

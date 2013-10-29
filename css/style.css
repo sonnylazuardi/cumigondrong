@@ -1405,7 +1405,6 @@ HORISONTAL SMALL
 	left: 421px;
 	width: 256px;
 	height: 200px;
-	display: inline-block;
 	color: #000;
 	z-index: 1;
 }
@@ -1414,4 +1413,10 @@ select#cal_month {
 }
 input#cal_year {
 	width: 70px;
+}
+div.hide {
+	display: none;
+}
+div.show {
+	display: block;
 }

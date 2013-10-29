@@ -14,7 +14,7 @@
 		<div class='per_form'>
 			<label>Expired Date</label><input onfocus="loadCalendar()" type="text" name="Credit[expired_date]" id="expired_date" value="<?php echo $model->expired_date ?>" required>
 			<span class='error' id="error-expired_date"></span>
-			<div id="calendar" class="hidden">
+			<div id="calendar" class="hide">
 				<div class="calendar_header">
 					<a onclick="hideCalendar()" href="#">X</a>
 					<select id="cal_month" onchange="loadDate()">

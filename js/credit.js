@@ -29,11 +29,13 @@ function loadCalendar(month, year) {
 		if (xmlhttp.readyState==4 && xmlhttp.status==200) {
 			document.getElementById('calendar_content').innerHTML = xmlhttp.responseText;
 			document.getElementById('calendar').classList.remove('hidden');
+			document.getElementById('calendar').classList.add('show');
 		}
 	}
 }
 function hideCalendar() {
 	document.getElementById('calendar').classList.add('hidden');
+	document.getElementById('calendar').classList.remove('show');
 }
 function changeDate(date_now) {
 	hideCalendar();

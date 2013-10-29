@@ -38,3 +38,29 @@ function cekQuantity(id_brg) {
 		xmlhttp.send();
 	}
 }
+
+function cekCart(nama_brg, defaultValue) {
+	var quantity;
+	nama_barang = document.getElementById('id_barang_'+nama_brg).value;
+	quantity = document.getElementById('quantity_'+nama_brg).value;
+	xmlhttp.onreadystatechange=function() {
+		if (xmlhttp.readyState==4 && xmlhttp.status==200) {
+			var data = JSON.parse(xmlhttp.responseText);
+			if (data.status) {
+				alert("Jumlah barang "+nama_brg+" sudah diupdate menjadi "+quantity+" buah");
+				window.location.reload();
+			} else {
+				document.getElementById('quantity_'+nama_brg).value = defaultValue;
+				alert("Stok untuk barang tersebut tidak cukup");
+			}
+		}
+	}
+	if (quantity <= 0) {
+		document.getElementById('quantity_'+nama_brg).value = defaultValue;
+		alert("Input tidak valid");
+		console.log("input not valid");
+	} else {
+		xmlhttp.open("GET",server+"/api/changeQuantity?nama_barang="+nama_brg+"&quantity="+quantity,true);
+		xmlhttp.send();
+	}
+}

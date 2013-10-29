@@ -30,7 +30,8 @@
 									<div class='list_body' id='no'><p>".$ind.".</p></div>
 									<div class='list_body' id='item'><p><b>".$kategori->cari('id=:_id',array('_id'=>$brg->id_kategori))->nama_kategori." :</b><br/> &nbsp &nbsp &nbsp".$item."</p></div>
 									<div class='list_body' id='price'><p>IDR ".$this->toCurrency($brg->harga)."</p></div>
-									<div class='list_body' id='qty'><input type='number' value='".$_SESSION[$item]."'></input></div>
+									<div class='list_body' id='qty'><input id='quantity_".$brg->nama."' type='number' onkeyup='cekCart(\"".$brg->nama."\", ".$_SESSION[$item].")' value='".$_SESSION[$item]."'></input></div>
+									<input type='hidden' id='id_barang_".$brg->nama."' value='".$brg->nama."'>
 									<div class='list_body' id='subtotal'><p>IDR ".$this->toCurrency($brg->harga*$_SESSION[$item])."</p></div>
 									<div class='list_body' id='remove'><p title='Remove ".$item." from your Shopping Cart'>x</p></div>
 								</div>
@@ -65,3 +66,7 @@
 				</div>
 			</div>
 		</div>
+<script src="<?php echo $this->getBaseUrl() ?>/js/validasiBarang.js"></script>
+<script>
+	var server = "<?php echo $this->getBaseUrl() ?>";
+</script>
