@@ -12,5 +12,15 @@ class CartController extends dasarController{
 			$this->redirect("index/register");
 		}
 	}
+
+	public function kosong(){
+		$template = $this->brankas->template;
+		if ($template->userLogged()){
+				 $template->view = "cart_kosong";				
+				 $template->show('layout');			
+		} else {
+			$this->redirect("index/register");
+		}	
+	}
 }
 ?>
