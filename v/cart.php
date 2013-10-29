@@ -1,5 +1,4 @@
 
-	
 		<h1 class='header'>Shopping Cart</h1>
 <div class='orderdata'>
 			<div class="wrapV_m">
@@ -14,25 +13,31 @@
 						<div class='list_head' id='subtotal'><h6>Sub Total</h6></div>
 					</div>
 					<?php
-					$array = $model->cariSemua();
-					$kategori = new Kategori();
-					$ind = 1;
 					$total = 0;
-					foreach ($array as $item) {
-						if ((isset($_SESSION[$item->nama])) && ($_SESSION[$item->nama] > 0)){
-							echo "
-							<div class='row'>
-								<div class='list_body' id='no'><p>".$ind.".</p></div>
-								<div class='list_body' id='item'><p><b>".$kategori->cari('id=:_id',array('_id'=>$item->id_kategori))->nama_kategori." :</b><br/> &nbsp &nbsp &nbsp".$item->nama."</p></div>
-								<div class='list_body' id='price'><p>IDR ".$this->toCurrency($item->harga)."</p></div>
-								<div class='list_body' id='qty'><p>".$_SESSION[$item->nama]."</p></div>
-								<div class='list_body' id='subtotal'><p>IDR ".$this->toCurrency($item->harga*$_SESSION[$item->nama])."</p></div>
-							</div>
-							";
-							$total += $item->harga*$_SESSION[$item->nama];
-							$ind++;
+					$ind = 1;
+					if (isset($_SESSION["dibeli"])){
+						$array = $_SESSION["dibeli"];
+						$kategori = new Kategori();
+						$ind = 1;
+						$total = 0;
+						foreach ($array as $item) {
+							if ((isset($_SESSION[$item])) && ($_SESSION[$item] > 0)){
+								$data = new Barang();
+								$brg = $data->cari('nama=:n',array(':n'=>$item));
+								echo "
+								<div class='row'>
+									<div class='list_body' id='no'><p>".$ind.".</p></div>
+									<div class='list_body' id='item'><p><b>".$kategori->cari('id=:_id',array('_id'=>$brg->id_kategori))->nama_kategori." :</b><br/> &nbsp &nbsp &nbsp".$item."</p></div>
+									<div class='list_body' id='price'><p>IDR ".$this->toCurrency($brg->harga)."</p></div>
+									<div class='list_body' id='qty'><p>".$_SESSION[$item]."</p></div>
+									<div class='list_body' id='subtotal'><p>IDR ".$this->toCurrency($brg->harga*$_SESSION[$item])."</p></div>
+								</div>
+								";
+								$total += $brg->harga*$_SESSION[$item];
+								$ind++;
+							}
 						}
-					} ?>			
+						} ?>			
 						<div class='row'>
 							<div class='list_foot' id='totallabel'><h6>TOTAL</h6></div>
 							<div class='list_foot' id='total'><p>IDR <?php echo $this->toCurrency($total) ?></p></div>

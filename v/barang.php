@@ -37,7 +37,7 @@ function toRP($num) {
 		<p>get it for :</p>
 		<h4>IDR <?php echo toRP($model->harga) ?></h4>
 	<!-- <form method="post" onSubmit="Stok(); return false;" >  -->
-	 <form method="post"  action = "<?php echo $this->makeUrl("barang/update"); ?>"> 
+	 <form method="post" onsubmit="cekQuantity(); return false;"  action = "<?php echo $this->makeUrl("barang/update"); ?>" id="form-shop"> 
 		<label class='qty'>Quantity</label>
 		<input type='number' name="quantity" id="quantity" class='qty' value=1></input>
 		<input type="hidden" name="id_barang" id="id_barang" value="<?php echo $model->id; ?>">
@@ -49,6 +49,6 @@ function toRP($num) {
 
 <script src="<?php echo $this->getBaseUrl() ?>/js/validasiBarang.js"></script>
 <script>
-	var server = "<?php echo Template::getBaseUrl() ?>";
+	var server = "<?php echo $this->getBaseUrl() ?>";
 </script>
 

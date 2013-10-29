@@ -8,11 +8,9 @@ class CartController extends dasarController{
 				 $template->view = "cart";
 				 $template->model = $model;
 				 $template->show('layout');			
-		}else{
-			$this->redirect("index/home");
+		} else {
+			$this->redirect("index/register");
 		}
-
 	}
-
 }
 ?>
