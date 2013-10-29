@@ -66,15 +66,7 @@
 				</div>
 			</div>
 		</div>
-<<<<<<< HEAD
-
-=======
->>>>>>> 75c0509dae44a3a45b6f3cf9ea29cbe9fc033c8e
 <script src="<?php echo $this->getBaseUrl() ?>/js/validasiBarang.js"></script>
 <script>
 	var server = "<?php echo $this->getBaseUrl() ?>";
 </script>
-<<<<<<< HEAD
-
-=======
->>>>>>> 75c0509dae44a3a45b6f3cf9ea29cbe9fc033c8e
