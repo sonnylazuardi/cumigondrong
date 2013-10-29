@@ -100,7 +100,7 @@
 			<a href='<?php echo $this->getBaseUrl()?>/index/home'><div class='logo'></div></a>
 			<div class='status'>
 				<?php if ($this->userLogged()): ?>
-					<p class="left"> welcome, <?php echo $this->userLogged() ?>! (<a href='<?php echo $this->makeUrl('profile/index') ?>/'>Profile</a> | <a href='<?php echo $this->makeUrl('index/logout') ?>'>Logout</a>)
+					<p class="left"> welcome, <a href='<?php echo $this->makeUrl('profile/index') ?>/'><?php echo $this->userLogged() ?></a>! (<a href='<?php echo $this->makeUrl('index/logout') ?>'>Logout</a>)
 					</p>
 					<p class="right">
 						<a href="<?php echo $this->makeUrl('/cart/index') ?>">Shopping Cart</a> <img src='<?php echo $this->getBaseUrl() ?>/img/site/cart_white.png' style='margin-right:5px;'/>
@@ -241,15 +241,15 @@
 			?>
 			<h4>Search</h4>
 			<p onclick='closesearch()'>x</p>
-			<input type="text" name="q" value="<?php echo $q ?>" placeholder="Nama Barang" required>
+			<input type="text" name="q" value="<?php echo $q ?>" placeholder="Nama Barang">
 			<select name="kat" value="<?php echo $kat ?>" required>
 				<option value="0">All Categories</option>
 				<?php foreach ($_listkategori_ as $key => $value): ?>
 					<option value="<?php echo $value->id ?>"><?php echo $value->nama_kategori ?></option>
 				<?php endforeach ?>
 			</select>
-			<input type="number" name="h1" value="<?php echo $h1 ?>" placeholder="Harga Bawah" required>
-			<input type="number" name="h2" value="<?php echo $h2 ?>" placeholder="Harga Atas" required>
+			<input type="number" name="h1" value="<?php echo $h1 ?>" placeholder="Harga Bawah">
+			<input type="number" name="h2" value="<?php echo $h2 ?>" placeholder="Harga Atas">
 			<button type="submit" class="btn">Search</button>
 		</form>
 	</div>

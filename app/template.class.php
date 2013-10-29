@@ -63,19 +63,19 @@ class Template {
     public function paginasi($total, $hal, $count) {
         $jumHalaman = ceil($total / $count);
         $str = "<ul class='paginasi'>";
-        $query = "";
-        if (isset($_GET['q'])) {
-            $query .= "&q=".$_GET['q'];
-        }
-        if (isset($_GET['sort'])) {
-            $query .= "&sort=".$_GET['sort'];
-        }
+        $query = array(
+            'q'=>(isset($_GET['q']) ? 'q='.$_GET['q'] : null),
+            'sort'=>(isset($_GET['sort']) ? 'sort='.$_GET['sort'] : null),
+            'kat'=>(isset($_GET['kat']) ? 'kat='.$_GET['kat'] : null),
+            'h1'=>(isset($_GET['h1']) ? 'h1='.$_GET['h1'] : null),
+            'h2'=>(isset($_GET['h2']) ? 'h2='.$_GET['h2'] : null)
+        );
         for ($i=1; $i <= $jumHalaman; $i++) { 
             $str .= '<li>';
             if ($i == $hal)
                 $str .= $i;
             else 
-                $str .= '<a href="?hal=' .$i . $query . '">' . $i . '</a>';
+                $str .= '<a href="?hal=' .$i . "&". implode("&", array_filter($query)) . '">' . $i . '</a>';
             $str .= '</li>';
         }
         $str .= "<ul>";
