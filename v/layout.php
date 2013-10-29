@@ -89,7 +89,7 @@
 
 <img class='loader' id='starter' src='<?php echo $this->getBaseUrl() ?>/img/site/logo_b.png'></img>
 <div class='prolog' id='starter2'><p>We are here to provide you with a brand new aura in our country through fashion, creativity, and innovative designs with world class quality. We always provide the best for our consumers by giving the best quality of our products. We will bring to you products made out of best chosen materials. We collaborate with the experts who have years and years of experience in the fashion and design industry. We will excite you with our new and creative concept to be more fashionable. And we guarantee you no dissatisfaction because we are sure that you will be satisfied at any cost whatsoever.</br></br>Best Regards,</br>Calvin Valentino & Salvy Reynalv</p></div>
-<img class='trans' id='trans' src='img/logo.png'></img>
+<a href='<?php echo $this->getBaseUrl() ?>/index/home'><img class='trans' id='trans' src='img/logo.png'></img></a>
 <div class='background' id='content'>
 <?php }?>
 	<div class='conctr'>
@@ -100,7 +100,7 @@
 			<a href='<?php echo $this->getBaseUrl()?>/index/home'><div class='logo'></div></a>
 			<div class='status'>
 				<?php if ($this->userLogged()): ?>
-					<p class="left"> welcome, <?php echo $this->userLogged() ?>! (<a href='<?php echo $this->makeUrl('profile/index') ?>/'>Profile</a> | <a href='<?php echo $this->makeUrl('index/logout') ?>'>Logout</a>)
+					<p class="left"> welcome, <a href='<?php echo $this->makeUrl('profile/index') ?>/'><?php echo $this->userLogged() ?></a>! (<a href='<?php echo $this->makeUrl('index/logout') ?>'>Logout</a>)
 					</p>
 					<p class="right">
 						<a href="<?php echo $this->makeUrl('/cart/index') ?>">Shopping Cart</a> <img src='<?php echo $this->getBaseUrl() ?>/img/site/cart_white.png' style='margin-right:5px;'/>
@@ -110,16 +110,8 @@
 				<?php endif ?>
 			</div>
 			<div class='menu'>
-				<a href='<?php echo $this->getBaseUrl() ?>/index/home'>
-				<div class='permenu per<?php echo (min(array(count($_listkategori_),4))+1) ?>'>
-					<div class='menuborder'></div>
-					<div class='menutxt'><h1 id='txtmenu0' class='menu'>home</h1></div>
-					<div class='menuborder'></div>
-				</div>
-				</a>
-
 				<a href='<?php echo $this->getBaseUrl() ?>/index/shop'>
-				<!-- <div class='permenu per<?php echo (min(array(count($model),4))+1) ?>'>
+				<!-- <div class='permenu per<?php echo (min(array(count($model),4))) ?>'>
 					<div class='menuborder'></div>
 					<div class='menutxt'><h1 id='txtmenu1' class='menu'>shop</h1></div>
 					<div class='menuborder'></div>
@@ -141,14 +133,14 @@
 						</div>
 					</a>";
 				}
-				$minKategori = (min(array(count($_listkategori_),4))+1);
+				$minKategori = (min(array(count($_listkategori_),4)));
 				foreach ($_listkategori_ as $key => $value) {
-					if ($key<3) {
+					if ($key<4) {
 						writeMenu($value,$this->getBaseUrl(),$minKategori);
 					}
 					else {
-						if ($key==3) {
-							if (count($_listkategori_)==4) {
+						if ($key==4) {
+							if (count($_listkategori_)==5) {
 								writeMenu($value,$this->getBaseUrl(),$minKategori);
 							}
 							else {
@@ -230,8 +222,8 @@
 			_closesearchbox(0);
 		}
 	</script>
-	<div id='search-popup' onclick='opensearch()'></div>
-	<div id='search-popup-content'>
+	<div id = 'search-popup' class='search-popup <?php if ((isset($search_show))&&($search_show)) echo "left-hide";?>' onclick='opensearch()'></div>
+	<div id = 'search-popup-content' class='search-popup-content <?php if ((isset($search_show))&&($search_show)) echo "left-show";?>'>
 		<form action="<?php echo $this->makeUrl('barang/search') ?>" method="get">
 			<?php 
 				$q = (isset($_GET['q'])?$_GET['q']:"");
@@ -241,15 +233,15 @@
 			?>
 			<h4>Search</h4>
 			<p onclick='closesearch()'>x</p>
-			<input type="text" name="q" value="<?php echo $q ?>" placeholder="Nama Barang" required>
+			<input type="text" name="q" value="<?php echo $q ?>" placeholder="Nama Barang">
 			<select name="kat" value="<?php echo $kat ?>" required>
 				<option value="0">All Categories</option>
 				<?php foreach ($_listkategori_ as $key => $value): ?>
 					<option value="<?php echo $value->id ?>"><?php echo $value->nama_kategori ?></option>
 				<?php endforeach ?>
 			</select>
-			<input type="number" name="h1" value="<?php echo $h1 ?>" placeholder="Harga Bawah" required>
-			<input type="number" name="h2" value="<?php echo $h2 ?>" placeholder="Harga Atas" required>
+			<input type="number" name="h1" value="<?php echo $h1 ?>" placeholder="Harga Bawah">
+			<input type="number" name="h2" value="<?php echo $h2 ?>" placeholder="Harga Atas">
 			<button type="submit" class="btn">Search</button>
 		</form>
 	</div>

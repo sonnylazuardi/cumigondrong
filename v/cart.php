@@ -1,5 +1,6 @@
 
 	
+<<<<<<< HEAD
 	<h1 class='header'>Shopping Cart</h1>
 	<br/>
 	<div class='payment_div'>
@@ -55,6 +56,3 @@
 
 			
 	</div>
-
-	
-

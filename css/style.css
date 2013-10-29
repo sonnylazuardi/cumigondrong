@@ -772,6 +772,28 @@ div.item_detail {
 	overflow: hidden;
 }
 
+div.item_name {
+	background:rgba(0,0,0,0.5);
+	margin-top:-170px;
+	width: 170px;
+	height: 25px;
+	display: block;
+	position: fixed;
+	font-size: 12px;
+	color : white;
+	line-height: 14px;
+	text-align: left;
+	padding: 5px;
+}
+
+div.item_name a {
+	color : #fce589;
+}
+
+div.item_name a:hover {
+	color : #ffc;
+}
+
 div.price, div.item_detail form {
 	padding:0 1%;
 	width: 47.5%;
@@ -978,7 +1000,7 @@ div#msg p{margin-top : 0px;margin-left : 2px;text-align:center;}
 /***********************
   	 SEARCH-POPUP
 ***********************/
-div#search-popup {
+div.search-popup {
 	position: absolute;
 	top : 50%;
 	left: 0;
@@ -988,7 +1010,11 @@ div#search-popup {
 	background: url(../img/site/search.jpg);
 }
 
-div#search-popup-content {
+div.left-hide {
+	margin-left:-70px;
+}
+
+div.search-popup-content {
 	position: absolute;
 	top : 50%;
 	left: 0;
@@ -999,7 +1025,11 @@ div#search-popup-content {
 	background:#ddd;
 }
 
-div#search-popup-content input {
+div.left-show {
+	margin-left: 0px;
+}
+
+div.search-popup-content input{
 	width: 150px;
 	padding: 5px;
 	margin : 10px 5px;
@@ -1007,14 +1037,14 @@ div#search-popup-content input {
 	line-height: 12px;
 }
 
-div#search-popup-content p {
+div.search-popup-content p{
 	cursor: pointer;
 	margin-top:-45px;
 	margin-left : 185px;
 	margin-bottom: 30px;
 }
 
-div#search-popup-content select {
+div.search-popup-content select{
 	width: 160px;
 	padding: 5px;
 	margin : 10px 5px;
@@ -1022,7 +1052,346 @@ div#search-popup-content select {
 	line-height: 12px;
 }
 
-div#search-popup-content option {
+div.search-popup-content option{
 	width: 160px;
 	margin: 5px;
+}
+
+/***********************
+  	 SHOPPING CART
+***********************/
+div.shopheader{
+	margin : 10px;
+	margin-top : 10px;
+	margin-bottom : 0px;
+	width : 780px;
+	height : 50px;
+	float : left;
+}
+
+div.formcontainer{
+	width:320px;
+	height:280px;
+	float : left;
+	margin-top : 15px;
+}
+
+h5.label {
+	font-family : Arial;
+	font-size: 15px;
+	line-height : 20px;
+	text-align : left;
+	font-weight: normal;
+	font-style: normal;
+	float : right;
+	margin : 0px;
+	margin-top : 25px;
+	color : #555555;
+}
+h5.price {
+	font-family : Arial;
+	font-size: 20px;
+	line-height : 20px;
+	text-align : left;
+	font-weight: normal;
+	font-style: normal;
+	float : right;
+	margin : 10px;
+	margin-top : 25px;
+	color : red;
+}
+
+h4.small{
+	font-size: 15px;
+	margin : 5px;
+	line-height : 15px;
+}
+p.small{
+	font-size : 12px;
+}
+
+div.label {
+	width : 80px;
+	float : left;
+	margin : 5px;
+}
+
+div.formbox {
+	width : 320px;
+	float : left;
+	border-bottom : 1px solid #AAAAAA;
+}
+
+div.data {
+	width : 220px;
+	float : left;
+	margin-top : 2px;
+}
+	div.data input{
+		margin : 2px;
+		padding : 2px;
+		float : left;
+		font-size : 12px;
+		text-align : left;
+		color : #535353;
+		background : white;
+		border : 1px solid #555555;
+	}
+
+div.label p, div.data p{
+	font-size : 12px;
+	text-align : left;
+	line-height : 25px;
+	color : #535353;
+	margin : 0px;
+	margin-left : 3px;
+}
+
+div.orderdata{
+	display:block;
+	width:960px;
+	padding:5px;
+	float:left;
+	background : #DDDDDD;
+	height:350px;
+}
+
+div.orderdetail{
+	width:100%;
+	height : 20px;
+	margin : 0 5px 10px 5px;
+	padding : 5px;
+}
+
+div.orderdetail h4{
+	color : white;
+	line-height : 12px;
+}
+
+div.buyerdetail{
+	width:100%;
+	height : 20px;
+	margin : 0 5px 10px 5px;
+	padding : 5px;
+}
+
+div.buyerdetail h4{
+	color : white;
+	line-height : 12px;
+}
+
+input.button{
+	height : 25px;
+	width : 120px;
+	margin-top : 15px;
+	margin-right : 10px;
+	float : right;
+	background :#CCCCCC;
+	border :1px solid #888888;
+	cursor : pointer;
+	font-size : 12px;
+	line-height : 25px;
+	text-align : center;
+}
+
+	input.button:hover{
+		background :#888888;
+		color :white;
+	}
+
+textarea{
+	border :1px solid #555555;
+}
+
+
+/****************
+   PSEUDOTABLE
+****************/
+#contentV_m div{
+	overflow : hidden;
+}
+div#no{width:30px;}
+div#item{width:215px;}
+div#price{width:100px;}
+div#qty{width:45px;}
+div#subtotal{width:120px;}
+div#totallabel{width:60px;padding-left:350px}
+div#total{width:100px;}
+
+div.list_head{
+	border-bottom : 2px solid #555555;
+	height : 20px;
+	float : left;
+}
+
+div.list_body{
+	border-bottom : 1px solid #d3852f;
+	height : 30px;
+	float : left;
+}
+
+div.list_foot{
+	border-bottom : 2px solid #555555;
+	border-top : 2px solid #555555;
+	height : 20px;
+	float : left;
+}
+
+div.row p{
+	font-size: 12px;
+	line-height : 12px;
+	text-align : left;
+	color : #131313;
+}
+
+div#no p{margin-top : 10px;text-align:center;}
+div#item p{margin-top : 4px;margin-left : 2px;}
+div#price p{margin-top : 10px;margin-left : 2px;text-align:center}
+div#qty p{margin-top : 10px;text-align:center;margin-left : 0px;}
+div#subtotal p{margin-top : 10px;margin-left : 2px;text-align:center}
+div#total p{margin-top : 5px;margin-left : 2px;text-align:center;color:red;font-weight: bold;}
+
+div.row{
+	width : 100%;
+	margin-left : 20px;
+	float : left;
+}
+
+/**************
+   VERTIKAL   
+**************/
+.wrapV {
+	display:block;
+	width:790px;
+	padding:5px;
+	float : left;
+}
+
+#contentV {
+	position:relative;
+	width:775px;
+	height:413px;
+}
+
+.barV {
+	width:11px;
+	background:white;
+	border-radius:4px;
+	box-shadow:inset 0px 0px 5px #AAAAAA;
+	}
+
+ 
+/**************
+ VERTIKAL MED  
+**************/
+.wrapV_m {
+	display:block;
+	width:530px;
+	padding:5px;
+	margin:5px 10px;
+	float : left;
+}
+
+#contentV_m {
+	position:relative;
+	width:530px;
+	height:350px;
+}
+
+.barV_m {
+	width:11px;
+	background:white;
+	border-radius:4px;
+	box-shadow:inset 0px 0px 5px #AAAAAA;
+	}
+	
+/**************
+VERTIKAL SMALL   
+**************/
+.wrapV_s {
+	display:block;
+	width:420px;
+	padding:10px;
+	float : left;
+}
+
+#contentV_s {
+	position:relative;
+	width:405px;
+	height:210px;
+}
+
+.barV_s {
+	width:11px;
+	background:white;
+	border-radius:4px;
+	box-shadow:inset 0px 0px 5px #AAAAAA;
+	}
+
+/**************
+  HORIZONTAL   
+**************/	
+.wrapH {
+	display:block;
+	width:790px;
+	padding:5px;
+	float : left;
+}
+
+#contentH {
+	position:relative;
+	width:780px;
+	height:398px;
+}
+
+#contentH p{
+	float : left;
+	width : 360px;
+	margin : 10px;
+}
+
+.barH {
+	height:11px;
+	background:white;
+	border-radius:4px;
+	box-shadow:inset 0px 0px 5px #AAAAAA;
+	}
+
+.scrollH{
+	width : 1400px;
+}
+	
+/***************
+HORISONTAL SMALL   
+***************/	
+.wrapH_s {
+	display:block;
+	width:790px;
+	padding:5px;
+	float:left;
+	margin-top : 60px;
+	background : #bca549;
+}
+
+#contentH_s {
+	position:relative;
+	width:780px;
+	height:298px;
+}
+
+.barH_s {
+	height:11px;
+	background:white;
+	border-radius:4px;
+	box-shadow:inset 0px 0px 5px #AAAAAA;
+	}
+
+.scrollH_s{
+	width : 14000px;
+}
+
+.slider {
+	background:#bca549;
+	border-radius:4px;
+	cursor:pointer;
 }

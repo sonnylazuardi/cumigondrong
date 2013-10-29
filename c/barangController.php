@@ -12,18 +12,42 @@ class BarangController extends dasarController {
 		$template->show('layout');
 	}
 	public function search() {
-		$q = (isset($_GET['q']) ? $_GET['q'] : "");
-		$kat = (isset($_GET['kat']) ? $_GET['kat'] : "");
-		$h1 = (isset($_GET['h1']) ? $_GET['h1'] : "");
-		$h2 = (isset($_GET['h2']) ? $_GET['h2'] : "");
+		$q = (isset($_GET['q']) ? $_GET['q'] : null);
+		$kat = (isset($_GET['kat']) ? $_GET['kat'] : null);
+		$h1 = (isset($_GET['h1']) ? $_GET['h1'] : null);
+		$h2 = (isset($_GET['h2']) ? $_GET['h2'] : null);
 		$hal = (isset($_GET['hal']) ? $_GET['hal'] : 1);
 		$sort = (isset($_GET['sort']) ? $_GET['sort'] : null);
 		if (!in_array($sort, array('nama asc', 'nama desc', 'harga asc', 'harga desc'))) $sort = null;
 		$model = new Barang();
-		$total = $model->jumlahSemua('(lower(nama) like :q) and (id_kategori = :kat or :kat = 0) and (harga between :h1 and :h2)', array(':q'=>'%'.strtolower($q).'%', ':kat'=>$kat, ':h1'=>$h1, ':h2'=>$h2), $sort);
-		$res = $model->cariSemua('(lower(nama) like :q) and (id_kategori = :kat or :kat = 0) and (harga between :h1 and :h2)', array(':q'=>'%'.strtolower($q).'%', ':kat'=>$kat, ':h1'=>$h1, ':h2'=>$h2), ($hal-1)*10, 10, $sort);
+		$first = true;
+		$params = array();
+		$sql = "";
+		if ($q != null) {
+			if (!$first) $sql .= ' and '; else $first = false;
+			$sql .= '(lower(nama) like :q)';
+			$params[':q'] = '%'.strtolower($q).'%';
+		}
+		if ($kat > 0) {
+			if (!$first) $sql .= ' and '; else $first = false;
+			$sql .= '(id_kategori = :kat)';
+			$params[':kat'] = $kat;
+		}
+		if ($h1 != null) {
+			if (!$first) $sql .= ' and '; else $first = false;
+			$sql .= '(harga >= :h1)';
+			$params[':h1'] = $h1;
+		}
+		if ($h2 != null) {
+			if (!$first) $sql .= ' and '; else $first = false;
+			$sql .= '(harga <= :h2)';
+			$params[':h2'] = $h2;
+		}
+		$total = $model->jumlahSemua($sql, $params, $sort);
+		$res = $model->cariSemua($sql, $params, ($hal-1)*10, 10, $sort);
 		$template = $this->brankas->template;
 		$template->paging = $template->paginasi($total, $hal, 10);
+		$template->search_show = true;
 		$template->view = 'browse';
 		$template->title = 'Search';
 		$template->model = $res;
