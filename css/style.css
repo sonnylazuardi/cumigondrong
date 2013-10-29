@@ -888,6 +888,8 @@ div.home_categori {
 	width: 50%;
 	height: 100%;
 	opacity: 1;
+	display: inline-block;
+	text-align: left;
 }
 
 div.triplebest {
@@ -930,8 +932,19 @@ div.triplebest div.best {
 }
 
 .howto {
-	width: 50%;
+	width: 48%;
+	height: 450px;
 	float:right;
+	background: rgba(0,0,0,0.5);
+}
+
+.howto img {
+	width: 100%;
+}
+
+.howto ol {
+	margin: 10px 10px 10px 30px;
+	font-size: 14px
 }
 
 /***********************
@@ -1102,7 +1115,6 @@ h5.price {
 	float : right;
 	margin : 10px;
 	margin-top : 25px;
-	color : red;
 }
 
 h4.small{
@@ -1383,4 +1395,28 @@ HORISONTAL SMALL
 	background:#bca549;
 	border-radius:4px;
 	cursor:pointer;
+}
+
+
+#calendar {
+	background: #fff;
+	position: absolute;
+	top: 302px;
+	left: 421px;
+	width: 256px;
+	height: 200px;
+	color: #000;
+	z-index: 1;
+}
+select#cal_month {
+	width: 100px;
+}
+input#cal_year {
+	width: 70px;
+}
+div.hide {
+	display: none;
+}
+div.show {
+	display: block;
 }

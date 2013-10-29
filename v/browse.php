@@ -105,7 +105,7 @@ $query = array(
 			if (($key==0)||(($key%2)==0)){
 				echo "<div class='vertdiv'>";
 			}
-			echo "	<div class='itembox'>
+			echo "<div class='itembox'>
 						<div class='pict' id='item".$value->id."'>
 							<div title='";
 			if ($value->stok>0) echo "Ready Stock"; else echo "Out of Stock";

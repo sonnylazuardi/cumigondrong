@@ -30,7 +30,8 @@
 									<div class='list_body' id='no'><p>".$ind.".</p></div>
 									<div class='list_body' id='item'><p><b>".$kategori->cari('id=:_id',array('_id'=>$brg->id_kategori))->nama_kategori." :</b><br/> &nbsp &nbsp &nbsp".$item."</p></div>
 									<div class='list_body' id='price'><p>IDR ".$this->toCurrency($brg->harga)."</p></div>
-									<div class='list_body' id='qty'><input id = '".$_SESSION[$item]."' type='number' value='".$_SESSION[$item]."'></input></div>
+									<div class='list_body' id='qty'><input id='quantity_".$brg->nama."' type='number' onkeyup='cekCart(\"".$brg->nama."\", ".$_SESSION[$item].")' value='".$_SESSION[$item]."'></input></div>
+									<input type='hidden' id='id_barang_".$brg->nama."' value='".$brg->nama."'>
 									<div class='list_body' id='subtotal'><p>IDR ".$this->toCurrency($brg->harga*$_SESSION[$item])."</p></div>
 									<div class='list_body' id='remove'><p title='Remove ".$item." from your Shopping Cart'>x</p></div>
 								</div>
@@ -46,7 +47,7 @@
 							<div class='list_foot' id='totallabel'><h6>TOTAL</h6></div>
 							<div class='list_foot' id='total'><p>IDR <?php echo $this->toCurrency($total) ?></p></div>
 						</div>
-					<h2>Delivery costs are not included.</h2>
+					<h2>Free delivery cost. :)</h2>
 				</div>
 			</div></div>
 			<div class='formcontainer'>
@@ -65,9 +66,15 @@
 				</div>
 			</div>
 		</div>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 75c0509dae44a3a45b6f3cf9ea29cbe9fc033c8e
 <script src="<?php echo $this->getBaseUrl() ?>/js/validasiBarang.js"></script>
 <script>
 	var server = "<?php echo $this->getBaseUrl() ?>";
 </script>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 75c0509dae44a3a45b6f3cf9ea29cbe9fc033c8e
