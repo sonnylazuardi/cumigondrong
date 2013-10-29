@@ -57,7 +57,7 @@ if (count($model->error) > 0) {
 		</div>
 		
 		<div class='per_form small'>
-			<label class='uncheck'>Kota</label><input type="text" name="Register[kota]" id="kota" value="<?php echo $model->kota ?>"  required>
+			<label class='uncheck'>Kota/Kabupaten</label><input type="text" name="Register[kota]" id="kota" value="<?php echo $model->kota ?>"  required>
 			<span id="error-kota"></span>
 		</div>
 		
