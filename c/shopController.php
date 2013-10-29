@@ -2,21 +2,19 @@
 class ShopController extends dasarController{
 	public function index()
 	{
-		 $model = new Barang();
-
-		 $template = $this->brankas->template;
-		 $template->view = "shop";
-		 $template->model = $model;
-		 $template->show('layout');
+	
 	}
 
 	public function payment() {		
+
 
 		//Check whether transaction success
 		 $template = $this->brankas->template;
 		 $template->isSuccess = true;
 		 $template->view = "transaksiSelesai";
-
+		 if (!$template->userLogged()){
+		 	 $this->redirect("index/register");
+		 }
 		 $model = new Barang();
 		 $array = (isset($_SESSION["dibeli"]) ? $_SESSION['dibeli'] : null);
 		 if ($array == null){
