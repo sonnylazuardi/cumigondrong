@@ -1070,10 +1070,10 @@ div.shopheader{
 }
 
 div.formcontainer{
-	width:320px;
+	width:360px;
 	height:280px;
 	float : left;
-	margin-top : 15px;
+	margin-top : 10px;
 }
 
 h5.label {
@@ -1173,6 +1173,14 @@ div.buyerdetail{
 	height : 20px;
 	margin : 0 5px 10px 5px;
 	padding : 5px;
+}
+
+div.buyerdetail ul {
+	margin-left: 10px;
+	padding-left: 10px;
+	width: 95%;
+	color : black;
+	font-size : 12px;
 }
 
 div.buyerdetail h4{

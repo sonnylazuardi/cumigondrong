@@ -41,12 +41,18 @@
 				</div>
 			</div></div>
 			<div class='formcontainer'>
-				<div class='buyerdetail'><h4>Buyer Data</h4></div>
-				<form method='post' action='ordervalidation.php'>
-				<div class='formbox'><div class='label'><p>Name</p></div><div class='data'><input type='text' name='name' style='width:200px;height:20px;'></div></div>
-				<div class='formbox'><div class='label'><p>Mobile</p></div><div class='data'><input type='text' name='mobile' style='width:150px;height:20px;'></div></div>
-				<div class='formbox'><div class='label'><p>e-mail</p></div><div class='data'><input type='text' name='email' style='width:200px;height:20px;'></div></div>
-				<div class='formbox'><div class='label'><p>Address</p></div><div class='data'><textarea type='text' name='address' style='width:220px;height:70px;margin-bottom:5px'></textarea></div></div>
-				<div class='formbox'><div class='label'><p>Postal Code</p></div><div class='data'><input type='text' name='postal' style='width:100px;height:20px;'></div></div>
+				<div class='buyerdetail'><h4>Term and Condition</h4>
+				<ul>
+					<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque nisl, aliquam ac mi ut, imperdiet consequat odio. Mauris suscipit laoreet dignissim.</li>
+					<li>Urabitur convallis varius lectus, vitae congue mauris adipiscing eu. Vivamus id ultrices mi. Aenean eget erat id massa fringilla gravida.</li>
+					<li>Aenean eu augue aliquet, congue nisl vitae, mattis quam. Quisque eu urna cursus, semper turpis in, ultricies est.</li>
+					<li>Proin ullamcorper vehicula dolor, volutpat euismod leo cursus varius.</li>
+					<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus neque nisl, aliquam ac mi ut, imperdiet consequat odio. Mauris suscipit laoreet dignissim.</li>
+					<li>Urabitur convallis varius lectus, vitae congue mauris adipiscing eu. Vivamus id ultrices mi. Aenean eget erat id massa fringilla gravida.</li>
+					
+				</ul>
+				<a href='<?php echo $this->getBaseUrl() ?>/profile/credit?redirect=shop/payment'><input type="btn" name="submit" value="Process to payment" class="button"></a>
+				<a href='<?php echo $this->getBaseUrl() ?>/index/home'><input type="btn" name="submit" value="Add Item" class="button"></a>
+				</div>
 			</div>
 		</div>

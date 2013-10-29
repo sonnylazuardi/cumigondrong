@@ -107,13 +107,15 @@ $query = array(
 			}
 			echo "	<div class='itembox'>
 						<div class='pict' id='item".$value->id."'>
-							<div title='".$value->nama." (IDR ".$this->toCurrency($value->harga).")' class='itembox_img'>
+							<div title='";
+			if ($value->stok>0) echo "Ready Stock"; else echo "Out of Stock";
+			echo "' class='itembox_img'>
 								<img onload='fitbarang(this)' src='".$this->getBaseUrl()."/img/barang/".$value->gambar."'/>
 							</div>
 							<div class='minicart_icon'>
 								<a href=# onclick='goToCart(".$value->id.")'><img src='".$this->getBaseUrl()."/img/site/cart_black.png'/></a>
 							</div>
-							<div class='item_name'><a href='".$this->getBaseUrl()."/barang/".$value->id."'>".$value->nama."</a><br/>IDR ".$value->harga."</div>
+							<div class='item_name'><a href='".$this->getBaseUrl()."/barang/".$value->id."'>".$value->nama."</a><br/>IDR ".$this->toCurrency($value->harga)."</div>
 						</div>
 						<div class='minicart hidden' id='cart".$value->id."'>
 							<form action = ".$this->makeUrl("barang/update")." method='post'>
