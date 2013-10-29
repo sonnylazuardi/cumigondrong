@@ -44,7 +44,7 @@
 							<div class='list_foot' id='totallabel'><h6>TOTAL</h6></div>
 							<div class='list_foot' id='total'><p>IDR <?php echo $this->toCurrency($total) ?></p></div>
 						</div>
-					<h2>Delivery costs are not included.</h2>
+					<h2>Free delivery cost. :)</h2>
 				</div>
 			</div></div>
 			<div class='formcontainer'>
