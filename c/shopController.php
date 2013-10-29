@@ -34,7 +34,7 @@ class ShopController extends dasarController{
 							//transaction failed
 							$total += $brg->harga*$_SESSION[$item];
 							$template->isSuccess = false;
-							$template->errorMsg = "Ada Stok Barang yang tidak tersedia";
+							$template->errorMsg = "Barang yang anda pesan tidak tersedia";
 				 		}
 				 	}
 			 	}

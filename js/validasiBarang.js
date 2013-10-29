@@ -39,6 +39,7 @@ function cekQuantity(id_brg) {
 	}
 }
 
+
 function cekCart(nama_brg, defaultValue) {
 	var quantity;
 	nama_barang = document.getElementById('id_barang_'+nama_brg).value;

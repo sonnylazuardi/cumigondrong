@@ -61,8 +61,8 @@
 					<li>Urabitur convallis varius lectus, vitae congue mauris adipiscing eu. Vivamus id ultrices mi. Aenean eget erat id massa fringilla gravida.</li>
 					
 				</ul>
-				<a href='<?php echo $this->getBaseUrl() ?>/profile/credit?redirect=shop/payment'><input type="btn" name="submit" value="Process to payment" class="button"></a>
-				<a href='<?php echo $this->getBaseUrl() ?>/index/home'><input type="btn" name="submit" value="Add Item" class="button"></a>
+				<a href='<?php echo $this->getBaseUrl() ?>/profile/credit?redirect=shop/payment'><input type="btn"  name="submit" value="Process to payment" class="button"></a>
+				<a href='<?php echo $this->getBaseUrl() ?>/kategori'><input type="btn" name="submit" value="Add Item" class="button"></a>
 				</div>
 			</div>
 		</div>
