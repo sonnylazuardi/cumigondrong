@@ -12,8 +12,22 @@
 		</div>
 		
 		<div class='per_form'>
-			<label>Expired Date</label><input type="text" name="Credit[expired_date]" id="expired_date" value="<?php echo $model->expired_date ?>" required>
+			<label>Expired Date</label><input onfocus="loadCalendar()" type="text" name="Credit[expired_date]" id="expired_date" value="<?php echo $model->expired_date ?>" required>
 			<span class='error' id="error-expired_date"></span>
+			<div id="calendar" class="hidden">
+				<div class="calendar_header">
+					<a onclick="hideCalendar()" href="#">X</a>
+					<select id="cal_month" onchange="loadDate()">
+						<?php 
+							$m = array(1=>'Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember');
+							foreach ($m as $key => $bulan) : ?>
+						<option value="<?php echo $key ?>"><?php echo $bulan ?></option>
+						<?php endforeach; ?>
+					</select>
+					<input type="text" id="cal_year" onchange="loadDate()" value="<?php echo date('Y') ?>">
+				</div>
+				<div id="calendar_content"></div>
+			</div>
 		</div>
 		<button type="submit" id="btn" class="btn">Register</button>
 		<?php if (!$sudahSet): ?>

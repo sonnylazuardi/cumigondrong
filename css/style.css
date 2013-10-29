@@ -1384,3 +1384,22 @@ HORISONTAL SMALL
 	border-radius:4px;
 	cursor:pointer;
 }
+
+
+#calendar {
+	background: #fff;
+	position: absolute;
+	top: 302px;
+	left: 421px;
+	width: 256px;
+	height: 200px;
+	display: inline-block;
+	color: #000;
+	z-index: 1;
+}
+select#cal_month {
+	width: 100px;
+}
+input#cal_year {
+	width: 70px;
+}
