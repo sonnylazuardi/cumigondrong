@@ -22,6 +22,7 @@ class BarangController extends dasarController {
 		$res = $model->cariSemua('(lower(nama) like :q) and (id_kategori = :kat or :kat = 0) and (harga between :h1 and :h2)', array(':q'=>'%'.strtolower($q).'%', ':kat'=>$kat, ':h1'=>$h1, ':h2'=>$h2), ($hal-1)*10, 10, $sort);
 		$template = $this->brankas->template;
 		$template->paging = $template->paginasi($total, $hal, 10);
+		$template->search_show = true;
 		$template->view = 'browse';
 		$template->title = 'Search';
 		$template->model = $res;

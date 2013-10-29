@@ -2,7 +2,7 @@
 	<div class='register_div'>
 		<h1 class='header'>Edit Profile</h1>
 		<div class="per_form">
-			<label>Nama Lengkap: </label><input type="text" value="<?php echo $model->nama ?>" name="Profile[nama]" id="nama" required onkeydown="Register.cekNama()">
+			<label>Nama Lengkap: </label><input type="text" value="<?php echo $model->nama ?>" name="Profile[nama]" id="nama" required onkeyup="Register.cekNama()">
 			<span class="error" id="error-nama"></span>
 		</div>
 		<div class="per_form">
@@ -12,11 +12,11 @@
 			<label>Email: </label><input type="text" value="<?php echo $model->email ?>" id="email" disabled="disabled">
 		</div>
 		<div class="per_form">
-			<label>Password Baru : </label><input type="password" value="" name="Profile[password]" id="password" onkeydown="Register.cekPassword()">
+			<label>Password Baru : </label><input type="password" value="" name="Profile[password]" id="password" onkeyup="Register.cekPassword()">
 			<span class="error" id="error-password"></span>
 		</div>
 		<div class="per_form">
-			<label>Confirm Pass. : </label><input type="password" value="" name="Profile[confirm]" id="confirm" onkeydown="Register.cekConfirm()">
+			<label>Confirm Pass. : </label><input type="password" value="" name="Profile[confirm]" id="confirm" onkeyup="Register.cekConfirm()">
 			<span class="error" id="error-confirm"></span>
 		</div>
 	</div>

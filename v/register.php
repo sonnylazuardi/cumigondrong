@@ -12,27 +12,27 @@ if (count($model->error) > 0) {
 	<div class='register_div'>
 		<h1 class='header'>Register</h1>
 		<div class='per_form'>
-			<label>Nama</label><input type="text" name="Register[nama]" id="nama" value="<?php echo $model->nama ?>" onkeydown="Register.cekNama()" required>
+			<label>Nama</label><input type="text" name="Register[nama]" id="nama" value="<?php echo $model->nama ?>" onkeyup="Register.cekNama()" required>
 			<span class='error' id="error-nama"></span>
 		</div>
 		
 		<div class='per_form'>
-			<label>Email</label><input type="text" name="Register[email]" id="email" value="<?php echo $model->email ?>" onkeydown="Register.cekEmail()" required>
+			<label>Email</label><input type="text" name="Register[email]" id="email" value="<?php echo $model->email ?>" onkeyup="Register.cekEmail()" required>
 			<span class='error' id="error-email"></span>
 		</div>
 		
 		<div class='per_form'>
-			<label>Username</label><input type="text" name="Register[username]" id="username" value="<?php echo $model->username ?>" onkeydown="Register.cekUsername()"required>
+			<label>Username</label><input type="text" name="Register[username]" id="username" value="<?php echo $model->username ?>" onkeyup="Register.cekUsername()"required>
 			<span class='error' id="error-username"></span>
 		</div>
 		
 		<div class='per_form'>
-			<label>Password</label><input type="password" name="Register[password]" id="password" placeholderPassword : ="" value="<?php echo $model->password ?>" onkeydown="Register.cekPassword()" required>
+			<label>Password</label><input type="password" name="Register[password]" id="password" placeholderPassword : ="" value="<?php echo $model->password ?>" onkeyup="Register.cekPassword()" required>
 			<span class='error' id="error-password"></span>
 		</div>
 		
 		<div class='per_form'>
-			<label>Confirm Pass.</label><input type="password" name="Register[confirm]" id="confirm" value="<?php echo $model->confirm ?>" onkeydown="Register.cekConfirm()" required>
+			<label>Confirm Pass.</label><input type="password" name="Register[confirm]" id="confirm" value="<?php echo $model->confirm ?>" onkeyup="Register.cekConfirm()" required>
 			<span class='error' id="error-confirm"></span>
 		</div>
 	</div>
@@ -62,12 +62,12 @@ if (count($model->error) > 0) {
 		</div>
 		
 		<div class='per_form small'>
-			<label class='uncheck'>Kodepos</label><input type="text" name="Register[kodepos]" id="kodepos" value="<?php echo $model->kodepos ?>" onkeydown="Register.cekKodepos()" required>
+			<label class='uncheck'>Kodepos</label><input type="text" name="Register[kodepos]" id="kodepos" value="<?php echo $model->kodepos ?>" onkeyup="Register.cekKodepos()" required>
 			<span id="error-kodepos"></span>
 		</div>
 		
 		<div class='per_form small'>
-			<label class='uncheck'>Telepon</label><input type="text" name="Register[telepon]" id="telepon" value="<?php echo $model->telepon ?>" onkeydown="Register.cekTelepon()" required>
+			<label class='uncheck'>Telepon</label><input type="text" name="Register[telepon]" id="telepon" value="<?php echo $model->telepon ?>" onkeyup="Register.cekTelepon()" required>
 			<span id="error-telepon"></span>
 		</div>	
 		<p class='keterangan'>Lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet lorem ipsum dolor sit amet</p>
