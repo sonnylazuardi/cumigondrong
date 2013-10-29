@@ -32,7 +32,7 @@ class ShopController extends dasarController{
 				 		if ($_SESSION[$item] > $brg->stok){
 							//transaction failed
 							$template->isSuccess = false;
-							$template->errorMsg = "Ada Stok Barang yang tidak tersedia";
+							$template->errorMsg = "Barang yang anda pesan tidak tersedia";
 				 		}
 				 	}
 			 	}

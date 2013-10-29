@@ -30,7 +30,7 @@
 									<div class='list_body' id='no'><p>".$ind.".</p></div>
 									<div class='list_body' id='item'><p><b>".$kategori->cari('id=:_id',array('_id'=>$brg->id_kategori))->nama_kategori." :</b><br/> &nbsp &nbsp &nbsp".$item."</p></div>
 									<div class='list_body' id='price'><p>IDR ".$this->toCurrency($brg->harga)."</p></div>
-									<div class='list_body' id='qty'><input type='number' value='".$_SESSION[$item]."'></input></div>
+									<div class='list_body' id='qty'><input id = '".$_SESSION[$item]."' type='number' value='".$_SESSION[$item]."'></input></div>
 									<div class='list_body' id='subtotal'><p>IDR ".$this->toCurrency($brg->harga*$_SESSION[$item])."</p></div>
 									<div class='list_body' id='remove'><p title='Remove ".$item." from your Shopping Cart'>x</p></div>
 								</div>
@@ -60,8 +60,14 @@
 					<li>Urabitur convallis varius lectus, vitae congue mauris adipiscing eu. Vivamus id ultrices mi. Aenean eget erat id massa fringilla gravida.</li>
 					
 				</ul>
-				<a href='<?php echo $this->getBaseUrl() ?>/profile/credit?redirect=shop/payment'><input type="btn" name="submit" value="Process to payment" class="button"></a>
-				<a href='<?php echo $this->getBaseUrl() ?>/index/home'><input type="btn" name="submit" value="Add Item" class="button"></a>
+				<a href='<?php echo $this->getBaseUrl() ?>/profile/credit?redirect=shop/payment'><input type="btn"  name="submit" value="Process to payment" class="button"></a>
+				<a href='<?php echo $this->getBaseUrl() ?>/kategori'><input type="btn" name="submit" value="Add Item" class="button"></a>
 				</div>
 			</div>
 		</div>
+
+<script src="<?php echo $this->getBaseUrl() ?>/js/validasiBarang.js"></script>
+<script>
+	var server = "<?php echo $this->getBaseUrl() ?>";
+</script>
+
