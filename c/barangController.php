@@ -88,13 +88,12 @@ class BarangController extends dasarController {
 	}
 
 	public function delete(){
-		$quantity = 0;
 		$id_barang = $this->getParam();
 		$model = new Barang($id_barang);
 
-		$_SESSION[$model->nama]= $quantity;
-		$_SESSION[ "msg" . $model->nama] = $req_msg;
-		
+		unset($_SESSION['dibeli'][$model->nama]);
+		unset($_SESSION['dibeli']['msg'.$model->nama]);
+
 		$this->redirect("cart/index");
 	}
 }	
