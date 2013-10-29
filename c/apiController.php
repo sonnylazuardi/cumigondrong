@@ -56,7 +56,7 @@ class apiController extends dasarController {
 		} else {
 			return json_encode(array('status'=>true));
 		}
-
+	}
 	public function creditNumberValid() {
 		$credit_number = $_GET['credit_number'];
 		$valid = Credit::creditNumberValid($credit_number);
@@ -73,6 +73,17 @@ class apiController extends dasarController {
 			echo json_encode(array("status"=>true));
 		} else {
 			echo json_encode(array("status"=>false));
+		}
+	}
+	public function checkCreditCard() {
+		$credit_number = $_POST['Credit']['credit_number'];
+		$name_of_card = $_POST['Credit']['name_of_card'];
+		if (!Credit::creditNumberValid($credit_number)) {
+			echo json_encode(array("success"=>false, "error"=>'Card Number sudah dipakai'));
+		} else if (!Credit::nameOfCardValid($name_of_card)) {
+			echo json_encode(array("success"=>false, "error"=>'Name of Card sudah dipakai'));
+		} else {
+			echo json_encode(array("success"=>true));
 		}
 	}
 }

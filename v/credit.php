@@ -1,4 +1,4 @@
-<form method="post">
+<form method="post" id="form_credit" onsubmit="credit(); return false;">
 	<div class='register_div'>
 		<h1 class='header'>Registrasi Kartu Kredit</h1>
 		<div class='per_form'>
@@ -21,3 +21,8 @@
 		<?php endif; ?>
 	</div>
 </form>
+
+<script src="<?php echo $this->getBaseUrl() ?>/js/credit.js"></script>
+<script>
+	var server = "<?php echo $this->getBaseUrl() ?>";
+</script>
