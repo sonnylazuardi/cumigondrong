@@ -13,16 +13,29 @@
 						<div class='list_head' id='qty'><h6>Qty.</h6></div>
 						<div class='list_head' id='subtotal'><h6>Sub Total</h6></div>
 					</div>
-						<div class='row'>
-								<div class='list_body' id='no'><p>1.</p></div>
-								<div class='list_body' id='item'><p>Product ID : EL01<br/>Elmoza Premium</p></div>
-								<div class='list_body' id='price'><p>Rp 500.000,-</p></div>
-								<div class='list_body' id='qty'><p>1</p></div>
-								<div class='list_body' id='subtotal'><p>Rp 500.000,-</p></div>
-						</div>					
+					<?php
+					$array = $model->cariSemua();
+					$kategori = new Kategori();
+					$ind = 1;
+					$total = 0;
+					foreach ($array as $item) {
+						if ((isset($_SESSION[$item->nama])) && ($_SESSION[$item->nama] > 0)){
+							echo "
+							<div class='row'>
+								<div class='list_body' id='no'><p>".$ind.".</p></div>
+								<div class='list_body' id='item'><p><b>".$kategori->cari('id=:_id',array('_id'=>$item->id_kategori))->nama_kategori." :</b><br/> &nbsp &nbsp &nbsp".$item->nama."</p></div>
+								<div class='list_body' id='price'><p>IDR ".$this->toCurrency($item->harga)."</p></div>
+								<div class='list_body' id='qty'><p>".$_SESSION[$item->nama]."</p></div>
+								<div class='list_body' id='subtotal'><p>IDR ".$this->toCurrency($item->harga*$_SESSION[$item->nama])."</p></div>
+							</div>
+							";
+							$total += $item->harga*$_SESSION[$item->nama];
+							$ind++;
+						}
+					} ?>			
 						<div class='row'>
 							<div class='list_foot' id='totallabel'><h6>TOTAL</h6></div>
-							<div class='list_foot' id='total'><p>Rp 500.000,-</p></div>
+							<div class='list_foot' id='total'><p>IDR <?php echo $this->toCurrency($total) ?></p></div>
 						</div>
 					<h2>Delivery costs are not included.</h2>
 				</div>
