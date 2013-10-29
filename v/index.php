@@ -125,7 +125,20 @@
 				</div>";
 	}
 ?>
-
+	<div class='howto'>
+		<h4>
+			how to get our product?
+		</h4>
+		<ol>
+			<li>Before you get transaction with us, you must register as member.</li>
+			<li>Browse our product by category or search it.</li>
+			<li>Click add to cart if you want to buy our product.</li>
+			<li>Check out and give us your credit card data</li>
+			<li>Submit and wait us in front your home :)</li>
+		</ol>
+		<img src='<?php echo $this->getBaseUrl() ?>/img/site/howto.jpg'/>
+		<img src='<?php echo $this->getBaseUrl() ?>/img/site/store.jpg'/>
+	</div>
 <script type="text/javascript">
 	function fitBest(obj) {
 		fitimg(obj,220,150,true,true,false);
